@@ -245,8 +245,8 @@ class LoginController extends Controller {
             Session::put('mtm_extension', $practice->mtm_extension);
             Session::put('patient_centric', $practice->patient_centric);
             Session::put('oidc_auth_access_token', $access_token);
-            setcookie("login_attempts", 0, time()+900, '/');
-            return redirect()->intended('/');
+            setcookie("login_attempts", 0, time()+900, 'dashboard');
+            return redirect()->intended('dashboard');
         } else {
             // If patient-centric, confirm if user request is registered to pNOSH first
             if ($practice->patient_centric == 'y') {
@@ -290,7 +290,7 @@ class LoginController extends Controller {
                 return redirect()->route('practice_choose');
             } else {
                 // No registered mdNOSH user for this NOSH instance - punt back to login page.
-                return redirect()->intended('/');
+                return redirect()->intended('dashboard');
             }
         }
     }
@@ -364,22 +364,22 @@ class LoginController extends Controller {
                     Session::put('rcopia', $practice->rcopia_extension);
                     Session::put('mtm_extension', $practice->mtm_extension);
                     Session::put('patient_centric', $practice->patient_centric);
-                    setcookie("login_attempts", 0, time()+900, '/');
+                    setcookie("login_attempts", 0, time()+900, 'dashboard');
                     if ($user->group_id == '1') {
                         Session::forget('pid');
                         Session::forget('eid');
                     }
                     if ($practice->patient_centric == 'n') {
-                        return redirect()->intended('/');
+                        return redirect()->intended('dashboard');
                     } else {
                         if ($user->group_id != '100' && $user->group_id != '1') {
                             $pid = DB::table('demographics')->first();
                             $this->setpatient($pid->pid);
-                            return redirect()->intended('/');
+                            return redirect()->intended('dashboard');
                         } else {
-                            $url_hieofoneas = str_replace('/nosh', '/resources/' . $practice->uma_client_id, URL::to('/'));
+                            $url_hieofoneas = str_replace('/nosh', '/resources/' . $practice->uma_client_id, URL::to('dashboard'));
                             Session::put('url_hieofoneas', $url_hieofoneas);
-                            return redirect()->intended('/');
+                            return redirect()->intended('dashboard');
                         }
                     }
                 } else {
@@ -389,7 +389,7 @@ class LoginController extends Controller {
                     } else {
                         $attempts = 1;
                     }
-                    setcookie("login_attempts", $attempts, time()+900, '/');
+                    setcookie("login_attempts", $attempts, time()+900, 'dashboard');
                     return redirect()->back()->withErrors(['tryagain' => 'Try again']);
                 }
             } else {
@@ -439,7 +439,7 @@ class LoginController extends Controller {
                         $data['attempts'] = "You have reached the number of limits to login.  Wait 15 minutes then try again.";
                     } else {
                         if (!array_key_exists('login_attempts', $_COOKIE)) {
-                            setcookie("login_attempts", 0, time()+900, '/');
+                            setcookie("login_attempts", 0, time()+900, 'dashboard');
                         }
                     }
                     $data['message_action'] = Session::get('message_action');
@@ -462,7 +462,7 @@ class LoginController extends Controller {
             }
         } else {
             // Already logged in
-            return redirect()->intended('/');
+            return redirect()->intended('dashboard');
         }
     }
 
@@ -486,7 +486,7 @@ class LoginController extends Controller {
                 Session::put('patient_centric', $practice->patient_centric);
                 Session::put('uport_id', $request->input('uport'));
                 Session::save();
-                setcookie("login_attempts", 0, time()+900, '/');
+                setcookie("login_attempts", 0, time()+900, 'dashboard');
                 $return['url'] =  route('dashboard');
                 $return['message'] = 'OK';
             } else {
@@ -501,7 +501,7 @@ class LoginController extends Controller {
     public function logout()
     {
         if (Session::has('uma_auth_access_token')) {
-            $open_id_url = str_replace('/nosh', '', URL::to('/'));
+            $open_id_url = str_replace('/nosh', '', URL::to('dashboard'));
             $practice = DB::table('practiceinfo')->where('practice_id', '=', '1')->first();
             $client_id = $practice->uma_client_id;
             $client_secret = $practice->uma_client_secret;
@@ -613,8 +613,8 @@ class LoginController extends Controller {
             Session::put('mtm_extension', $practice1->mtm_extension);
             Session::put('patient_centric', $practice1->patient_centric);
             Session::put('oidc_auth_access_token', $access_token);
-            setcookie("login_attempts", 0, time()+900, '/');
-            return redirect()->intended('/');
+            setcookie("login_attempts", 0, time()+900, 'dashboard');
+            return redirect()->intended('dashboard');
         } else {
             // If patient-centric, confirm if user request is registered to pNOSH first
             if ($practice->patient_centric == 'y') {
@@ -751,11 +751,11 @@ class LoginController extends Controller {
                 Session::put('mtm_extension', $practice2->mtm_extension);
                 Session::put('patient_centric', $practice2->patient_centric);
                 Session::put('oidc_auth_access_token', $access_token);
-                setcookie("login_attempts", 0, time()+900, '/');
-                return redirect()->intended('/');
+                setcookie("login_attempts", 0, time()+900, 'dashboard');
+                return redirect()->intended('dashboard');
             } else {
                 // No registered mdNOSH user for this NOSH instance - punt back to login page.
-                return redirect()->intended('/');
+                return redirect()->intended('dashboard');
             }
         }
     }
@@ -1001,7 +1001,7 @@ class LoginController extends Controller {
             Session::put('rcopia', $practice1->rcopia_extension);
             Session::put('mtm_extension', $practice1->mtm_extension);
             Session::put('patient_centric', $practice1->patient_centric);
-            setcookie("login_attempts", 0, time()+900, '/');
+            setcookie("login_attempts", 0, time()+900, 'dashboard');
             Session::forget('practice_npi_array');
             Session::forget('practice_choose');
             Session::forget('username');
@@ -1010,7 +1010,7 @@ class LoginController extends Controller {
             Session::forget('lastname');
             Session::forget('email');
             Session::forget('npi');
-            return redirect()->intended('/');
+            return redirect()->intended('dashboard');
         } else {
             if (Session::has('practice_choose')) {
                 if (Session::get('practice_choose') == 'y') {
@@ -1068,10 +1068,10 @@ class LoginController extends Controller {
                     $view_data1['assets_css'] = $this->assets_css();
                     return view('welcome', $view_data1);
                 } else {
-                    return redirect()->intended('/');
+                    return redirect()->intended('dashboard');
                 }
             } else {
-                return redirect()->intended('/');
+                return redirect()->intended('dashboard');
             }
         }
     }
@@ -1081,7 +1081,7 @@ class LoginController extends Controller {
         $practice = DB::table('practiceinfo')->where('practice_id', '=', $request->input('practice_id'))->first();
         $html = '<i class="fa fa-child fa-5x" aria-hidden="true" style="margin:20px;text-align: center;"></i>';
         if ($practice->practice_logo !== '' && $practice->practice_logo !== null) {
-            if (file_exists(public_path() . '/'. $practice->practice_logo)) {
+            if (file_exists(public_path() . 'dashboard'. $practice->practice_logo)) {
                 $html = HTML::image($practice->practice_logo, 'Practice Logo', array('border' => '0'));
             }
         }
@@ -1160,7 +1160,7 @@ class LoginController extends Controller {
                             } else {
                                 $attempts = 1;
                             }
-                            setcookie("login_attempts", $attempts, time()+900, '/');
+                            setcookie("login_attempts", $attempts, time()+900, 'dashboard');
                             return redirect()->back()->withErrors(['tryagain' => 'Try again']);
                         }
                     } else {
@@ -1188,14 +1188,14 @@ class LoginController extends Controller {
                     } else {
                         $attempts = 1;
                     }
-                    setcookie("login_attempts", $attempts, time()+900, '/');
+                    setcookie("login_attempts", $attempts, time()+900, 'dashboard');
                     return redirect()->back()->withErrors(['tryagain' => 'Try again']);
                 }
             } else {
                 return redirect()->route('login');
             }
         } else {
-            return redirect()->route('/');
+            return redirect()->route('dashboard');
         }
     }
 
@@ -1321,7 +1321,7 @@ class LoginController extends Controller {
     // Patient-centric, UMA login
     public function uma_auth()
     {
-        $open_id_url = str_replace('/nosh', '', URL::to('/'));
+        $open_id_url = str_replace('/nosh', '', URL::to('dashboard'));
         $practice = DB::table('practiceinfo')->where('practice_id', '=', '1')->first();
         $client_id = $practice->uma_client_id;
         $client_secret = $practice->uma_client_secret;
@@ -1375,10 +1375,10 @@ class LoginController extends Controller {
             Session::put('patient_centric', $practice1->patient_centric);
             Session::put('uma_auth_access_token', $access_token);
             Session::put('uport_id', $uport_id);
-            $url_hieofoneas = str_replace('/nosh', '/resources/' . $practice1->uma_client_id, URL::to('/'));
+            $url_hieofoneas = str_replace('/nosh', '/resources/' . $practice1->uma_client_id, URL::to('dashboard'));
             Session::put('url_hieofoneas', $url_hieofoneas);
-            setcookie("login_attempts", 0, time()+900, '/');
-            return redirect()->intended('/');
+            setcookie("login_attempts", 0, time()+900, 'dashboard');
+            return redirect()->intended('dashboard');
         } else {
             $practice_npi = $npi;
             // $practice_id = false;
@@ -1481,8 +1481,8 @@ class LoginController extends Controller {
             Session::put('patient_centric', $practice2->patient_centric);
             Session::put('uma_auth_access_token', $access_token);
             Session::put('uport_id', $uport_id);
-            setcookie("login_attempts", 0, time()+900, '/');
-            return redirect()->intended('/');
+            setcookie("login_attempts", 0, time()+900, 'dashboard');
+            return redirect()->intended('dashboard');
         }
     }
 
@@ -1497,7 +1497,7 @@ class LoginController extends Controller {
 
     public function uma_logout(Request $request)
     {
-        $open_id_url = str_replace('/nosh', '', URL::to('/'));
+        $open_id_url = str_replace('/nosh', '', URL::to('dashboard'));
         $practice = DB::table('practiceinfo')->where('practice_id', '=', '1')->first();
         $client_id = $practice->uma_client_id;
         $client_secret = $practice->uma_client_secret;

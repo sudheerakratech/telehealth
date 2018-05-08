@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('FrontEnd.layouts.master')
 
 @section('view.stylesheet')
     <style>

@@ -1,35 +1,7 @@
 @extends('FrontEnd.layouts.master')
 
-@section('view.stylesheet')
-    <style>
-        html {
-            position: relative;
-            min-height: 100%;
-        }
-        body {
-            /* Margin bottom by footer height */
-            margin-bottom: 60px;
-        }
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            /* Set the fixed height of the footer here */
-            height: 60px;
-            background-color: #f5f5f5;
-        }
-        .container .text-muted {
-            margin: 20px 0;
-        }
-        .footer > .container {
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-    </style>
-@endsection
-
 @section('content')
-    <div class="container" style="margin-bottom:100px">
+    <div class="container" style="padding-bottom:50px; padding-top: 50px; width: 100%; background-image: url({{url('images/index1_world.jpg')}})">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">

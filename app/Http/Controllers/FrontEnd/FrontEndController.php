@@ -39,6 +39,10 @@ class FrontEndController extends Controller
     {
         return view('FrontEnd.doctors');
     }
+    public function registration()
+    {
+        return view('FrontEnd.registration_type');
+    }
 
 
 }

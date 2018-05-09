@@ -36,7 +36,7 @@
                 </span>
                 @if (Session::has('pid'))
                     <div class="navbar-brand">
-                        <span class="fa-btn" data-toggle="modal" data-target="#overviewModal" role="button" id="overviewModal_trigger"><i class="fa fa-user fa-lg"></i></span>
+                        <span class="fa-btn" data-toggle="modal" data-target="#overviewModal" role="button" id="overviewModal_trigger"><i style="padding-left: 20px;" class="fa fa-user fa-lg"></i></span>
                     </div>
                 @endif
             </div>
@@ -169,7 +169,7 @@
     <div class="row-offcanvas row-offcanvas-left">
         <!-- Sidebar -->
         <div id="sidebar" class="sidebar-offcanvas">
-            <div class="col-md-12">
+            <div class="col-md-12" style="background-color: black;">
                 @if (isset($name))
                     <a href="{{ url('patient') }}">
                         <h4>{{ $name }}</h4>

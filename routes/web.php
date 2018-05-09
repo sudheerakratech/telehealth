@@ -23,6 +23,7 @@ Route::get('department', 'FrontEnd\FrontEndController@department')->name('depart
 Route::get('appointment', 'FrontEnd\FrontEndController@appointment')->name('appointment');
 Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscribe');
 Route::get('doctors', 'FrontEnd\FrontEndController@doctors')->name('doctors');
+Route::get('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
 
 
 // Authentication routes

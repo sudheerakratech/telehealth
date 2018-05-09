@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ trans('nosh.login_heading') }}</div>
+                    <div class="panel-heading text-center" style="font-size: 21px; background-color: black; color: white;"><b>{{ trans('nosh.login_heading') }}</b></div>
                     <div class="panel-body">
                         <div style="text-align: center;">
                             <div style="text-align: center;">
@@ -314,6 +314,8 @@
                                                             </div>
                                                         </div>
                                                     </form>
+                                            </form>
+                                </form>
                             @endif
                     </div>
                 </div>

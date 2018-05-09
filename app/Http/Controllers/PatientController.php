@@ -71,7 +71,7 @@ class PatientController extends Controller {
 			];
 			$statusCode = 404;
 		}
-		return response()->json($response, $statusCode)->header('Content-Type', 'application/fhir+json');
+		return response()->json($response, $statusCode)->header('application/fhir+json', 'Content-Type');
 	}
 
 

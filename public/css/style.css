@@ -1529,7 +1529,7 @@ figure.effect-apollo:hover figcaption::before {
     margin-left: 0em;
 }
 .footer input[type="submit"]:hover{
-	    background: #de0f17;
+	    background: #1995dc;
 }
 .agile_footer_copy{
 	padding:3em 0;
@@ -2419,7 +2419,7 @@ p.wickedpicker__title {
 	display: none;
 	text-decoration: none;
 	position: fixed;
-	bottom: 55px;
+	bottom: 85px;
 	right: 2%;
 	overflow: hidden;
 	z-index: 999; 

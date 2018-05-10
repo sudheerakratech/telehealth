@@ -39,7 +39,7 @@ input[type="submit"],input[type="reset"],.w3ls_footer_grid_leftl,.w3ls_footer_gr
 /*-- header --*/
 .header_agileinfo{
 	padding:0.5em 4em;
-	background:#000;
+	background:#1995dc;
 }
 /*-- //nav-effect --*/
 
@@ -157,7 +157,7 @@ ul.top_agile_w3l_info_icons i {
     color: #111!important;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 3px solid #207FDC;
+    /*border: 3px solid #207FDC;*/
     text-align: center;
     padding: 10px 10px!important;
 }

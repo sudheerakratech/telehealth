@@ -31,8 +31,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <span class="navbar-brand" id="logo" data-toggle="offcanvas" style="padding:0px">
-                   <a href="{{route('homepage')}}"> <img src="{{ asset('assets/akrahealth.png') }}" style="height: 100%;"></a>
+                <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px">
+                   <a href="{{route('homepage')}}"> <img src="{{ asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
                 </span>
                 @if (Session::has('pid'))
                     <div class="navbar-brand">
@@ -169,7 +169,7 @@
     <div class="row-offcanvas row-offcanvas-left">
         <!-- Sidebar -->
         <div id="sidebar" class="sidebar-offcanvas">
-            <div class="col-md-12" style="background-color: black;">
+            <div class="col-md-12" style="background-color: #161817;">
                 @if (isset($name))
                     <a href="{{ url('patient') }}">
                         <h4>{{ $name }}</h4>
@@ -2197,4 +2197,17 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     @yield('view.scripts')
 </body>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5af43a26227d3d7edc252091/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
 </html>

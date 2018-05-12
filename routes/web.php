@@ -25,6 +25,9 @@ Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscrib
 Route::get('doctors', 'FrontEnd\FrontEndController@doctors')->name('doctors');
 Route::get('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
 
+// payment
+Route::get('payment', 'FrontEnd\AddMoneyController@payment')->name('payment');
+Route::post('stripePay', 'FrontEnd\AddMoneyController@stripePay')->name('stripePay');
 
 // Authentication routes
 Route::any('accept_invitation/{id}', ['as' => 'accept_invitation', 'uses' => 'LoginController@accept_invitation']);

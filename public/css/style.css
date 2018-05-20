@@ -980,7 +980,7 @@ ul.social-icons .icon-border::after {
     color: #fff;
 }
 .w3layouts_head_slide span{
-	color:#de0f17;
+	color:white;
 }
 /*-- //services-bottom --*/
 /*-- stats --*/
@@ -1502,13 +1502,13 @@ figure.effect-apollo:hover figcaption::before {
        display: block;
     text-transform: uppercase;
     font-weight: 600;
-    color: #de0f17;
+    color: white;
     font-size: 1.4em;
     letter-spacing: 3px;
 }
 .footer input[type="email"]{
 	    outline: none;
-    color: #fff;
+    color: white;
     padding: 18px 15px;
     font-size: 1em;
     width: 80%;

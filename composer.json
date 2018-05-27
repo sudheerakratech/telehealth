@@ -34,7 +34,8 @@
         "elibyy/tcpdf-laravel": "5.3.*",
         "naviocean/laravel-nameparser": "dev-master",
         "bigbluebutton/bigbluebutton-api-php": "dev-master",
-        "stripe/stripe-php": "^6.7"
+        "stripe/stripe-php": "^6.7",
+        "firebase/php-jwt": "^5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

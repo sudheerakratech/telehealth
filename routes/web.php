@@ -25,6 +25,20 @@ Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscrib
 Route::get('doctors', 'FrontEnd\FrontEndController@doctors')->name('doctors');
 Route::get('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
 
+
+Route::get('generateJWT', 'FrontEnd\FrontEndController@generateJWT')->name('generateJWT');
+Route::get('getUsers', 'FrontEnd\FrontEndController@getUsers')->name('getUsers');
+Route::get('createMeeting', 'FrontEnd\FrontEndController@createMeeting')->name('createMeeting');
+
+// Schedule routes
+Route::get('schedule1/{provider_id?}', ['as' => 'schedule1', 'uses' => 'FrontEnd\AppointmentController@schedule1']);
+Route::post('delete_event1', ['as' => 'delete_event1', 'uses' => 'FrontEnd\AppointmentController@delete_event1']);
+Route::post('drag_event1', ['as' => 'drag_event1', 'uses' => 'FrontEnd\AppointmentController@drag_event1']);
+Route::post('edit_event1', ['as' => 'edit_event1', 'uses' => 'FrontEnd\AppointmentController@edit_event1']);
+Route::get('event_encounter1/{appt_id}', ['as' => 'event_encounter1', 'uses' => 'FrontEnd\AppointmentController@event_encounter1']);
+Route::get('provider_schedule1', ['as' => 'provider_schedule1', 'uses' => 'FrontEnd\AppointmentController@provider_schedule1']);
+
+
 // payment
 Route::get('payment', 'FrontEnd\AddMoneyController@payment')->name('payment');
 Route::post('stripePay', 'FrontEnd\AddMoneyController@stripePay')->name('stripePay');

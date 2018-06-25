@@ -5,7 +5,8 @@ namespace App\Http\Controllers\FrontEnd;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use OAuth2\Response;
+use Illuminate\Http\JsonResponse;
 class FrontEndController extends Controller
 {
     public function homepage()
@@ -71,11 +72,15 @@ public function generateJWT(){
        return response()->json($response);
 
    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function createMeeting() {
         //list users endpoint GET https://api.zoom.us/v2/users
         $ch = curl_init('https://api.zoom.us/v2/users/iViW_PXnQ1umXAiAZFfHIA/meetings');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $test =  [
+        $meetings =  array([
             "uuid"=> "iViW_PXnQ1umXAiAZFfHIA",
             "id"=> "123456789",
             "real_id"=> "123456789",
@@ -99,15 +104,23 @@ public function generateJWT(){
             "option_enforce_login_domains "=> "",
             "option_alternative_hosts"=> "",
             "status"=> 0
-        ];
+        ]);
         // add token to the authorization header
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Authorization: Bearer ' . FrontEndController::generateJWT($test)
+            'Authorization: Bearer ' . FrontEndController::generateJWT($meetings)
         ]);
 
         $response = curl_exec($ch);
-        $response = json_decode($response);
-        return response()->json($response);
+        $item = json_decode($response);
+//        dd($item);
+        $meet = response()->json($item);
+        
+        return view('create_meeting',compact('meet'));
 
+
+
+    }
+    public function meetingForm(){
+        return view('create_meeting');
     }
 }

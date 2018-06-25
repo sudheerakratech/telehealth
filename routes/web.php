@@ -29,6 +29,7 @@ Route::get('registration', 'FrontEnd\FrontEndController@registration')->name('re
 Route::get('generateJWT', 'FrontEnd\FrontEndController@generateJWT')->name('generateJWT');
 Route::get('getUsers', 'FrontEnd\FrontEndController@getUsers')->name('getUsers');
 Route::get('createMeeting', 'FrontEnd\FrontEndController@createMeeting')->name('createMeeting');
+Route::get('meetingForm', 'FrontEnd\FrontEndController@meetingForm')->name('meetingForm');
 
 // Schedule routes
 Route::get('schedule1/{provider_id?}', ['as' => 'schedule1', 'uses' => 'FrontEnd\AppointmentController@schedule1']);

@@ -13,7 +13,20 @@
            AKRA HEALTH EMR
         @endif
     </title>
-    {!! Minify::stylesheet($assets_css)->withFullUrl() !!}
+{{--    {!! Minify::stylesheet($assets_css)->withFullUrl() !!}--}}
+    <link href="{{ secure_asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/nosh-timeline.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/bootstrap-select.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/bootstrap-tagsinput.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/bootstrap-datetimepicker.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/fullcalendar.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/fileinput.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/jquery.realperson.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/jquery.signaturepad.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/main.css') }}" rel="stylesheet">
+
     @yield('view.stylesheet')
 
 </head>
@@ -32,7 +45,7 @@
 
                 <!-- Branding Image -->
                 <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px">
-                   <a href="{{route('homepage')}}"> <img src="{{ asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
+                   <a href="{{route('homepage')}}"> <img src="{{secure_secure_asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
                 </span>
                 @if (Session::has('pid'))
                     <div class="navbar-brand">
@@ -582,6 +595,43 @@
         </div>
     </div>
     @endif
+    <script src="{{secure_asset('assets/js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/moment.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jquery.maskedinput.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/toastr.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/bootstrap3-typeahead.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jquery.cookie.js')}}"></script>
+    <script src="{{secure_asset('assets/js/bootstrap-list-filter.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jquery-idleTimeout.js')}}"></script>
+    <script src="{{secure_asset('assets/js/bootstrap-tagsinput.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jquery.selectboxes.js')}}"></script>
+    <script src="{{secure_asset('assets/js/bootstrap-select.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/bootstrap-datetimepicker.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jquery.fileDownload.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jstz-1.0.4.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/bluebutton.js')}}"></script>
+    <script src="{{secure_asset('assets/js/pediatric-immunizations.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/fullcalendar.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/canvas-to-blob.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/sortable.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/purify.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/fileinput.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/pdfobject.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jcanvas.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jquery.realperson.js')}}"></script>
+    <script src="{{secure_asset('assets/js/sigma.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.layout.forceAtlas2.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.layout.noverlap.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.parsers.json.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.plugins.dragNodes.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.renderers.customEdgeShapes.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.renderers.edgeDots.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.renderers.edgeLabels.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/plugins/sigma.renderers.parallelEdges.min.js')}}"></script>
+    <script src="{{secure_asset('assets/js/jquery.signaturepad.min.js')}}"></script>
+
+
 
     <!-- JavaScripts -->
     <script type="text/javascript">
@@ -664,7 +714,7 @@
             'toastr_collide': ''
         };
     </script>
-    {!! Minify::javascript($assets_js)->withFullUrl() !!}
+{{--    {!! Minify::javascript($assets_js)->withFullUrl() !!}--}}
     <script type="text/javascript">
         toastr.options = {
             'closeButton': true,

@@ -1,7 +1,7 @@
 @extends('FrontEnd.layouts.master')
 
 @section('content')
-    <div class="container" style="padding-bottom:50px; padding-top: 50px; width: 100%; background-image: url({{url('images/index1_world.jpg')}})">
+        <div class="container" style="padding-bottom:50px; padding-top: 50px; width: 100%; background-image: url({{url('images/index1_world.jpg')}})">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -10,7 +10,8 @@
                         <div style="text-align: center;">
                             <div style="text-align: center;">
                                 <div id="login_practice_logo">
-                                    <i class="fa fa-child fa-5x" aria-hidden="true" style="margin:20px;text-align: center;"></i>
+                                    <a href="{{url('/')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="padding: 15px; height: 81px" ></a>
+                                    {{--<i class="fa fa-child fa-5x" aria-hidden="true" style="margin:20px;text-align: center;"></i>--}}
                                 </div>
                                 @if ($errors->has('tryagain'))
                                     <div class="form-group has-error">

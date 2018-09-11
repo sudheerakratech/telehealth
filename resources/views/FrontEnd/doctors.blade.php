@@ -468,7 +468,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-3 col-xs-3 m-t-20">
-                                <img src="{{asset('images/index_team3.png')}}" alt="loading" class="img-responsive img-circle img_border">
+                                <img src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_02.png" alt="loading" class="img-responsive img-circle img_border">
                             </div>
 
                             <div class="col-md-9 col-xs-9"><h4>Dr. Edith Kiesz</h4>

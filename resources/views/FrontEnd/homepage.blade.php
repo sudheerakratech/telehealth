@@ -456,17 +456,17 @@
                     <ul class="slides">
                         <li>
                             <div class="w3_agile_services_bottom_right_grid">
-                                <p class="w3layouts_head_slide">Health Care <span>Center</span></p>
+                                <p class="w3layouts_head_slide">Primary Health Care <span>Center</span></p>
                             </div>
                         </li>
                         <li>
                             <div class="w3_agile_services_bottom_right_grid1">
-                                <p class="w3layouts_head_slide">Hospital <span> Departments</span></p>
+                                <p class="w3layouts_head_slide">General Medicine  <span> Departments</span></p>
                             </div>
                         </li>
                         <li>
                             <div class="w3_agile_services_bottom_right_grid2">
-                                <p class="w3layouts_head_slide">Health Care <span>Center</span></p>
+                                <p class="w3layouts_head_slide">Family Care<span>Center</span></p>
                             </div>
                         </li>
                     </ul>
@@ -484,8 +484,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 w3_agileits_services_bottom_r_grid">
-                    <h4>Secure Plateform</h4>
-                    <p style="text-align: justify; font-size: 11px;">Our platform provides patients access to their health medical records and forms and enable communications through various healthcare providers, pharmacies, medical associations, clinics and other healthcare institutions, ensuring an efficient modern medical practice.</p>
+                    <h4>Secure Platform</h4>
+                    <p style="text-align: justify; font-size: 11px;">Our platform provides patients access to their health medical records and forms and enable communication through various healthcare providers, pharmacies, medical associations, clinics and other healthcare institutions, ensuring an efficient modern medical practice.</p>
 
                 </div>
                 <div class="clearfix"> </div>

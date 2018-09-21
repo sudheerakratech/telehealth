@@ -10,5 +10,4 @@ pipelines:
             - apt-get update && apt-get install -y unzip openssh-client
             - mkdir -p ~/.ssh
             - scp -r $BITBUCKET_CLONE_DIR ubuntu@18.235.20.18:/var/www/telehealth_frontend
-            - ssh ubuntu@18.235.20.18 "cp /var/www/telehealth_frontend/.env.example /var/www/telehealth_frontend /.env && composer install -d /var/www/telehealth_frontend && sudo -S chmod -R 0755 /var/www/telehealth_frontend && sudo -S mv /var/www/telehealth_frontend /var/www/telehealth_frontend.old && sudo -S mv /var/www/telehealth_frontend /var/www && sudo -S chown -R www-data:www-data /var/www/telehealth_frontend && sudo -S rm -rf /var/www/telehealth_frontend.old" 
- 
+            - ssh ubuntu@18.235.20.18 "cp /var/www/telehealth_frontend/.env.example /var/www/telehealth_frontend/.env && composer install -d /var/www/telehealth_frontend && sudo -S chmod -R 0755 /var/www/telehealth_frontend && sudo -S mv /var/www/telehealth_frontend /var/www && sudo -S chown -R www-data:www-data /var/www/telehealth_frontend"

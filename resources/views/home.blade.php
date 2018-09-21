@@ -28,7 +28,7 @@
                     @if (isset($pnosh))
                         <div class="alert alert-danger">
                             <h4>Register your resources!</h4>
-                            <p>Install and register, the one true health record.</p>
+                            <p>Install and register, the one true & secure health record.</p>
                             <p><a href="{{ $pnosh_url }}">Get Started</a></p>
                         </div>
                     @endif

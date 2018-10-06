@@ -22,9 +22,10 @@ Route::get('singlepage', 'FrontEnd\FrontEndController@singlepage')->name('single
 Route::get('department', 'FrontEnd\FrontEndController@department')->name('department');
 Route::get('appointment', 'FrontEnd\FrontEndController@appointment')->name('appointment');
 Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscribe');
-Route::get('doctors', 'FrontEnd\FrontEndController@doctors')->name('doctors');
 Route::get('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
 
+// Front-End Doctors Routes
+Route::any('doctors', 'FrontEnd\DoctorsController@doctors')->name('doctors');
 
 Route::get('generateJWT', 'FrontEnd\FrontEndController@generateJWT')->name('generateJWT');
 Route::get('getUsers', 'FrontEnd\FrontEndController@getUsers')->name('getUsers');

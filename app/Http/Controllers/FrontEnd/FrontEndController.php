@@ -7,57 +7,61 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use OAuth2\Response;
 use Illuminate\Http\JsonResponse;
+
+use DB;
+use FunctionUtils;
+
 class FrontEndController extends Controller
 {
-    public function homepage()
-    {
+    public function homepage() {
         return view('FrontEnd.homepage');
     }
-    public function aboutus()
-    {
+
+    public function aboutus() {
         return view('FrontEnd.about');
     }
-    public function contactus()
-    {
+
+    public function contactus() {
         return view('FrontEnd.contact');
     }
-    public function singlepage()
-    {
+
+    public function singlepage() {
         return view('FrontEnd.single');
     }
-    public function department()
-    {
+
+    public function department() {
         return view('FrontEnd.department');
     }
-    public function appointment()
-    {
-        return view('FrontEnd.appointment');
+
+    public function appointment() {
+
+        $data = array();
+        $data['provider_list'] = '';
+        
+        return view('FrontEnd.appointment', $data);
     }
-    public function subscribe()
-    {
+
+    public function subscribe() {
         return view('FrontEnd.subscribe');
     }
-    public function doctors()
-    {
-        return view('FrontEnd.doctors');
-    }
-    public function registration()
-    {
+       
+    public function registration() {
         return view('FrontEnd.registration_type');
     }
-public function generateJWT(){
-    //Zoom API credentials from https://developer.zoom.us/me/
-    $key = '9HEaq1NESUKQp2zjbsbkmg';
-    $secret = 'ImEqqKlNKBn7U4jt3h6pzqFuhGdeJvItSp1S';
-    $token = array(
-        "iss" => $key,
-        // The benefit of JWT is expiry tokens, we'll set this one to expire in 1 minute
-        "exp" => time() + 3600
-    );
-    return JWT::encode($token, $secret);
 
-}
-   public function getUsers() {
+    public function generateJWT() {
+        //Zoom API credentials from https://developer.zoom.us/me/
+        $key = '9HEaq1NESUKQp2zjbsbkmg';
+        $secret = 'ImEqqKlNKBn7U4jt3h6pzqFuhGdeJvItSp1S';
+        $token = array(
+            "iss" => $key,
+            // The benefit of JWT is expiry tokens, we'll set this one to expire in 1 minute
+            "exp" => time() + 3600
+        );
+        return JWT::encode($token, $secret);
+    }
+
+    public function getUsers() {
         //list users endpoint GET https://api.zoom.us/v2/users
         $ch = curl_init('https://api.zoom.us/v2/users');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -69,9 +73,8 @@ public function generateJWT(){
         
         $response = curl_exec($ch);
         $response = json_decode($response);
-       return response()->json($response);
-
-   }
+        return response()->json($response);
+    }
 
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -112,14 +115,11 @@ public function generateJWT(){
 
         $response = curl_exec($ch);
         $item = json_decode($response);
-//        dd($item);
-        $meet = response()->json($item);
-        
+        // dd($item);
+        $meet = response()->json($item);        
         return view('create_meeting',compact('meet'));
-
-
-
     }
+
     public function meetingForm(){
         return view('create_meeting');
     }

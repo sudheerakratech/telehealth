@@ -3,41 +3,10 @@
 @section('content')
         <div class="container" style="padding-bottom:50px; padding-top: 50px; width: 100%; background-image: url({{url('images/index1_world.jpg')}})">
         <div class="row">
-
-            <style type="text/css">
-            .login_side_box{
-                position: relative;
-                margin-right: -100px;
-                z-index: 9;
-                background: #fff;
-                margin-top: 60px;
-                width: 275px;
-                text-align: right;
-                box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-                padding: 15px;
-                height: 420px;
-                border: 4px solid #1995DC;
-                float: right;   
-            }
-            .form-horizontal .control-label {
-                font-size: 13px;
-            }
-            </style>
-
-            <div class="col-md-3 hidden-xs">                
-                <div class="login_side_box">
-                    
-                </div>
-            </div>
-
-            <div class="col-md-6">                
-
+            <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center" style="font-size: 21px; background-color: #1995dc; color: white;"><b>{{ trans('nosh.login_heading') }}</b></div>
                     <div class="panel-body">
-
-                        
-
                         <div style="text-align: center;">
                             <div style="text-align: center;">
                                 <div id="login_practice_logo">
@@ -138,16 +107,13 @@
                                                 </div>
                                             @endif
 
-                                            <div class="form-group">                        
-                                                <div class="col-md-3 col-md-offset-4">
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-md-offset-4">
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox" name="remember"> {{ trans('nosh.remember_me') }}
                                                         </label>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <a class="btn btn-primary btn-block" href="{{ url('/password_email') }}" style="background-color: #1995dc;">{{ trans('nosh.forgot_password') }}</a>
                                                 </div>
                                             </div>
 
@@ -155,7 +121,8 @@
                                                 <div class="col-md-6 col-md-offset-4">
                                                     <button type="submit" class="btn btn-primary btn-block" style="background-color: #1995dc;">
                                                         <i class="fa fa-btn fa-sign-in"></i> {{ trans('nosh.login_heading') }}
-                                                    </button>                                                    
+                                                    </button>
+                                                    <a class="btn btn-primary btn-block" href="{{ url('/password_email') }}" style="background-color: #1995dc;">{{ trans('nosh.forgot_password') }}</a>
                                                     @if ($patient_centric == 'n' && $demo == 'n')
                                                         <a class="btn btn-primary btn-block" href="#" id="register" style="background-color: #1995dc;">{{ trans('nosh.new_patient_portal') }}</a>
                                                     @endif

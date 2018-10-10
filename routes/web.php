@@ -24,6 +24,9 @@ Route::get('appointment', 'FrontEnd\FrontEndController@appointment')->name('appo
 Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscribe');
 Route::get('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
 
+Route::post('find-doctors', 'FrontEnd\AppointmentController@appFindDoctors')->name('app_find_doctors');
+Route::post('save_appointment', 'FrontEnd\AppointmentController@makeAppointmentAjax')->name('save_appointment_ajax');
+
 // Front-End Doctors Routes
 Route::any('doctors', 'FrontEnd\DoctorsController@doctors')->name('doctors');
 

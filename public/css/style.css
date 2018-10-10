@@ -1038,7 +1038,7 @@ ul.social-icons .icon-border::after {
     color: #de0f17;
 }
 .modal-body {
-    padding:0;
+    /*padding:0;*/
 }
 .modal-content {
     border-radius: 0;

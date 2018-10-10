@@ -2,35 +2,155 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Events\ProcessEvent;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\MessageBag;
+
 use App\Http\Requests;
+use App\Events\ProcessEvent;
 use App\Libraries\OpenIDConnectClient;
+
+use rcamposp\tcpdi_merger\MyTCPDI;
+use rcamposp\tcpdi_merger\Merger;
+use SoapBox\Formatter\Formatter;
+
 use Date;
-use DB;
 use Event;
 use File;
 use Form;
-use Hash;
 use HTML;
-use Illuminate\Support\MessageBag;
 use Imagick;
 use Minify;
-use rcamposp\tcpdi_merger\MyTCPDI;
-use rcamposp\tcpdi_merger\Merger;
 use QrCode;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Schema;
-use Session;
-use SoapBox\Formatter\Formatter;
-use URL;
 use ZipArchive;
+use Hash;
+use DB;
+use Validator;
+use Auth;
+use Session;
+use URL;
 
 
 class AppointmentController extends Controller
 {
+    public function appFindDoctors(Request $request) {
+
+        $where = array();
+        $where[] = array('users.group_id', '=', 2);
+        $where[] = array('users.active', '=', 1);
+
+        if($request->has('provider_id') && $request->get('provider_id') != '') {
+            $where[] = array('providers.id','=', $request->get('provider_id'));
+        } else {
+            if($request->has('specialist') && $request->get('specialist') != '') {
+                $where[] = array('providers.specialty','LIKE', '%'.$request->get('specialist').'%');
+            }
+            if($request->has('location') && $request->get('location') != '') {
+                $where[] = array('providers.Country','LIKE', '%'.$request->get('location').'%');
+            }
+        }
+
+        $doctors = DB::table('users')            
+            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','providers.description','providers.language','providers.Country','providers.photo','providers.certificate','providers.specialty')            
+            ->leftjoin('providers', 'providers.id', '=', 'users.id')            
+            ->where($where)
+            ->orderBy('providers.id','DESC')
+            ->get();
+
+        return view('FrontEnd.search_doctor_modal_block', compact('doctors'));
+    }    
+
+    public function makeAppointmentAjax(Request $request) {
+
+        $return = array('status' => 0, 'message' => 'Something wrong! Please try again later.');
+
+        $user = Auth::user();
+
+        if($user) {
+
+            $fields = [         
+                'provider_id' => 'required',
+                'reason' => 'required',             
+                'app_date' => 'required',
+                'start_time' => 'required',
+                'end_time' => 'required',
+            ];
+
+            $fields_validation = [
+                'provider_id.required' => 'Invalid Doctor',
+                'reason.required' => 'Please enter reason',
+                'app_date.required' => 'Please select date',
+                'start_time.required' => 'Please select start time',
+                'end_time.required' => 'Please select end time',
+            ];         
+
+            $validator = Validator::make($request->all(), $fields , $fields_validation);
+
+            if ($validator->fails()) {
+                /*$return['error'] = $validator->errors()->toArray();*/
+                foreach ($validator->errors()->toArray() as $key => $error) {
+                    $return['message'] = $error[0];
+                }                
+                return response()->json($return);
+            }
+
+            $pid = $user->id;
+
+            $row1 = DB::table('demographics')
+                ->select('demographics.pid','demographics.firstname','demographics.lastname','demographics.email','demographics.DOB','demographics.photo')
+                ->join('demographics_relate', 'demographics_relate.pid', '=', 'demographics.pid')
+                ->leftjoin('vitals', 'vitals.pid', '=', 'demographics.pid')
+                ->where('demographics_relate.practice_id', '=', $user->practice_id)
+                ->where(function($query_array1) use ($user) {
+                    $query_array1->where('demographics.firstname', '=',  $user->firstname)
+                    ->orWhere('demographics.lastname', '=', $user->lastname);
+                })->first();
+
+            $title = $row1->lastname . ', ' . $row1->firstname . ' (DOB: ' . date('m/d/Y', strtotime($row1->DOB)) . ') (ID: ' . $pid . ')';        
+
+            $start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
+            /*$end = strtotime($request->get('app_date') . " " . $request->get('end_time'));*/
+
+            $visit_type = $request->get('visit_type');
+
+            $row = DB::table('calendar')
+                ->select('duration')
+                ->where('visit_type', '=', $visit_type)
+                ->where('active', '=', 'y')
+                ->where('practice_id', '=', $user->practice_id)
+                ->first();                
+
+            $end = $start + $row->duration;
+
+            $data = [                        
+                'pid' => $pid,
+                'start' => $start,
+                'end' => $end,
+                'title' => $title,
+                'visit_type' => $visit_type,
+                'reason' => $request->get('reason'),
+                'status' => 'Pending',
+                'provider_id' => $request->get('provider_id'),
+                'user_id' => $user->id,
+                'notes' => $request->get('notes'),
+            ];        
+
+            $appt_id = DB::table('schedule')->insertGetId($data);       
+
+            if($appt_id) {
+                $return['status'] = 1;
+                $return['message'] = 'Appointment created successfully.';
+            }
+        }       
+
+        return Response::json($return);
+    }
+
     public function schedule1(Request $request, $provider_id='')
     {
         if ($provider_id == '') {

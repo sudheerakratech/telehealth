@@ -9,12 +9,12 @@
                 position: relative;
                 margin-right: -100px;
                 z-index: 9;
-                background: #fff;
-                margin-top: 60px;
                 width: 275px;
+                background: #fff;
+                margin-top: 60px;                
                 text-align: right;
                 box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-                padding: 15px;
+                padding: 110px 15px 15px 15px;
                 height: 420px;
                 border: 4px solid #1995DC;
                 float: right;   
@@ -24,9 +24,28 @@
             }
             </style>
 
-            <div class="col-md-3 hidden-xs">                
+            <div class="col-md-3 col-md-offset-1 hidden-xs hidden-sm">                
                 <div class="login_side_box">
-                    
+
+                    <div id="login_practice_logo" class="text-center">
+                        <a href="{{url('/')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="padding: 15px;" ></a>                        
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @if ($patient_centric == 'n' && $demo == 'n')
+                                <a class="btn btn-primary btn-block" href="#" id="register" style="background-color: #1995dc;">{{ trans('nosh.new_patient_portal') }}</a>
+                            @endif
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary btn-block" id="connectUportBtn" onclick="loginBtnClick()" style="background-color: #1995dc;">
+                                <img src="{{ asset('assets/uport-logo-white.svg') }}" height="25" width="25" style="margin-right:5px"></img> {{ trans('nosh.login_uport') }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -34,31 +53,27 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading text-center" style="font-size: 21px; background-color: #1995dc; color: white;"><b>{{ trans('nosh.login_heading') }}</b></div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="min-height: 440px;">                       
 
-                        
-
-                        <div style="text-align: center;">
-                            <div style="text-align: center;">
-                                <div id="login_practice_logo">
-                                    <a href="{{url('/')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="padding: 15px; height: 81px" ></a>
-                                    {{--<i class="fa fa-child fa-5x" aria-hidden="true" style="margin:20px;text-align: center;"></i>--}}
-                                </div>
-                                @if ($errors->has('tryagain'))
-                                    <div class="form-group has-error">
-                                    <span class="help-block has-error">
-                                        <strong>{{ $errors->first('tryagain') }}</strong>
-                                    </span>
-                                    </div>
-                                @endif
-                                @if (isset($attempts))
-                                    <div class="form-group has-error">
-                                    <span class="help-block has-error">
-                                        <strong>{{ $attempts }}</strong>
-                                    </span>
-                                    </div>
-                                @endif
+                        <div style="text-align: center;">                            
+                            <div id="login_practice_logo">
+                                <a href="{{url('/')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="padding: 15px; height: 81px" ></a>
+                                {{--<i class="fa fa-child fa-5x" aria-hidden="true" style="margin:20px;text-align: center;"></i>--}}
                             </div>
+                            @if ($errors->has('tryagain'))
+                                <div class="form-group has-error">
+                                <span class="help-block has-error">
+                                    <strong>{{ $errors->first('tryagain') }}</strong>
+                                </span>
+                                </div>
+                            @endif
+                            @if (isset($attempts))
+                                <div class="form-group has-error">
+                                <span class="help-block has-error">
+                                    <strong>{{ $attempts }}</strong>
+                                </span>
+                                </div>
+                            @endif
                         </div>
                         @if (isset($pnosh_provider))
                             @if ($pnosh_provider == 'n')
@@ -97,7 +112,7 @@
                                             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                                                 <label for="username" class="col-md-4 control-label">{{ trans('nosh.username') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-lg-6 col-md-8">
                                                     <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}">
 
                                                     @if ($errors->has('username'))
@@ -111,7 +126,7 @@
                                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                                 <label for="password" class="col-md-4 control-label">{{ trans('nosh.password') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-lg-6 col-md-8">
                                                     <input id="password" type="password" class="form-control" name="password">
 
                                                     @if ($errors->has('password'))
@@ -126,7 +141,7 @@
                                                 <div class="form-group{{ $errors->has('practice_id') ? ' has-error' : '' }}">
                                                     <label for="password" class="col-md-4 control-label"> {{ trans('nosh.organization_practice') }}</label>
 
-                                                    <div class="col-md-6">
+                                                    <div class="col-lg-6 col-md-8">
                                                         <select id="practice_id" class="form-control" name="practice_id" value="{{ old('practice_id') }}">{!! $practice_list !!}</select>
 
                                                         @if ($errors->has('practice_id'))
@@ -139,30 +154,30 @@
                                             @endif
 
                                             <div class="form-group">                        
-                                                <div class="col-md-3 col-md-offset-4">
+                                                <div class="col-lg-3 col-md-4 col-md-offset-4">
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox" name="remember"> {{ trans('nosh.remember_me') }}
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-lg-3 col-md-4">
                                                     <a class="btn btn-primary btn-block" href="{{ url('/password_email') }}" style="background-color: #1995dc;">{{ trans('nosh.forgot_password') }}</a>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <div class="col-md-6 col-md-offset-4">
+                                                <div class="col-lg-6 col-md-8 col-md-offset-4">
                                                     <button type="submit" class="btn btn-primary btn-block" style="background-color: #1995dc;">
                                                         <i class="fa fa-btn fa-sign-in"></i> {{ trans('nosh.login_heading') }}
                                                     </button>                                                    
                                                     @if ($patient_centric == 'n' && $demo == 'n')
-                                                        <a class="btn btn-primary btn-block" href="#" id="register" style="background-color: #1995dc;">{{ trans('nosh.new_patient_portal') }}</a>
+                                                        <a class="btn btn-primary btn-block hidden-md hidden-lg" href="#" id="register" style="background-color: #1995dc;">{{ trans('nosh.new_patient_portal') }}</a>
                                                     @endif
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group hidden-md hidden-lg">
                                                 <div class="col-md-6 col-md-offset-4">
                                                     <button type="button" class="btn btn-primary btn-block" id="connectUportBtn" onclick="loginBtnClick()" style="background-color: #1995dc;">
                                                         <img src="{{ asset('assets/uport-logo-white.svg') }}" height="25" width="25" style="margin-right:5px"></img> {{ trans('nosh.login_uport') }}

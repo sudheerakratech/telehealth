@@ -17,27 +17,23 @@ class DoctorsController extends Controller
         
         $data = array();
 
+        $locations = DB::table('providers')->select('Country')->where('Country', '!=', '')->distinct()->get();
+
+        $specialist = DB::table('providers')->select('specialty')->where('specialty', '!=', '')->get();
+
+        $as_specialist = array();
+        foreach ($specialist as $as_value) {            
+            foreach ($as_value as $value) {                
+                foreach (explode(',', $value) as $un) {
+                    $as_specialist[] = $un;
+                }
+            }
+        }
+        $as_specialist = array_unique($as_specialist);
+
         $where = array();
         $where[] = array('users.group_id', '=', 2);
         $where[] = array('users.active', '=', 1);
-
-        $locations = DB::table('providers')
-            ->select('Country')
-            ->where('country', '!=', '')
-            ->distinct()->get();        
-
-        /*$physicians = DB::table('users')            
-            ->select('users.id','providers.photo','users.firstname','providers.specialty')
-            ->leftjoin('providers', 'providers.id', '=', 'users.id')
-            ->where($where)
-            ->get();            
-
-        $specialist = DB::table('users')            
-            ->select('users.id','providers.photo','users.firstname','providers.specialty')
-            ->leftjoin('providers', 'providers.id', '=', 'users.id')
-            ->where('providers.specialty', '!=', '')
-            ->where($where)
-            ->get();*/        
 
         if($request->isMethod('post')) {                        
 
@@ -47,8 +43,7 @@ class DoctorsController extends Controller
 
             if($request->has('location') && $request->get('location') != '') {
                 $where[] = array('providers.Country','=', $request->get('location'));
-            }           
-            
+            }
         }
 
         $doctors = DB::table('users')            
@@ -63,11 +58,35 @@ class DoctorsController extends Controller
             return view("FrontEnd.search_doctor_block", compact('doctors','request')); 
         }
 
-        /*$data['physicians'] = $physicians;
-        $data['specialist'] = $specialist;*/
+        $data['specialist'] = $as_specialist;
         $data['locations'] = $locations;
         $data['doctors'] = $doctors;
 
         return view('FrontEnd.doctors', $data);
-    }    
+    }
+
+    public function getDoctorSpeciality() {
+
+        $specialist = DB::table('providers')->select('specialty')->where('specialty', '!=', '')->get();
+
+        $as_specialist = array();
+        foreach ($specialist as $as_value) {            
+            foreach ($as_value as $value) {                
+                foreach (explode(',', $value) as $un) {
+                    $as_specialist[] = $un;
+                }
+            }
+        }
+        $as_specialist = array_unique($as_specialist);
+
+        return Response::json($as_specialist);
+
+    }
+
+    public function getDoctorLocations() {
+
+        $locations = DB::table('providers')->select('Country')->where('Country', '!=', '')->distinct()->get();
+
+        return Response::json($locations);        
+    }
 }

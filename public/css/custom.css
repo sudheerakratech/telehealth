@@ -64,3 +64,15 @@
         height: 15px;
     }
 }
+
+.header_agileinfo, 
+.panel-primary,
+.btn-primary,
+.footer input[type="submit"],
+.w3_agileits_services_bottom_r_grid,
+.contact-grid {
+    background-color:  #09ACFF;
+}
+.text-primary {
+    color:  #09ACFF;
+}

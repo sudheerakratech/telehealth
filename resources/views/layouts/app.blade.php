@@ -32,7 +32,7 @@
 
                 <!-- Branding Image -->
                 <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px">
-                   <a href="#"> <img src="{{asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
+                   <a href="{{route('homepage')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
                 </span>
                 @if (Session::has('pid'))
                     <div class="navbar-brand">

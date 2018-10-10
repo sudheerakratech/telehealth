@@ -365,21 +365,35 @@ class LoginController extends Controller {
                     Session::put('mtm_extension', $practice->mtm_extension);
                     Session::put('patient_centric', $practice->patient_centric);
                     setcookie("login_attempts", 0, time()+900, 'dashboard');
-                    if ($user->group_id == '1') {
+                    if ($user->group_id == '1') {                        
                         Session::forget('pid');
                         Session::forget('eid');
                     }
                     if ($practice->patient_centric == 'n') {
-                        return redirect()->intended('dashboard');
+                        if(Session::get('prev_link')) {                            
+                            return redirect(Session::get('prev_link'));
+                        } else {
+                            return redirect()->intended('dashboard');
+                        }                        
                     } else {
                         if ($user->group_id != '100' && $user->group_id != '1') {
                             $pid = DB::table('demographics')->first();
                             $this->setpatient($pid->pid);
-                            return redirect()->intended('dashboard');
+                            
+                            if(Session::get('prev_link')) {                            
+                                return redirect(Session::get('prev_link'));
+                            } else {
+                                return redirect()->intended('dashboard');
+                            }
                         } else {
                             $url_hieofoneas = str_replace('/nosh', '/resources/' . $practice->uma_client_id, URL::to('dashboard'));
                             Session::put('url_hieofoneas', $url_hieofoneas);
-                            return redirect()->intended('dashboard');
+
+                            if(Session::get('prev_link')) {                            
+                                return redirect(Session::get('prev_link'));
+                            } else {
+                                return redirect()->intended('dashboard');
+                            }
                         }
                     }
                 } else {
@@ -393,6 +407,9 @@ class LoginController extends Controller {
                     return redirect()->back()->withErrors(['tryagain' => 'Try again']);
                 }
             } else {
+
+                Session::put('prev_link', url()->previous());
+
                 $data['assets_js'] = $this->assets_js('login');
                 $data['assets_css'] = $this->assets_css('login');
                 $practice1 = DB::table('practiceinfo')->where('practice_id', '=', '1')->first();

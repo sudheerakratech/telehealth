@@ -16,7 +16,7 @@
                 box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
                 padding: 110px 15px 15px 15px;
                 height: 420px;
-                border: 4px solid #1995DC;
+                border: 4px solid #09ACFF;
                 float: right;   
             }
             .form-horizontal .control-label {
@@ -34,14 +34,14 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             @if ($patient_centric == 'n' && $demo == 'n')
-                                <a class="btn btn-primary btn-block" href="#" id="register" style="background-color: #1995dc;">{{ trans('nosh.new_patient_portal') }}</a>
+                                <a class="btn btn-primary btn-block" href="#" id="register">{{ trans('nosh.new_patient_portal') }}</a>
                             @endif
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="button" class="btn btn-primary btn-block" id="connectUportBtn" onclick="loginBtnClick()" style="background-color: #1995dc;">
+                            <button type="button" class="btn btn-primary btn-block" id="connectUportBtn" onclick="loginBtnClick()" >
                                 <img src="{{ asset('assets/uport-logo-white.svg') }}" height="25" width="25" style="margin-right:5px"></img> {{ trans('nosh.login_uport') }}
                             </button>
                         </div>
@@ -52,7 +52,7 @@
             <div class="col-md-6">                
 
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center" style="font-size: 21px; background-color: #1995dc; color: white;"><b>{{ trans('nosh.login_heading') }}</b></div>
+                    <div class="panel-heading text-center" style="font-size: 21px; background-color: #09ACFF; color: white;"><b>{{ trans('nosh.login_heading') }}</b></div>
                     <div class="panel-body" style="min-height: 440px;">                       
 
                         <div style="text-align: center;">                            
@@ -162,24 +162,24 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-4">
-                                                    <a class="btn btn-primary btn-block" href="{{ url('/password_email') }}" style="background-color: #1995dc;">{{ trans('nosh.forgot_password') }}</a>
+                                                    <a class="btn btn-primary btn-block" href="{{ url('/password_email') }}">{{ trans('nosh.forgot_password') }}</a>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <div class="col-lg-6 col-md-8 col-md-offset-4">
-                                                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #1995dc;">
+                                                    <button type="submit" class="btn btn-primary btn-block">
                                                         <i class="fa fa-btn fa-sign-in"></i> {{ trans('nosh.login_heading') }}
                                                     </button>                                                    
                                                     @if ($patient_centric == 'n' && $demo == 'n')
-                                                        <a class="btn btn-primary btn-block hidden-md hidden-lg" href="#" id="register" style="background-color: #1995dc;">{{ trans('nosh.new_patient_portal') }}</a>
+                                                        <a class="btn btn-primary btn-block hidden-md hidden-lg" href="#" id="register">{{ trans('nosh.new_patient_portal') }}</a>
                                                     @endif
                                                 </div>
                                             </div>
 
                                             <div class="form-group hidden-md hidden-lg">
                                                 <div class="col-md-6 col-md-offset-4">
-                                                    <button type="button" class="btn btn-primary btn-block" id="connectUportBtn" onclick="loginBtnClick()" style="background-color: #1995dc;">
+                                                    <button type="button" class="btn btn-primary btn-block" id="connectUportBtn" onclick="loginBtnClick()">
                                                         <img src="{{ asset('assets/uport-logo-white.svg') }}" height="25" width="25" style="margin-right:5px"></img> {{ trans('nosh.login_uport') }}
                                                     </button>
                                                 </div>

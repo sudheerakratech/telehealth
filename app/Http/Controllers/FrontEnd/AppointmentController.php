@@ -44,15 +44,11 @@ class AppointmentController extends Controller
         $where[] = array('users.group_id', '=', 2);
         $where[] = array('users.active', '=', 1);
 
-        if($request->has('provider_id') && $request->get('provider_id') != '') {
-            $where[] = array('providers.id','=', $request->get('provider_id'));
-        } else {
-            if($request->has('specialist') && $request->get('specialist') != '') {
-                $where[] = array('providers.specialty','LIKE', '%'.$request->get('specialist').'%');
-            }
-            if($request->has('location') && $request->get('location') != '') {
-                $where[] = array('providers.Country','LIKE', '%'.$request->get('location').'%');
-            }
+        if($request->has('specialist') && $request->get('specialist') != '') {
+            $where[] = array('providers.specialty','LIKE', '%'.$request->get('specialist').'%');
+        }
+        if($request->has('location') && $request->get('location') != '') {
+            $where[] = array('providers.Country','=', $request->get('location'));
         }
 
         $doctors = DB::table('users')            
@@ -62,7 +58,20 @@ class AppointmentController extends Controller
             ->orderBy('providers.id','DESC')
             ->get();
 
-        return view('FrontEnd.search_doctor_modal_block', compact('doctors'));
+        $locations = DB::table('providers')->select('Country')->where('Country', '!=', '')->distinct()->get();
+
+        $as_specialist = DB::table('providers')->select('specialty')->where('specialty', '!=', '')->get();
+        $specialist = array();
+        foreach ($as_specialist as $as_value) {            
+            foreach ($as_value as $value) {                
+                foreach (explode(',', $value) as $un) {
+                    $specialist[] = $un;
+                }
+            }
+        }
+        $specialist = array_unique($specialist);
+
+        return view('FrontEnd.search_doctor_modal_block', compact('doctors','locations','specialist'));
     }    
 
     public function makeAppointmentAjax(Request $request) {

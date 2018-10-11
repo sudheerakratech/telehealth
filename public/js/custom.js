@@ -58,6 +58,22 @@ $( document ).ready(function() {
             }
         });
 		return false;
-	});    
+	});
 
+    $('.date_picker input').click(function(event){
+       $('.date_picker').data("DateTimePicker").show();
+    });
+    $('.date_picker').datetimepicker({
+        format: 'MM/DD/YYYY',
+        maxDate: new Date()
+    });
+
+    $('#pat_register').click( function () {            
+        $('#register_modal').modal('show');
+    });
+
+    $('#doc_register').click( function () {            
+        $('#register_modal').modal('show');
+    });
+    
 });

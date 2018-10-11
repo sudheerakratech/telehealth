@@ -80,3 +80,12 @@
 .modal-header .close {
     margin-top: -15px;
 }
+
+.pagination > .active > span, 
+.pagination > .active > span:hover,
+.pagination > .active > span:focus,
+.pagination > li > a:hover,
+.pagination > li > a:focus {
+    background-color:  #09ACFF;
+    border-color: #fff;
+}

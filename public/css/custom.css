@@ -70,9 +70,13 @@
 .btn-primary,
 .footer input[type="submit"],
 .w3_agileits_services_bottom_r_grid,
-.contact-grid {
+.contact-grid,
+.modal-header {
     background-color:  #09ACFF;
 }
 .text-primary {
     color:  #09ACFF;
+}
+.modal-header .close {
+    margin-top: -15px;
 }

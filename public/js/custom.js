@@ -1,20 +1,18 @@
 $( document ).ready(function() {
 
     $('#menu_appointment').click( function () {
-        $('#create_appointment_frm')[0].reset();
-        $('#find-provider-frm')[0].reset();
         $('#app_provider_id').val('');
-        $('.find_provider_block').show();
-        $('#app-modal-image').show();
-        $('#app_doctors_list').text('');        
+        $('#create_appointment_frm')[0].reset();
+        $('.find_provider_block').show();        
+        findAppointmentDoctorForm();
         $('#appointment').modal('show');
     });
 
-    $('#find-provider-frm').submit(function(){            
+    function findAppointmentDoctorForm() {
         $('#loader').fadeIn();
         $.ajax({
-            url: $(this).data('action'),
-            data: $(this).serialize(),
+            url: $('#find-provider-frm').data('action'),
+            data: $('#find-provider-frm').serialize(),
             type: 'post',
             success: function (data) {
                 $('#loader').fadeOut();
@@ -22,15 +20,20 @@ $( document ).ready(function() {
                 $("#app_doctors_list").show();
                 $("#app_doctors_list").html(data);
 
-                $('.request_app_doc').click( function () {        
+                $('.request_app_doc').click( function () {                    
+                    $('#app_provider_id').val($(this).data('provider_id'));
                     $('#find-provider-frm')[0].reset();
                     $('#app_doctors_list').text('');
-                    $('#app_provider_id').val($(this).data('provider_id'));
-                    $('#app-modal-image').show();                                                            
+                    $('#app-modal-image').show();
                     toastr.success("You have a doctor! Now, You can make an appointment.");
                 });
             }
         });
+        return false;
+    }
+
+    $('#find-provider-frm').submit(function(){            
+        findAppointmentDoctorForm();
         return false; 
     });
 

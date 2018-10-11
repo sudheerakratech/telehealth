@@ -25,7 +25,7 @@ $( document ).ready(function() {
                     $('#find-provider-frm')[0].reset();
                     $('#app_doctors_list').text('');
                     $('#app-modal-image').show();
-                    toastr.success("You have a doctor! Now, You can make an appointment.");
+                    toastr.success("You have requested to doctor! Now, You can make your appointment.");
                 });
             }
         });
@@ -39,7 +39,7 @@ $( document ).ready(function() {
 
 	$('#create_appointment_frm').submit( function () {        
         if($('#app_provider_id').val() == '') {
-            toastr.warning("There is no any doctor selected.");
+            toastr.warning("Please search and request your doctor to appointment.");
             return false;
         }
         $('#loader').fadeIn();

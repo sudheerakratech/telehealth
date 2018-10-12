@@ -51,7 +51,7 @@ class DoctorsController extends Controller
             ->leftjoin('providers', 'providers.id', '=', 'users.id')            
             ->where($where)
             ->orderBy('providers.id','DESC')
-            ->paginate(10);
+            ->paginate(5);
 
         if(\Request::ajax()) {
 

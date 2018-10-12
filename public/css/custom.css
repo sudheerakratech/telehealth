@@ -81,6 +81,11 @@
     margin-top: -15px;
 }
 
+.pagination > li > a, 
+.pagination > li > span {
+    color: #09ACFF;
+}
+
 .pagination > .active > span, 
 .pagination > .active > span:hover,
 .pagination > .active > span:focus,
@@ -88,4 +93,23 @@
 .pagination > li > a:focus {
     background-color:  #09ACFF;
     border-color: #fff;
+}
+
+#generic_price_table .generic_content .generic_feature_list ul li:hover {
+    border-left: 5px solid #09ACFF;
+}
+
+#generic_price_table .generic_content:hover .generic_price_btn a,
+#generic_price_table .generic_content.active .generic_price_btn a {
+    background-color:  #09ACFF;
+    border-color: #09ACFF;
+}
+
+#generic_price_table .generic_content.active .generic_head_price .generic_head_content .head_bg,
+#generic_price_table .generic_content:hover .generic_head_price .generic_head_content .head_bg {
+    border-color: #09ACFF rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #09ACFF;
+}
+
+.portfolio {
+    padding: 2em 0;
 }

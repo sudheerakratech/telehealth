@@ -51,11 +51,21 @@ class AppointmentController extends Controller
             $where[] = array('providers.Country','=', $request->get('location'));
         }
 
+        $start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
+        $end = strtotime($request->get('app_date') . " " . $request->get('end_time'));       
+
+        $schedules = DB::table('schedule')->select('provider_id')->whereBetween('start', [$start, $end])->get();        
+        $exists_scheduled_providers = array();        
+        foreach ($schedules as $key => $value) {
+            $exists_scheduled_providers[] = $value->provider_id;
+        }
+
         $doctors = DB::table('users')            
-            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','providers.description','providers.language','providers.Country','providers.photo','providers.certificate','providers.specialty')            
+            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','providers.description','providers.language','providers.Country','providers.photo','providers.certificate','providers.specialty')
             ->leftjoin('providers', 'providers.id', '=', 'users.id')            
             ->where($where)
-            ->orderBy('providers.id','DESC')
+            ->whereNotIn('providers.id',$exists_scheduled_providers)            
+            ->orderBy('providers.id','DESC')            
             ->get();
 
         $locations = DB::table('providers')->select('Country')->where('Country', '!=', '')->distinct()->get();
@@ -123,40 +133,49 @@ class AppointmentController extends Controller
             $title = $row1->lastname . ', ' . $row1->firstname . ' (DOB: ' . date('m/d/Y', strtotime($row1->DOB)) . ') (ID: ' . $pid . ')';        
 
             $start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
-            /*$end = strtotime($request->get('app_date') . " " . $request->get('end_time'));*/
+            $end = strtotime($request->get('app_date') . " " . $request->get('end_time'));
 
             $visit_type = $request->get('visit_type');
 
-            $row = DB::table('calendar')
+            /*$row = DB::table('calendar')
                 ->select('duration')
                 ->where('visit_type', '=', $visit_type)
                 ->where('active', '=', 'y')
                 ->where('practice_id', '=', $user->practice_id)
                 ->first();                
+            $end = $start + $row->duration;*/
 
-            $end = $start + $row->duration;
+            $exists_scheduled = DB::table('schedule')
+                ->where('provider_id',$request->get('provider_id'))
+                ->whereBetween('start', [$start, $end])
+                ->get();     
 
-            $data = [                        
-                'pid' => $pid,
-                'start' => $start,
-                'end' => $end,
-                'title' => $title,
-                'visit_type' => $visit_type,
-                'reason' => $request->get('reason'),
-                'status' => 'Pending',
-                'provider_id' => $request->get('provider_id'),
-                'user_id' => $user->id,
-                'notes' => $request->get('notes'),
-            ];        
+            if($exists_scheduled->count() > 0) {
+                $return['status'] = 0;
+                $return['message'] = 'Doctor have already appointed to someone! Please find another Doctor.';
+            } else {
 
-            $appt_id = DB::table('schedule')->insertGetId($data);       
+                $data = [                        
+                    'pid' => $pid,
+                    'start' => $start,
+                    'end' => $end,
+                    'title' => $title,
+                    'visit_type' => $visit_type,
+                    'reason' => $request->get('reason'),
+                    'status' => 'Pending',
+                    'provider_id' => $request->get('provider_id'),
+                    'user_id' => $user->id,
+                    'notes' => $request->get('notes'),
+                ];        
 
-            if($appt_id) {
-                $return['status'] = 1;
-                $return['message'] = 'Appointment created successfully.';
+                $appt_id = DB::table('schedule')->insertGetId($data);       
+
+                if($appt_id) {
+                    $return['status'] = 1;
+                    $return['message'] = 'Appointment created successfully.';
+                }
             }
-        }       
-
+        }
         return Response::json($return);
     }
 

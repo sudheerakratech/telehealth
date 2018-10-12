@@ -35,9 +35,8 @@ use Auth;
 use Session;
 use URL;
 
+class AppointmentController extends Controller {
 
-class AppointmentController extends Controller
-{
     public function appFindDoctors(Request $request) {
 
         $where = array();
@@ -52,7 +51,7 @@ class AppointmentController extends Controller
         }
 
         $start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
-        $end = strtotime($request->get('app_date') . " " . $request->get('end_time'));       
+        $end = strtotime($request->get('app_date') . " " . $request->get('end_time'));              
 
         $schedules = DB::table('schedule')->select('provider_id')->whereBetween('start', [$start, $end])->get();        
         $exists_scheduled_providers = array();        

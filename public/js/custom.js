@@ -122,7 +122,7 @@ $( document ).ready(function() {
        $('.date_picker').data("DateTimePicker").show();
     });
     $('.date_picker').datetimepicker({
-        format: 'MM/DD/YYYY',
+        format: 'DD/MM/YYYY',
         maxDate: new Date()
     });
 
@@ -132,6 +132,5 @@ $( document ).ready(function() {
 
     $('#doc_register').click( function () {            
         $('#register_modal').modal('show');
-    });
-    
+    });    
 });

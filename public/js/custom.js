@@ -122,15 +122,21 @@ $( document ).ready(function() {
        $('.date_picker').data("DateTimePicker").show();
     });
     $('.date_picker').datetimepicker({
-        format: 'DD/MM/YYYY',
+        format: 'YYYY-MM-DD',
         maxDate: new Date()
     });
 
-    $('#pat_register').click( function () {            
-        $('#register_modal').modal('show');
+    $('#doc_register').click( function() { 
+        $('#register_title').text('Doctor Registration');
+        $('#doc_register').addClass('active');
+        $('#pat_register').removeClass('active');
+        $('#register_group_id').val(2);
     });
 
-    $('#doc_register').click( function () {            
-        $('#register_modal').modal('show');
+    $('#pat_register').click( function() { 
+        $('#register_title').text('Patient Registration');
+        $('#pat_register').addClass('active');
+        $('#doc_register').removeClass('active');
+        $('#register_group_id').val(100);
     });    
 });

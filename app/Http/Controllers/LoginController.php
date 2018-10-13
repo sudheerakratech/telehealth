@@ -23,6 +23,7 @@ use URL;
 use phpseclib\Crypt\RSA;
 use SimpleXMLElement;
 use GuzzleHttp;
+use Validator;
 
 class LoginController extends Controller {
 
@@ -1525,5 +1526,61 @@ class LoginController extends Controller {
         $oidc->revoke();
         Session::forget('uma_auth_access_token');
         return redirect()->intended('logout');
+    }
+
+    public function patient_register(Request $request) {
+
+        $this->validate($request, [
+            "first_name" => "required",
+            "last_name" => "required",            
+            "username" => "required|unique:users,username",
+            "email" => 'required|unique:users,email',
+            "password" => 'required|min:6',            
+            'confirm_password' => 'min:6|same:password',
+            "secret_question" => "required",
+            "secret_answer" => "required",
+            "dob" => "required",
+        ]);
+
+        $user = DB::table('users');
+        $user->firstname = $request->input('first_name');
+        $user->lastname = $request->input('last_name');
+        $user->displayname = $request->input('first_name')." ".$request->input('last_name');
+        $user->username = $request->input('username');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input['password']);                
+        $user->secret_question = $request->input('secret_question');
+        $user->secret_answer = $request->input('secret_answer');
+        $user->group_id = 100;        
+        $user->practice_id = 1;
+        $user->active = 1;
+        
+        if($user->save()) {
+
+            $demographics = DB::table('demographics');
+            $demographics->id = $user->id;
+            $demographics->firstname = $user->firstname;
+            $demographics->lastname = $user->lastname;
+            $demographics->DOB = $request->input('dob');
+            $demographics->active = 1;
+            $demographics->save();
+
+            $credential = [
+                "username" => $user->username,
+                "password" => $user->password,                
+                "practice_id" => $user->practice_id,
+                "active" => 1
+            ];            
+
+            if (Auth::attempt($credentials)) {
+                return redirect()->intended('dashboard');                
+            } else {
+                return redirect()->intended('registration');                
+            }
+
+        } else {
+           return redirect()->intended('registration'); 
+        }
+        
     }
 }

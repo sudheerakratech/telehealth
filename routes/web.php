@@ -22,7 +22,12 @@ Route::get('singlepage', 'FrontEnd\FrontEndController@singlepage')->name('single
 Route::get('department', 'FrontEnd\FrontEndController@department')->name('department');
 Route::get('appointment', 'FrontEnd\FrontEndController@appointment')->name('appointment');
 Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscribe');
-Route::get('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
+Route::any('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
+
+Route::any('patient_register', 'FrontEnd\LoginController@patient_register')->name('patient_register');
+
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
 
 Route::post('find-doctors', 'FrontEnd\AppointmentController@appFindDoctors')->name('app_find_doctors');
 Route::post('save_appointment', 'FrontEnd\AppointmentController@makeAppointmentAjax')->name('save_appointment_ajax');

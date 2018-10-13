@@ -127,6 +127,37 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row doctors_field" style="display: none;">
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="phone_number">Phone No. *</label>
+                                            <input type="text" name="phone_number" id="phone_number" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" value="{{ old('phone_number') }}" placeholder="Phone Number" autocomplete="off">
+                                            @if ($errors->has('phone_number'))
+                                                <span class="error_msg">{{ $errors->first('phone_number') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="country">Country *</label>
+                                            <input type="text" name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" value="{{ old('country') }}" placeholder="Country" autocomplete="off">
+                                            @if ($errors->has('country'))
+                                                <span class="error_msg">{{ $errors->first('country') }}</span>
+                                            @endif                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row doctors_field" style="display: none;">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="specialty">Speciality *</label>
+                                            <input type="text" name="specialty" id="specialty" class="form-control{{ $errors->has('specialty') ? ' is-invalid' : '' }}" value="{{ old('specialty') }}" placeholder="Enter Your Speciality">
+                                            @if ($errors->has('specialty'))
+                                                <span class="error_msg">{{ $errors->first('specialty') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12 col-xs-12">
                                         <div class="form-group">

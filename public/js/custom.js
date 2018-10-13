@@ -131,6 +131,10 @@ $( document ).ready(function() {
         $('#doc_register').addClass('active');
         $('#pat_register').removeClass('active');
         $('#register_group_id').val(2);
+        $('.doctors_field').show();
+        $('#phone_number').attr('required',true);
+        $('#country').attr('required',true);
+        $('#specialty').attr('required',true);
     });
 
     $('#pat_register').click( function() { 
@@ -138,5 +142,9 @@ $( document ).ready(function() {
         $('#pat_register').addClass('active');
         $('#doc_register').removeClass('active');
         $('#register_group_id').val(100);
+        $('.doctors_field').hide();
+        $('#phone_number').attr('required',false);
+        $('#country').attr('required',false);
+        $('#specialty').attr('required',false);
     });    
 });

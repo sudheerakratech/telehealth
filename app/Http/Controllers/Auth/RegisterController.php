@@ -52,20 +52,35 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            "first_name" => "required",
-            "last_name" => "required",            
-            "user_name" => "required|unique:users,username",
-            "email" => 'required|unique:users,email',
-            "password" => 'required|min:6',            
-            'confirm_password' => 'same:password',
-            "secret_question" => "required",
-            "secret_answer" => "required",
-            "group_id" => "required",
-        ],[
-            "group_id.required" => "Please select registration type.",
-            "confirm_password.same" => "Confirm password could not match."
-        ]);       
+        $rules = array();
+        $rules["first_name"] = "required";
+        $rules["last_name"] = "required";           
+        $rules["user_name"] = "required|unique:users,username";
+        $rules["email"] = "required|unique:users,email";
+        $rules["password"] = "required|min:6";
+        $rules["confirm_password"] = "same:password";
+        $rules["secret_question"] = "required";
+        $rules["secret_answer"] = "required";
+        $rules["group_id"] = "required";
+
+        $rules_msg = array();
+        $rules_msg["group_id.required"] = "Please select registration type.";
+        $rules_msg["confirm_password.same"] = "Confirm password could not match.";
+
+        if(isset($data['group_id']) && $data['group_id'] == 2) {
+            $rules["phone_number"] = "required|regex:/^[0-9 +]+$/u";
+            $rules["country"] = "required|max:100";
+            /*$rules["photo"] = "required|image|mimes:jpg,jpeg,png|max:5120";*/
+            $rules["specialty"] = "required|max:255";
+
+            $rules_messages["phone_number.regex"] = "Please enter valid phone no";
+            /*$rules_msg["photo.required"] = "Please upload job image";
+            $rules_msg["photo.image"] = "Please upload only image";
+            $rules_msg["photo.mimes"] = "Please upload only jpg, jpeg, png image";
+            $rules_msg["photo.max"] = "Please upload image less than 5 MB";*/
+        }       
+
+        return Validator::make($data, $rules, $rules_msg);       
     }
 
     /**
@@ -97,16 +112,16 @@ class RegisterController extends Controller
             Session::put('group_id', $user->group_id);
             Session::put('practice_id', $user->practice_id);
 
+            $practice = DB::table('practiceinfo')->where('practice_id', '=', $user->practice_id)->first();
+
+            Session::put('version', $practice->version);
+            Session::put('practice_active', $practice->active);            
+            Session::put('documents_dir', $practice->documents_dir);
+            Session::put('rcopia', $practice->rcopia_extension);
+            Session::put('mtm_extension', $practice->mtm_extension);
+            Session::put('patient_centric', $practice->patient_centric);
+
             if($user->group_id == '100') {
-
-                $practice = DB::table('practiceinfo')->where('practice_id', '=', $user->practice_id)->first();
-
-                Session::put('version', $practice->version);
-                Session::put('practice_active', $practice->active);            
-                Session::put('documents_dir', $practice->documents_dir);
-                Session::put('rcopia', $practice->rcopia_extension);
-                Session::put('mtm_extension', $practice->mtm_extension);
-                Session::put('patient_centric', $practice->patient_centric);
 
                 $demographics_id = DB::table('demographics')->insert(array(
                     "id" => $user->id,
@@ -135,6 +150,20 @@ class RegisterController extends Controller
                     "pid" => $demographics->pid,
                     "practice_id" => $practice->practice_id
                 )); 
+            }
+
+            if($user->group_id == '2') {
+
+                $providers = DB::table('providers')->insert([
+                    "id" => $user->id,
+                    "Email_Address" => $user->email,
+                    "Date_of_Birth" => date('Y-m-d H:i:s', strtotime($data['dob'])),
+                    "Mobile" => $data['phone_number'],                    
+                    "Country" => $data['country'],
+                    /*"photo" => $data['photo'],*/
+                    "specialty" => $data['specialty'],
+                    "practice_id" => $practice->practice_id
+                ]);                
             }
 
             return $user;

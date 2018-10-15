@@ -69,7 +69,8 @@ class RegisterController extends Controller
 
         if(isset($data['group_id']) && $data['group_id'] == 2) {
             $rules["phone_number"] = "required|regex:/^[0-9 +]+$/u";
-            $rules["country"] = "required|max:100";
+            /*$rules["country"] = "required|max:100";*/
+            $rules["city"] = "required|max:100";
             /*$rules["photo"] = "required|image|mimes:jpg,jpeg,png|max:5120";*/
             $rules["specialty"] = "required|max:255";
 
@@ -102,7 +103,7 @@ class RegisterController extends Controller
             "secret_answer" => $data['secret_answer'],
             "group_id" => $data['group_id'],
             "practice_id" => $data['practice_id'],
-            "active" => 1,
+            /*"active" => 1,*/
         ]);
 
         if($user) {
@@ -159,7 +160,8 @@ class RegisterController extends Controller
                     "Email_Address" => $user->email,
                     "Date_of_Birth" => date('Y-m-d H:i:s', strtotime($data['dob'])),
                     "Mobile" => $data['phone_number'],                    
-                    "Country" => $data['country'],
+                    /*"Country" => $data['country'],*/
+                    "city" => $data['city'],
                     /*"photo" => $data['photo'],*/
                     "specialty" => $data['specialty'],
                     "practice_id" => $practice->practice_id

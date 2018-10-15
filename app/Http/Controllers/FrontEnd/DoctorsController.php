@@ -17,7 +17,7 @@ class DoctorsController extends Controller
         
         $data = array();
 
-        $locations = DB::table('providers')->select('Country')->where('Country', '!=', '')->distinct()->get();
+        $locations = DB::table('providers')->select('city')->where('city', '!=', '')->distinct()->get();
 
         $specialist = DB::table('providers')->select('specialty')->where('specialty', '!=', '')->get();
 
@@ -33,23 +33,23 @@ class DoctorsController extends Controller
 
         $where = array();
         $where[] = array('users.group_id', '=', 2);
-        $where[] = array('users.active', '=', 1);
+        
+        $is_online = $request->has('is_online') ? array($request->get('is_online')) : array(0,1);        
 
         if($request->isMethod('post')) {                        
-
             if($request->has('specialist') && $request->get('specialist') != '') {
                 $where[] = array('providers.specialty','LIKE', '%'.$request->get('specialist').'%');
             }
-
             if($request->has('location') && $request->get('location') != '') {
-                $where[] = array('providers.Country','=', $request->get('location'));
+                $where[] = array('providers.city','=', $request->get('location'));
             }
         }
 
         $doctors = DB::table('users')            
-            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','providers.description','providers.language','providers.Country','providers.photo','providers.certificate','providers.specialty')            
+            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','users.active','providers.description','providers.language','providers.city','providers.Country','providers.photo','providers.certificate','providers.specialty','providers.sun_o','providers.sun_c','providers.mon_o','providers.mon_c','providers.tue_o','providers.tue_c','providers.wed_o','providers.wed_c','providers.thu_o','providers.thu_c','providers.fri_o','providers.fri_c','providers.sat_o','providers.sat_c')
             ->leftjoin('providers', 'providers.id', '=', 'users.id')            
             ->where($where)
+            ->whereIn('users.active',$is_online)
             ->orderBy('providers.id','DESC')
             ->paginate(5);
 
@@ -58,9 +58,11 @@ class DoctorsController extends Controller
             return view("FrontEnd.search_doctor_block", compact('doctors','request')); 
         }
 
+        
+
         $data['specialist'] = $as_specialist;
         $data['locations'] = $locations;
-        $data['doctors'] = $doctors;
+        $data['doctors'] = $doctors;        
 
         return view('FrontEnd.doctors', $data);
     }
@@ -85,7 +87,7 @@ class DoctorsController extends Controller
 
     public function getDoctorLocations() {
 
-        $locations = DB::table('providers')->select('Country')->where('Country', '!=', '')->distinct()->get();
+        $locations = DB::table('providers')->select('city')->where('city', '!=', '')->distinct()->get();
 
         return Response::json($locations);        
     }

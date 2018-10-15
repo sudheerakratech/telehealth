@@ -14,7 +14,7 @@ $( document ).ready(function() {
 
         var app_date = $('#create_appointment_frm input[name=app_date]').val();
         var start_time = $('#create_appointment_frm input[name=start_time]').val();
-        var end_time = $('#create_appointment_frm input[name=end_time]').val();
+        var end_time = $('#create_appointment_frm select[name=end_time]').val();
 
         if(app_date == '') {
             toastr.warning("Please enter appointment date.");
@@ -47,7 +47,7 @@ $( document ).ready(function() {
 
             var app_date = $('#create_appointment_frm input[name=app_date]').val();
             var start_time = $('#create_appointment_frm input[name=start_time]').val();
-            var end_time = $('#create_appointment_frm input[name=end_time]').val();
+            var end_time = $('#create_appointment_frm select[name=end_time]').val();
 
             if(app_date == '') {
                 toastr.warning("Please enter appointment date.");

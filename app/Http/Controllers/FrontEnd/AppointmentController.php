@@ -41,13 +41,14 @@ class AppointmentController extends Controller {
 
         $where = array();
         $where[] = array('users.group_id', '=', 2);
-        $where[] = array('users.active', '=', 1);
+
+        $is_online = $request->has('is_online') ? array($request->get('is_online')) : array(0,1);        
 
         if($request->has('specialist') && $request->get('specialist') != '') {
             $where[] = array('providers.specialty','LIKE', '%'.$request->get('specialist').'%');
         }
         if($request->has('location') && $request->get('location') != '') {
-            $where[] = array('providers.Country','=', $request->get('location'));
+            $where[] = array('providers.city','=', $request->get('location'));
         }
 
         $start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
@@ -60,14 +61,15 @@ class AppointmentController extends Controller {
         }
 
         $doctors = DB::table('users')            
-            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','providers.description','providers.language','providers.Country','providers.photo','providers.certificate','providers.specialty')
+            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','users.active','providers.description','providers.language','providers.city','providers.Country','providers.photo','providers.certificate','providers.specialty','providers.sun_o','providers.sun_c','providers.mon_o','providers.mon_c','providers.tue_o','providers.tue_c','providers.wed_o','providers.wed_c','providers.thu_o','providers.thu_c','providers.fri_o','providers.fri_c','providers.sat_o','providers.sat_c')
             ->leftjoin('providers', 'providers.id', '=', 'users.id')            
             ->where($where)
+            ->whereIn('users.active',$is_online)
             ->whereNotIn('providers.id',$exists_scheduled_providers)            
             ->orderBy('providers.id','DESC')            
             ->get();
-
-        $locations = DB::table('providers')->select('Country')->where('Country', '!=', '')->distinct()->get();
+            
+        $locations = DB::table('providers')->select('city')->where('city', '!=', '')->distinct()->get();
 
         $as_specialist = DB::table('providers')->select('specialty')->where('specialty', '!=', '')->get();
         $specialist = array();
@@ -80,7 +82,7 @@ class AppointmentController extends Controller {
         }
         $specialist = array_unique($specialist);
 
-        return view('FrontEnd.search_doctor_modal_block', compact('doctors','locations','specialist'));
+        return view('FrontEnd.search_doctor_modal_block', compact('doctors','locations','specialist','request'));
     }    
 
     public function makeAppointmentAjax(Request $request) {
@@ -131,8 +133,12 @@ class AppointmentController extends Controller {
 
             $title = $row1->lastname . ', ' . $row1->firstname . ' (DOB: ' . date('m/d/Y', strtotime($row1->DOB)) . ') (ID: ' . $pid . ')';        
 
-            $start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
-            $end = strtotime($request->get('app_date') . " " . $request->get('end_time'));
+            $end_hours = '+'.$request->get('end_time');        
+            $start_date_time = $request->get('app_date') . " " . $request->get('start_time');
+            $end_date_time = date('Y-m-d H:i:s',strtotime($end_hours,strtotime($start_date_time)));
+
+            $start = strtotime($start_date_time);
+            $end = strtotime($end_date_time);
 
             $visit_type = $request->get('visit_type');
 

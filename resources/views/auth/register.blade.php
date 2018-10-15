@@ -138,11 +138,18 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label for="country">Country *</label>
                                             <input type="text" name="country" id="country" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" value="{{ old('country') }}" placeholder="Country" autocomplete="off">
                                             @if ($errors->has('country'))
                                                 <span class="error_msg">{{ $errors->first('country') }}</span>
+                                            @endif                        
+                                        </div> --}}
+                                        <div class="form-group">
+                                            <label for="city">City *</label>
+                                            <input type="text" name="city" id="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" value="{{ old('city') }}" placeholder="City Name" autocomplete="off">
+                                            @if ($errors->has('city'))
+                                                <span class="error_msg">{{ $errors->first('city') }}</span>
                                             @endif                        
                                         </div>
                                     </div>

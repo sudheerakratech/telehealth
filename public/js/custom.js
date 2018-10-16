@@ -16,18 +16,10 @@ $( document ).ready(function() {
         var start_time = $('#create_appointment_frm input[name=start_time]').val();
         var end_time = $('#create_appointment_frm select[name=end_time]').val();
 
-        if(app_date == '') {
-            toastr.warning("Please enter appointment date.");
+        if(app_date == '' || start_time == '' || end_time == '') {
+            toastr.warning("Please enter appointment Date with Start/End time.");
             return false;
-        }
-        if(start_time == '') {
-            toastr.warning("Please enter appointment start time.");
-            return false;
-        }
-        if(end_time == '') {
-            toastr.warning("Please enter appointment end time.");
-            return false;
-        }
+        }        
 
         $('#loader').fadeIn();
         $.ajax({
@@ -49,16 +41,8 @@ $( document ).ready(function() {
             var start_time = $('#create_appointment_frm input[name=start_time]').val();
             var end_time = $('#create_appointment_frm select[name=end_time]').val();
 
-            if(app_date == '') {
-                toastr.warning("Please enter appointment date.");
-                return false;
-            }
-            if(start_time == '') {
-                toastr.warning("Please enter appointment start time.");
-                return false;
-            }
-            if(end_time == '') {
-                toastr.warning("Please enter appointment end time.");
+            if(app_date == '' || start_time == '' || end_time == '') {
+                toastr.warning("Please enter appointment Date with Start/End time.");
                 return false;
             }
 
@@ -85,7 +69,7 @@ $( document ).ready(function() {
         formProviderSubmit();
 
         $('.request_app_doc').click( function () {                    
-            $('#app_provider_id').val($('.request_app_doc').data('provider_id'));                                        
+            $('#app_provider_id').val($(this).data('provider_id'));                                        
             $('#find_provider_block').text('');
             $('#create_appointment_btn').show();                    
             $('#app-modal-image').show();

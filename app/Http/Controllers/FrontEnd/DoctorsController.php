@@ -82,7 +82,6 @@ class DoctorsController extends Controller
         $as_specialist = array_unique($as_specialist);
 
         return Response::json($as_specialist);
-
     }
 
     public function getDoctorLocations() {

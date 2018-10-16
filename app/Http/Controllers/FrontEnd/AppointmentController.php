@@ -51,10 +51,17 @@ class AppointmentController extends Controller {
             $where[] = array('providers.city','=', $request->get('location'));
         }
 
-        $start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
-        $end = strtotime($request->get('app_date') . " " . $request->get('end_time'));              
+        /*$start = strtotime($request->get('app_date') . " " . $request->get('start_time'));
+        $end = strtotime($request->get('app_date') . " " . $request->get('end_time'));*/
 
-        $schedules = DB::table('schedule')->select('provider_id')->whereBetween('start', [$start, $end])->get();        
+        $end_hours = '+'.$request->get('end_time');                
+        $start_date_time = $request->get('app_date') . " " . $request->get('start_time');
+        $end_date_time = date('Y-m-d h:i A',strtotime($end_hours,strtotime($start_date_time)));
+
+        $start = strtotime($start_date_time);
+        $end = strtotime($end_date_time);
+
+        $schedules = DB::table('schedule')->select('provider_id')->whereBetween('start', [$start, $end])->orWhereBetween('end', [$start, $end])->get();        
         $exists_scheduled_providers = array();        
         foreach ($schedules as $key => $value) {
             $exists_scheduled_providers[] = $value->provider_id;
@@ -112,6 +119,8 @@ class AppointmentController extends Controller {
             $validator = Validator::make($request->all(), $fields , $fields_validation);
 
             if ($validator->fails()) {
+                echo "ok";
+                exit;
                 /*$return['error'] = $validator->errors()->toArray();*/
                 foreach ($validator->errors()->toArray() as $key => $error) {
                     $return['message'] = $error[0];
@@ -135,7 +144,7 @@ class AppointmentController extends Controller {
 
             $end_hours = '+'.$request->get('end_time');        
             $start_date_time = $request->get('app_date') . " " . $request->get('start_time');
-            $end_date_time = date('Y-m-d H:i:s',strtotime($end_hours,strtotime($start_date_time)));
+            $end_date_time = date('Y-m-d h:i A',strtotime($end_hours,strtotime($start_date_time)));
 
             $start = strtotime($start_date_time);
             $end = strtotime($end_date_time);
@@ -153,11 +162,12 @@ class AppointmentController extends Controller {
             $exists_scheduled = DB::table('schedule')
                 ->where('provider_id',$request->get('provider_id'))
                 ->whereBetween('start', [$start, $end])
+                ->orWhereBetween('end', [$start, $end])
                 ->get();     
 
             if($exists_scheduled->count() > 0) {
                 $return['status'] = 0;
-                $return['message'] = 'Doctor have already appointed to someone! Please find another Doctor.';
+                $return['message'] = 'Doctor has already appointed! Please take another time or Request to another doctor';
             } else {
 
                 $data = [                        

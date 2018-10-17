@@ -56,9 +56,7 @@ class DoctorsController extends Controller
         if(\Request::ajax()) {
 
             return view("FrontEnd.search_doctor_block", compact('doctors','request')); 
-        }
-
-        
+        }        
 
         $data['specialist'] = $as_specialist;
         $data['locations'] = $locations;

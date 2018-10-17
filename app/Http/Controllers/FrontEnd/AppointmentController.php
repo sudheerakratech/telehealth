@@ -129,13 +129,11 @@ class AppointmentController extends Controller {
             $pid = $user->id;
 
             $row1 = DB::table('demographics')
-                ->select('demographics.pid','demographics.firstname','demographics.lastname','demographics.email','demographics.DOB','demographics.photo')
-                ->join('demographics_relate', 'demographics_relate.pid', '=', 'demographics.pid')
-                ->leftjoin('vitals', 'vitals.pid', '=', 'demographics.pid')
-                ->where('demographics_relate.practice_id', '=', $user->practice_id)
+                ->select('demographics.pid','demographics.firstname','demographics.lastname','demographics.email','demographics.DOB','demographics.photo')                                
                 ->where(function($query_array1) use ($user) {
-                    $query_array1->where('demographics.firstname', '=',  $user->firstname)
-                    ->orWhere('demographics.lastname', '=', $user->lastname);
+                    $query_array1->where('demographics.id', '=', $user->id)
+                    ->orWhere('demographics.firstname', '=',  $user->firstname)
+                    ->orWhere('demographics.lastname', '=', $user->lastname);                    
                 })->first();
 
             $title = $row1->lastname . ', ' . $row1->firstname . ' (DOB: ' . date('m/d/Y', strtotime($row1->DOB)) . ') (ID: ' . $pid . ')';        
@@ -184,6 +182,7 @@ class AppointmentController extends Controller {
                 $appt_id = DB::table('schedule')->insertGetId($data);       
 
                 if($appt_id) {
+                    /*$this->schedule_notification($appt_id);*/
                     $return['status'] = 1;
                     $return['message'] = 'Appointment created successfully.';
                 }

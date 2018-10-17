@@ -118,9 +118,7 @@ class AppointmentController extends Controller {
 
             $validator = Validator::make($request->all(), $fields , $fields_validation);
 
-            if ($validator->fails()) {
-                echo "ok";
-                exit;
+            if ($validator->fails()) {                
                 /*$return['error'] = $validator->errors()->toArray();*/
                 foreach ($validator->errors()->toArray() as $key => $error) {
                     $return['message'] = $error[0];

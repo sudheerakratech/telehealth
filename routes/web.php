@@ -35,6 +35,10 @@ Route::post('save_appointment', 'FrontEnd\AppointmentController@makeAppointmentA
 // Front-End Doctors Routes
 Route::any('doctors', 'FrontEnd\DoctorsController@doctors')->name('doctors');
 
+// Conference Routes
+Route::any('call_conference', 'FrontEnd\FrontEndController@videoConferenceRoom')->name('call_conference');
+
+
 Route::get('generateJWT', 'FrontEnd\FrontEndController@generateJWT')->name('generateJWT');
 Route::get('getUsers', 'FrontEnd\FrontEndController@getUsers')->name('getUsers');
 Route::get('createMeeting', 'FrontEnd\FrontEndController@createMeeting')->name('createMeeting');

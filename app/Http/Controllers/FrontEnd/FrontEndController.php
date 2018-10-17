@@ -127,4 +127,8 @@ class FrontEndController extends Controller
     public function meetingForm(){
         return view('create_meeting');
     }
+
+    public function videoConferenceRoom(Request $request) {
+        return view('FrontEnd.conferencePage');
+    }
 }

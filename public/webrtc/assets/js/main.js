@@ -43,7 +43,7 @@ if (QueryString.pname) {
     document.getElementById('partnerName').innerText=partnerName;
 }
 
-easyrtc.setSocketUrl("//media.mobihealthinternational.com:8443");
+easyrtc.setSocketUrl("//video.akrahealth.com:443");
 easyrtc.enableDebug(false);
 easyrtc.setOnError(function (errEvent) {
     console.log(errEvent.errorText);

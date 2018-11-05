@@ -2,9 +2,7 @@
 @section('content')
 <title>Online Video Conference</title>    
 
-{{-- <link rel="stylesheet" type="text/css" href="{{asset('css/OnlineVideoConference.css')}}"/> --}}
-
-<body onload="my_init()">
+<body>
 	<div id="content">
 		<div class="container">
 			<div class="row">
@@ -14,8 +12,8 @@
 							<h3 class="panel-title">Online Video Conference with <span id="partnerName"></span></h3>
 						</div>
 						<div class="panel-body panel-video">
-							<div id="subscriber" style="min-height:500px; width: 100%;">
-								<video id="partner" style="min-height:500px; width: 100%;background-color: #000;"></video>
+							<div id="subscriber" style="min-height:475px; background-color: #000; width: 100%;">
+								<!--video id="partner" style="min-height:500px; width: 100%;background-color: #000;"></video>-->
 							</div>
 						</div>
 					</div>
@@ -27,10 +25,18 @@
 							<h3 class="panel-title">Me</h3>
 						</div>
 						<div class="panel-body panel-video">
-							<div id="publisher" style="min-height: 275px;width: 100%;">
+							<div id="publisher" style="min-height: 250px;width: 100%;">
 								<video id="self" muted="muted" volume="0" style="width: 100%;min-height: 222px;background-color: #000;"></video>
 							</div>
-							<button type="button" onclick="onLeaveRoom()" class="btn btn-default btn-leave" id ="disconnectLink" style="display:block">Leave room</button>
+							<div class="row">
+								<div class="col-md-6 col-sm-6">
+									<button type="button" class="btn btn-success btn-block" id="publishVideo" style="margin-bottom: 10px;">Publish video</button>
+								</div>
+								<div class="col-md-6 col-sm-6">
+									<button type="button" class="btn btn-warning btn-block" id="unpublishVideo" style="margin-bottom: 10px;">Unpublish video</button>
+								</div>
+								<!--button type="button" class="btn btn-default btn-leave btn-block" id ="disconnectLink">Leave room</button-->
+							</div>
 						</div>
 					</div>
 
@@ -57,15 +63,13 @@
 							<h3 class="panel-title">Messages</h3>
 						</div>
 						<div class="panel-body">
-
-							<div id="messages" style="overflow-y: scroll;min-height: 50px;margin-bottom: 20px;"></div>
+							<div id="messages" style="overflow-y: scroll;margin-bottom: 20px;"></div>
 							<div class="input-group has-success">
 								<input autocomplete="off" type="text" id="message" name="message" class="form-control">
 								<span class="input-group-btn">
 									<input type="button" class="btn btn-success" onclick="sendmessage()" id="submit" value="Submit">
 								</span>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -74,10 +78,10 @@
 	</div>
 </body>
 
-<script type="text/javascript" src="{{asset('js/adapter-latest.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/socket.io.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/easyrtc.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+<script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script type="text/javascript" src="{{asset('js/webrtc/simplewebrtc.bundle.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/webrtc/socket.io.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/webrtc/simplertc.js')}}"></script>
 
 @endsection
 

@@ -10,12 +10,11 @@
 	<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="https://emr.mobihealthinternational.com/assets/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://emr.mobihealthinternational.com/assets/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="https://emr.mobihealthinternational.com/assets/css/OnlineVideoConference.css"
-	/>
+	<link rel="stylesheet" type="text/css" href="https://emr.mobihealthinternational.com/assets/css/OnlineVideoConference.css" />
 	<title>Online Video Conference with Dr. dev</title>
 </head>
 
-<body onload="my_init()">
+<body>
 	<div id="content">
 		<div class="wrapper">
 			<h2 class="white">Online Video Conference with Dr. dev</h2>
@@ -31,9 +30,9 @@
 
 						</div>
 						<div class="panel-body panel-video">
-							<div id="subscriber" style="min-height:500px; width: 100%;">
+							<div id="subscriber" style="height:477px;background-color: #000; width: 100%;">
 
-								<video id="partner" style="min-height:500px; width: 100%;background-color: #000;"></video>
+								<!--video id="partner" style="min-height:500px; width: 100%;background-color: #000;"></video>-->
 							</div>
 						</div>
 					</div>
@@ -54,9 +53,9 @@
 								<video id="self" muted="muted" volume="0" style="width: 100%;min-height: 222px;background-color: #000;"></video>
 								</video>
 							</div>
-							<!--<button type="button" class="btn btn-success" id="publishVideo" style="display:block">Publish video</button>-->
-							<!--<button type="button" class="btn btn-warning" id="unpublishVideo" style="display:block">Unpublish video</button>-->
-							<button type="button" onclick="onLeaveRoom()" class="btn btn-default btn-leave" id ="disconnectLink" style="display:block">Leave room</button
+							<button type="button" class="btn btn-success" id="publishVideo" style="display:block">Publish video</button>
+							<button type="button" class="btn btn-warning" id="unpublishVideo" style="display:block">Unpublish video</button>
+							<!--button type="button" class="btn btn-default btn-leave" id ="disconnectLink" style="display:block">Leave room</button-->
 						</div>
 					</div>
 
@@ -68,7 +67,8 @@
 						</div>
 						<div class="panel-body">
 							<div id="notification">
-								<div id="notice-0" class="alert alert-dismissable alert-danger video-notice">You've restricted audio and video permissions.</div>
+								<div id="notice-0" class="alert alert-dismissable alert-danger video-notice">You've restricted audio and video
+									permissions.</div>
 							</div>
 						</div>
 					</div>
@@ -89,15 +89,15 @@
 							<div id="messages" style="overflow-y: scroll;">
 
 							</div>
-							
-								<div class="input-group has-success">
-									<input autocomplete="off" type="text" id="message" name="message" class="form-control">
-									<span class="input-group-btn">
-										<input type="button" class="btn btn-success" onclick="sendmessage()" id="submit" value="Submit">
-									</span>
-								</div>
-								<!-- /input-group -->
-							
+
+							<div class="input-group has-success">
+								<input autocomplete="off" type="text" id="message" name="message" class="form-control">
+								<span class="input-group-btn">
+									<input type="button" class="btn btn-success" onclick="sendmessage()" id="submit" value="Submit">
+								</span>
+							</div>
+							<!-- /input-group -->
+
 						</div>
 					</div>
 				</div>
@@ -108,10 +108,12 @@
 	<!-- content -->
 	<script type="text/javascript" src="https://emr.mobihealthinternational.com/assets/js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="https://emr.mobihealthinternational.com/assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+	<script src="assets/js/simplewebrtc.bundle.js"></script>
 	<script type="text/javascript" src="assets/js/socket.io.js"></script>
-	<script type="text/javascript" src="assets/js//easyrtc.js"></script>
-	<script type="text/javascript" src="assets/js/main.js"></script>
+	<!--<script type="text/javascript" src="assets/js//easyrtc.js"></script>-->
+	<!--<script type="text/javascript" src="assets/js/main.js"></script>-->
+	<script type="text/javascript" src="assets/js/simplertc.js"></script>
 </body>
 
 </html>

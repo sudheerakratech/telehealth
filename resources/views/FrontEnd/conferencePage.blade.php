@@ -2,9 +2,8 @@
 @section('content')
 <title>Online Video Conference</title>    
 
-<body>
-	<div id="content">
-		<div class="container">
+	<div id="content">		
+		<div class="container">			
 			<div class="row">
 				<div class="col-md-8">
 					<div class="panel panel-primary">
@@ -76,12 +75,10 @@
 			</div>
 		</div>
 	</div>
-</body>
 
-<script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script type="text/javascript" src="{{asset('js/webrtc/simplewebrtc.bundle.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/webrtc/socket.io.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/webrtc/simplertc.js')}}"></script>
+	<script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+	<script type="text/javascript" src="{{asset('js/webrtc/simplewebrtc.bundle.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/webrtc/socket.io.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/webrtc/simplertc.js')}}"></script>
 
 @endsection
-

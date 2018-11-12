@@ -2879,6 +2879,7 @@ class CoreController extends Controller
 
     public function event_encounter(Request $request, $appt_id)
     {
+        // Video Conference
         $query = DB::table('encounters')->where('appt_id', '=', $appt_id)->first();
         $query1 = DB::table('schedule')->where('appt_id', '=', $appt_id)->first();
         if ($query) {

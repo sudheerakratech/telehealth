@@ -24,7 +24,10 @@
 							<h3 class="panel-title">Me</h3>
 						</div>
 						<div class="panel-body panel-video">
-							<div id="publisher" style="min-height: 250px;width: 100%;">
+							<div id="publisher" style="width: 100%;">
+								<video id="self" muted="muted" volume="0" style="width: 100%;min-height: 238px;background-color: #000;"></video>
+							</div>
+							{{-- <div id="publisher" style="min-height: 250px;width: 100%;">
 								<video id="self" muted="muted" volume="0" style="width: 100%;min-height: 222px;background-color: #000;"></video>
 							</div>
 							<div class="row">
@@ -35,13 +38,13 @@
 									<button type="button" class="btn btn-warning btn-block" id="unpublishVideo" style="margin-bottom: 10px;">Unpublish video</button>
 								</div>
 								<!--button type="button" class="btn btn-default btn-leave btn-block" id ="disconnectLink">Leave room</button-->
-							</div>
+							</div> --}}
 						</div>
 					</div>
 
 					<div class="clearfix"></div>
 
-					<div class="panel panel-primary">
+					{{-- <div class="panel panel-primary">
 						<div class="panel-heading">
 							<h3 class="panel-title">Notifications</h3>
 						</div>
@@ -50,7 +53,7 @@
 								<div id="notice-0" class="alert alert-dismissable alert-danger video-notice">You've restricted audio and video permissions.</div>
 							</div>
 						</div>
-					</div>
+					</div> --}}
 				</div>
 
 			</div>

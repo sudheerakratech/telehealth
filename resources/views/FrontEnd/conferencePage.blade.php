@@ -61,7 +61,7 @@
 							<h3 class="panel-title">Chat</h3>
 						</div>
 						<div class="panel-body">
-							<div id="messages" style="overflow-y: scroll;margin-bottom: 15px;min-height: 110px;"></div>
+							<div id="messages" style="overflow-y: scroll;margin-bottom: 15px;min-height: 110px;height: 110px;"></div>
 							<div class="input-group has-success">
 								<input autocomplete="off" type="text" id="message" name="message" class="form-control">
 								<span class="input-group-btn">

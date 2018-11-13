@@ -25,7 +25,7 @@
 						</div>
 						<div class="panel-body panel-video">
 							<div id="publisher" style="width: 100%;">
-								<video id="self" muted="muted" volume="0" style="width: 100%;min-height: 238px;background-color: #000;"></video>
+								<video id="self" muted="muted" volume="0" style="width: 100%;min-height: 200px;background-color: #000;"></video>
 							</div>
 							{{-- <div id="publisher" style="min-height: 250px;width: 100%;">
 								<video id="self" muted="muted" volume="0" style="width: 100%;min-height: 222px;background-color: #000;"></video>
@@ -54,11 +54,28 @@
 							</div>
 						</div>
 					</div> --}}
+
+					
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Chat</h3>
+						</div>
+						<div class="panel-body">
+							<div id="messages" style="overflow-y: scroll;margin-bottom: 15px;min-height: 110px;"></div>
+							<div class="input-group has-success">
+								<input autocomplete="off" type="text" id="message" name="message" class="form-control">
+								<span class="input-group-btn">
+									<input type="button" class="btn btn-success" onclick="sendmessage()" id="submit" value="Send">
+								</span>
+							</div>
+						</div>
+					</div>
+
 				</div>
 
 			</div>
 
-			<div class="row">
+			{{-- <div class="row">
 				<div class="col-md-12">
 					<div class="panel panel-primary">
 						<div class="panel-heading purple-bg">
@@ -75,7 +92,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</div>
 

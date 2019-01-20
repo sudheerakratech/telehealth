@@ -55,7 +55,7 @@ input[type="submit"],input[type="reset"],.w3ls_footer_grid_leftl,.w3ls_footer_gr
     display: inline-block;
     align-content: center;
 }
-.agileits_social_list li,.agileinfo_contact_us li{
+.agileits_social_list li,.agileinfo_contact_us li,.w3_agileits_header_text li{
 	display:inline-block;
 }
 .agileinfo_contact_us li a{

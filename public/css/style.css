@@ -49,8 +49,20 @@ input[type="submit"],input[type="reset"],.w3ls_footer_grid_leftl,.w3ls_footer_gr
 .agileinfo_social_icons{
 	float: right;
 }
-.agileits_social_list li{
+.agileinfo_contact_us{
+    float: right;
+    margin:  -5px 0;
+    display: inline-block;
+    align-content: center;
+}
+.agileits_social_list li,.agileinfo_contact_us li{
 	display:inline-block;
+}
+.agileinfo_contact_us li a{
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    font-weight: bold;
 }
 .agileits_social_list li a{
 	width: 28px;

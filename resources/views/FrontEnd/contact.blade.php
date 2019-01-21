@@ -39,7 +39,7 @@
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <div class="con-w3l-info">
                             <h4>Call Us</h4>
-                            <p>+91 6381 250 184<span>+91 6381 250 184</span></p>
+                            <p><span>+91 6381 250 184</span></p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -49,7 +49,7 @@
                         <i class="fa fa-envelope"></i>
                         <div class="con-w3l-info">
                             <h4>Email</h4>
-                            <p><a href="mailto:info@akrahealth.com">info@example1.com</a>
+                            <p><a href="mailto:info@akrahealth.com">info@akrahealth.com</a>
 
                             </p></div>
                         <div class="clearfix"></div>

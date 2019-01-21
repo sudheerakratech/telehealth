@@ -13,6 +13,7 @@ use Auth;
 use FunctionUtils;
 use Validator;
 use Session;
+use Newsletter;
 
 class FrontEndController extends Controller
 {
@@ -130,5 +131,13 @@ class FrontEndController extends Controller
 
     public function videoConferenceRoom(Request $request) {
         return view('FrontEnd.conferencePage');
+    }
+
+    public function subscribeNewsletter(Request $request) {
+        $email = $request->get('email');
+        if($email){
+            Newsletter::subscribe($email);
+        }
+        return redirect()->back();
     }
 }

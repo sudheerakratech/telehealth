@@ -23,6 +23,8 @@ Route::get('department', 'FrontEnd\FrontEndController@department')->name('depart
 Route::get('appointment', 'FrontEnd\FrontEndController@appointment')->name('appointment');
 Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscribe');
 Route::any('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
+Route::post('subscribe-newsletter', 'FrontEnd\FrontEndController@subscribeNewsletter')
+			->name('subscribe-newsletter');
 
 Route::any('patient_register', 'FrontEnd\LoginController@patient_register')->name('patient_register');
 

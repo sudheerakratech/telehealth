@@ -166,6 +166,7 @@ return [
         Devfactory\Minify\MinifyServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Elibyy\TCPDF\ServiceProvider::class,
+        Spatie\Newsletter\NewsletterServiceProvider::class
     ],
 
     /*

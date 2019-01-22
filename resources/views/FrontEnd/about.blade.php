@@ -151,12 +151,15 @@
             min-height:700px;
         }
         .w3layouts-banner-top12345{
-            background-image: url("{{url('images/EMR4.jpg')}}");
+            background-image: url("{{url('images/about-us-video-consultation.jpg')}}");
             background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             min-height:700px;
+        }
+        .w3about-img img{
+            margin-top: 30px;
         }
     </style>
     <!-- banner -->
@@ -198,7 +201,7 @@
             <div class="about-w3lsrow">
 
                 <div class="col-md-6 w3about-img">
-                    <img src="{{asset('images/front/xprofessional1.jpg.pagespeed.ic.9W82aAtyiV.jpg')}}" alt=" " class="img-responsive">
+                    <img src="{{asset('images/front/professionals.jpg')}}" alt=" " class="img-responsive">
                 </div>
                 <div class="col-md-6 col-sm-7 w3about-img two">
                     <ul class="w3about-text" style="font-size: 17px;">

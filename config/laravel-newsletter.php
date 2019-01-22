@@ -26,6 +26,12 @@ return [
              * You can set it to any string you want and you can add
              * as many lists as you want.
              */
+            'patients' => [
+                'id' => 'dead1f1d86'
+            ],
+            'doctors' => [
+                'id' => '87399f11a1'
+            ],
             'Web Developer' => [
 
                 /*

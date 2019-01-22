@@ -13,10 +13,13 @@ use Auth;
 use FunctionUtils;
 use Validator;
 use Session;
-use Newsletter;
+use Spatie\Newsletter\Newsletter;
 
 class FrontEndController extends Controller
 {
+    public function __construct()
+    {
+    }
     public function homepage() {
         return view('FrontEnd.homepage');
     }
@@ -133,11 +136,13 @@ class FrontEndController extends Controller
         return view('FrontEnd.conferencePage');
     }
 
-    public function subscribeNewsletter(Request $request) {
+    public function subscribeNewsletter(Request $request,Newsletter $newsletter) {
         $email = $request->get('email');
-        if($email){
-            Newsletter::subscribe($email);
+        if (!$newsletter->isSubscribed($email) ) 
+        {
+            $newsletter->subscribe($email,[],'Web Developer');
+            return 'success';
         }
-        return redirect()->back();
+        return 'error';
     }
 }

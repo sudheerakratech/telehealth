@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 use DB;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,7 +16,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*', function($view){
+            $user = \Auth::user();
+            $isDoctor = false;
+            if($user){
+                $isDoctor = $user->group_id === 2 ? true : false;
+                $view->with('isDoctor', $isDoctor);
+            }
+        });
     }
 
     /**

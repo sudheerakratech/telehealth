@@ -4,7 +4,7 @@
 
     <!-- banner -->
     <!-- banner1 -->
-    <div class="banner1 jarallax">
+    <div class="banner1 jarallax contact-us">
         <div class="container">
         </div>
     </div>

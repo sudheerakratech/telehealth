@@ -393,7 +393,7 @@ ul.top_agile_w3l_info_icons i {
 	-moz-background-size: cover;
 	-o-background-size: cover;		
 	-moz-background-size: cover;
-	min-height:700px;
+	max-height:415px;
 }
 .w3layouts-banner-top1{
 	background: url(../images/banner1.jpg) no-repeat 0px 0px;
@@ -402,7 +402,7 @@ ul.top_agile_w3l_info_icons i {
 	-moz-background-size: cover;
 	-o-background-size: cover;		
 	-moz-background-size: cover;
-	min-height:700px;
+	max-height:415px !important;
 }
 .w3layouts-banner-top2{
 	background: url(../images/banner3.jpg) no-repeat 0px 0px;
@@ -411,7 +411,7 @@ ul.top_agile_w3l_info_icons i {
 	-moz-background-size: cover;
 	-o-background-size: cover;		
 	-moz-background-size: cover;	
-	min-height:700px;
+	max-height:415px;
 }
 .agileits-banner-info h3 {
     color: #fff;
@@ -431,7 +431,7 @@ ul.top_agile_w3l_info_icons i {
 }
 .agileits-banner-info {
     text-align: left;
-    padding:16em 0 0em;
+    padding:8em 0 0em !important;
 }
 .agileits-banner-info p {
     color: #e2dfdf;
@@ -952,6 +952,9 @@ ul.social-icons .icon-border::after {
     line-height: 3em;
     font-weight: 600;
     text-align: center;
+}
+.wthree_services_bottom_left_grid img {
+    min-height: 270px;
 }
 .w3_agileits_services_bottom_l_grid:hover .w3_service_bottom_grid_pos {
     opacity: 1;
@@ -1481,14 +1484,32 @@ figure.effect-apollo:hover figcaption::before {
 }
 /*-- contact --*/
 /*-- //contact --*/
-.banner1 {
-    background: url(../images/banner.jpg) no-repeat 0px -99px;
+.banner1.contact-us {
+    background: url(../images/contact-us-banner.jpg) no-repeat 0px -99px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    min-height:300px;
+    min-height:400px;
 	z-index: 999;
+}
+.banner1.about-us {
+    background: url(../images/about-us.jpg) no-repeat 0px -99px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height:400px;
+    z-index: 999;
+}
+.banner1.physicians-page-banner {
+    background: url(../images/physicians-page-banner.jpg) no-repeat 0px -99px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height:400px;
+    z-index: 999;
 }
 .services-breadcrumb {
     padding: 1em 0;
@@ -2986,7 +3007,7 @@ ul.agileits_social_list.two li {
 		padding:4em 0px;
 	}
 	.w3layouts-banner-top,.w3layouts-banner-top1,.w3layouts-banner-top2,.w3layouts-banner-top3{
-		min-height:660px;
+		min-height:400px;
 	}
 	h3.w3_heade_tittle_agile,h2.w3_heade_tittle_agile  {
 		font-size: 2.5em;
@@ -3032,7 +3053,7 @@ ul.agileits_social_list.two li {
 }
 @media(max-width:1366px){
 	.w3layouts-banner-top,.w3layouts-banner-top1,.w3layouts-banner-top2,.w3layouts-banner-top3{
-		min-height:650px;
+		min-height:415px;
 	}
 	.w3l_chill {
 		position: absolute;
@@ -3637,7 +3658,7 @@ ul.agileits_social_list.two li {
 }
 @media(max-width:667px){
 	.w3layouts-banner-top, .w3layouts-banner-top1, .w3layouts-banner-top2, .w3layouts-banner-top3 {
-		min-height: 400px;
+		min-height: 415px;
 	}
 	.w3ls-blog-leftl {
 		padding: 0.8em;

@@ -16,7 +16,6 @@ class DoctorsController extends Controller
     public function doctors(Request $request) {
         
         $data = array();
-
         $locations = DB::table('providers')->select('city')->where('city', '!=', '')->distinct()->get();
 
         $specialist = DB::table('providers')->select('specialty')->where('specialty', '!=', '')->get();

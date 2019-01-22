@@ -160,7 +160,7 @@
         }
     </style>
     <!-- banner -->
-    <div class="banner1 jarallax">
+    <div class="banner1 jarallax about-us">
         <div class="container">
         </div>
     </div>
@@ -220,7 +220,7 @@
     <!-- /about-bottom -->
     <!-- services-bottom -->
     <div class="services-bottom">
-        <div class="col-md-5 wthree_services_bottom_right" style="height: 570px;">
+        <div class="col-md-5 wthree_services_bottom_right" style="height: 540px;">
                 {{--<div class="banner-silder">--}}
                     <div id="JiSlider" class="jislider">
                         <ul>

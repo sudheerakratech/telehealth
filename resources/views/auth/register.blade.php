@@ -1,6 +1,6 @@
 @extends('FrontEnd.layouts.master')
 @section('content')
-<title>Telemedicine | Registrion</title>    
+<title>Telemedicine | Registration</title>    
     <style>
         .btn-sq-lg {
             width: 150px !important;

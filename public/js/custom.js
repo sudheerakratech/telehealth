@@ -65,7 +65,7 @@ $( document ).ready(function() {
         $('#app-modal-image').hide();                            
         $("#find_provider_block").html('');
         $("#find_provider_block").append(data);
-        
+
         formProviderSubmit();
 
         $('.request_app_doc').click( function () {                    

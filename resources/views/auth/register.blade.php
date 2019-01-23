@@ -7,6 +7,33 @@
             height: 150px !important;
             margin: 23px;
         }
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+        #img-upload-container{
+        }    
+
+        #img-upload{
+            width: auto;
+            max-height: 200px;
+        }
+
     </style>            
 
 <section class="index_bg_image" style="padding-top: 50px; padding-bottom: 50px; background-image: url({{url('images/index1_world.jpg')}});">
@@ -35,6 +62,22 @@
                                 <input type="hidden" name="practice_id" id="register_practice_id" value="1">
                                 <input type="hidden" name="group_id" id="register_group_id" value="100">
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Upload Image</label>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-default btn-file">
+                                                        Browse… <input type="file" id="imgInp">
+                                                    </span>
+                                                </span>
+                                                <input type="text" class="form-control" readonly>
+                                            </div>
+                                            <div id="img-upload-container">
+                                                <img id='img-upload'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-6 col-xs-12">
                                         <div class="form-group">
                                             <label for="first_name">First Name *</label>
@@ -207,5 +250,6 @@
         </div>
     </div>
 </section>
+<script src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
 
 @endsection

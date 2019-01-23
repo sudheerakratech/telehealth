@@ -203,6 +203,9 @@
                                             <label for="specialty">Speciality *</label>
                                             <select type="text" name="specialty" id="specialty" class="form-control{{ $errors->has('specialty') ? ' is-invalid' : '' }}">
                                                 <option value=""{{ old('specialty') }}></option>
+                                                @foreach($specialties as $specialty)
+                                                    <option value=""{{ $specialty }}>{{ $specialty }}</option>
+                                                @endforeach
                                             </select>
                                             @if ($errors->has('specialty'))
                                                 <span class="error_msg">{{ $errors->first('specialty') }}</span>

@@ -88,6 +88,9 @@ input[type="submit"],input[type="reset"],.w3ls_footer_grid_leftl,.w3ls_footer_gr
 .agileits_social_list li a:hover{
 	color:#fff;
 }
+a.w3_agile_contact{
+    background:#333333;
+}
 a.w3_agile_facebook{
 	background:#3b5998;
 }

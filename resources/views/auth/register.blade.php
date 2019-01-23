@@ -201,7 +201,9 @@
                                     <div class="col-md-12 col-xs-12">
                                         <div class="form-group">
                                             <label for="specialty">Speciality *</label>
-                                            <input type="text" name="specialty" id="specialty" class="form-control{{ $errors->has('specialty') ? ' is-invalid' : '' }}" value="{{ old('specialty') }}" placeholder="Enter Your Speciality">
+                                            <select type="text" name="specialty" id="specialty" class="form-control{{ $errors->has('specialty') ? ' is-invalid' : '' }}">
+                                                <option value=""{{ old('specialty') }}></option>
+                                            </select>
                                             @if ($errors->has('specialty'))
                                                 <span class="error_msg">{{ $errors->first('specialty') }}</span>
                                             @endif

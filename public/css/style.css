@@ -910,7 +910,7 @@ ul.social-icons .icon-border::after {
 	padding:0;
 }
 .w3_agileits_services_bottom_r_grid {
-    padding: 4em 4em 0;
+    padding: 2em 4em 0;
     background: #207fdc;
     min-height: 376px;
 }
@@ -923,7 +923,7 @@ ul.social-icons .icon-border::after {
 }
 .w3_agileits_services_bottom_r_grid p{
 	color: #bbdbfb;
-    line-height: 2em;
+    line-height: 1.6em;
     margin: 1em 0 2em;
 }
 .agile_services_bottom_l_grid1{
@@ -3006,7 +3006,7 @@ ul.agileits_social_list.two li {
 }
 @media(max-width:1600px){
 	.w3_agileits_services_bottom_r_grid{
-		  padding: 4em 4em 0;
+		padding: 2em 4em 0;
 		min-height: 313px;
 	}
 	.w3_agile_services_bottom_right_grid,.w3_agile_services_bottom_right_grid1,.w3_agile_services_bottom_right_grid2{
@@ -3016,7 +3016,7 @@ ul.agileits_social_list.two li {
 }
 @media(max-width:1440px){
 	#menu,.service-w3l,.portfolio,.contact-main-agile-info,.footer,#about {
-		padding:4em 0px;
+		padding:2em 0px;
 	}
 	.w3layouts-banner-top,.w3layouts-banner-top1,.w3layouts-banner-top2,.w3layouts-banner-top3{
 		min-height:400px;
@@ -3073,11 +3073,11 @@ ul.agileits_social_list.two li {
 		right: -35px;
 	}
 	.w3_agileits_services_bottom_r_grid p {
-		line-height: 2em;
+		line-height: 1.6em;
 		margin: 1em 0 1em;
 	}
 	.w3_agileits_services_bottom_r_grid {
-		padding: 4em 3em 0;
+		padding: 2em 3em 0;
 		min-height: 270px;
 	}
 	.agileits-banner-info {
@@ -3102,7 +3102,7 @@ ul.agileits_social_list.two li {
 	}
 
 	.w3_agileits_services_bottom_r_grid {
-		padding: 3em 2em 0;
+		padding: 2em 2em 0;
 		min-height: 253px;
 	}
 	.w3_service_bottom_grid_pos h3 {
@@ -3204,7 +3204,7 @@ ul.agileits_social_list.two li {
 		padding: 3em;
 	}
 	.w3_agileits_services_bottom_r_grid p {
-		line-height: 1.9em;
+		line-height: 1.6em;
 		margin: 0.5em 0 0em;
 	}
 	.w3_agileits_services_bottom_r_grid {
@@ -3300,13 +3300,13 @@ ul.agileits_social_list.two li {
 		width:48%;
 	}
 	.w3_agileits_services_bottom_r_grid {
-		padding: 4em 3em 0;
+		padding: 2em 3em 0;
 	    min-height: 335px;
 		float: right;
 		width: 50%;
 	}
 	.w3_agileits_services_bottom_r_grid p {
-		line-height: 1.9em;
+		line-height: 1.6em;
 		margin: 1.5em 0 0em;
 	}
 	.w3_service_bottom_grid_pos {
@@ -3403,6 +3403,9 @@ ul.agileits_social_list.two li {
 		width: 100%;
 		padding: 0;
 	}
+	.w3about-text ul{
+		list-style: none;
+	}
 	.w3about-text {
 		margin-top: 2em;
 	}
@@ -3436,7 +3439,7 @@ ul.agileits_social_list.two li {
 		min-height:450px;
 	}
 	.w3_agileits_services_bottom_r_grid {
-		padding: 4em 3em 0;
+		padding: 2em 3em 0;
 		min-height: 271px;
 		float: right;
 		width: 50%;
@@ -3538,7 +3541,7 @@ ul.agileits_social_list.two li {
 		letter-spacing: 1px;
 	}
 	.w3_agileits_services_bottom_r_grid {
-		padding: 3em 2em 0;
+		padding: 2em 2em 0;
 		min-height: 255px;
 		float: right;
 		width: 50%;
@@ -3585,7 +3588,7 @@ ul.agileits_social_list.two li {
 		float: none;
 	}
 	.w3_agileits_services_bottom_r_grid {
-		padding: 3em 2em 0;
+		padding: 2em 2em 0;
 		min-height: 260px;
 		float: right;
 		width: 50%;
@@ -3646,7 +3649,7 @@ ul.agileits_social_list.two li {
 @media(max-width:736px){
 	
 	.w3_agileits_services_bottom_r_grid {
-		padding: 3em 2em 0;
+		padding: 2em 2em 0;
 		min-height: 250px;
 		float: right;
 		width: 50%;
@@ -3676,7 +3679,7 @@ ul.agileits_social_list.two li {
 		padding: 0.8em;
 	}
 	.w3_agileits_services_bottom_r_grid {
-		padding: 3em 2em 0;
+		padding: 2em 2em 0;
 		min-height: 226px;
 		float: right;
 		width: 50%;
@@ -3719,7 +3722,7 @@ ul.agileits_social_list.two li {
 		font-size: 18px;
 	}
 	.w3_agileits_services_bottom_r_grid p {
-		line-height: 1.9em;
+		line-height: 1.6em;
 		margin: 0em 0 0em;
 	}
 }

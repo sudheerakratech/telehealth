@@ -77,7 +77,7 @@
                 <div class="col-md-6 col-sm-7 w3about-img two">
                     <div class="w3about-text">
                         <h5 class="w3l-subtitle">We Care About Your Health</h5>
-                        <ul style="text-align: justify; font-size: 17px;">
+                        <ul style="text-align: justify; font-size: 17px; list-style: square;">
                         <li> - Maintain Patient and Related Family Members Health Information.</li>
                         <li> - Allow Users to Create Profiles for as many family members as needed.</li>
                         <li> - Keep your medical history in one place, under your control.</li>
@@ -310,7 +310,15 @@
     </div>
     <!-- //why us -->
 
-    <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%"></div>
+    <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%">
+    {{-- For Mobile Image Banner Which will be connected to Play Store. --}}
+    <div class="row">
+        <div class="col-md-4 col-sm-12"></div>
+        <div class="col-md-4 col-sm-12"></div>
+        <div class="col-md-4 col-sm-12"></div>
+    </div>
+
+    </div>
     <!-- services section -->
     <div class="service-w3l jarallax" id="service">
         <div class="container">
@@ -322,7 +330,7 @@
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                                    <div class="ch-info-front ch-img-1"><i class="fa fa-child" aria-hidden="true"></i></div>
                                     <div class="ch-info-back">
                                         <h5>Pediatric features</h5>
                                         <p>Best In Services</p>
@@ -341,7 +349,7 @@
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-2"><i class="fa fa-user-md" aria-hidden="true"></i></div>
+                                    <div class="ch-info-front ch-img-2"><i class="fa fa-pencil-square" aria-hidden="true"></i></div>
                                     <div class="ch-info-back">
                                         <h5>Easy Appointments</h5>
                                         <p>Best In Services</p>
@@ -363,7 +371,7 @@
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-3"><i class="fa fa-ambulance" aria-hidden="true"></i></div>
+                                    <div class="ch-info-front ch-img-3"><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
                                     <div class="ch-info-back">
                                         <h5>Patient Charts</h5>
                                         <p>Best In Services</p>
@@ -386,7 +394,7 @@
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-4"><i class="fa fa-tint" aria-hidden="true"></i></div>
+                                    <div class="ch-info-front ch-img-4"><i class="fa fa-file-text" aria-hidden="true"></i></div>
                                     <div class="ch-info-back">
                                         <h5>Forms & Reports</h5>
                                         <p>Best In Services</p>
@@ -397,7 +405,8 @@
                     </ul>
                     <h4 class="text-center">Forms & Reports</h4>
                     <p class="text-center">
-                        Personalized electronic patient forms , automated task reminder and alert system
+                        Personalized electronic patient forms , automated task reminder and alert system.
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-6 serv-wthree5" data-aos="zoom-in">
@@ -405,7 +414,7 @@
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-5"><i class="fa fa-wheelchair" aria-hidden="true"></i></div>
+                                    <div class="ch-info-front ch-img-5"><i class="fa fa-book" aria-hidden="true"></i></div>
                                     <div class="ch-info-back">
                                         <h5>Documentation</h5>
                                         <p>Best In Services</p>
@@ -491,8 +500,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 w3_agileits_services_bottom_r_grid">
-                    <h4>Secure Plateform</h4>
-                    <p style="text-align: justify; font-size: 11px;">Our platform provides patients access to their health medical records and forms and enable communications through various healthcare providers, pharmacies, medical associations, clinics and other healthcare institutions, ensuring an efficient modern medical practice.</p>
+                    <h4>Secure Platform</h4>
+                    <p style="text-align: justify; font-size: 14px;">Our platform provides patients access to their health medical records and forms and enable communications through various healthcare providers, pharmacies, medical associations, clinics and other healthcare institutions, ensuring an efficient modern medical practice.</p>
 
                 </div>
                 <div class="clearfix"> </div>
@@ -500,7 +509,7 @@
             <div class="wthree_services_bottom_left_grid">
                 <div class="col-md-6 w3_agileits_services_bottom_r_grid">
                     <h4>Enabling “Extenders”</h4>
-                    <p style="text-align: justify; font-size: 11px;">Our platform is designed to allow nurses, medical practitioners etc. to do more in the field of healthcare, as we see scope for these so-called “extenders” to expand. As clinicians could offset shortages of physicians our portal is designed to facilitate all caregivers thereby enabling “extenders” to help in healthcare services.</p>
+                    <p style="text-align: justify; font-size: 14px;">Our platform is designed to allow nurses, medical practitioners etc. to do more in the field of healthcare, as we see scope for these so-called “extenders” to expand. As clinicians could offset shortages of physicians our portal is designed to facilitate all caregivers thereby enabling “extenders” to help in healthcare services.</p>
 
                 </div>
                 <div class="col-md-6 w3_agileits_services_bottom_l_grid">

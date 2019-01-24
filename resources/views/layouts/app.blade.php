@@ -14,8 +14,18 @@
         @endif
     </title>
     {!! Minify::stylesheet($assets_css)->withFullUrl() !!}
-    @yield('view.stylesheet')
-
+    @yield('view.stylesheet')\
+    <style>
+        #search_patient_form #search_patient {
+            margin-left : 60px;
+            min-width : 80%;
+            max-width: 80%;
+       } 
+       #search_patient_form span.input-group-btn{
+           /* display: inline-block;
+            min-width: 40px;*/
+       }
+    </style>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -357,9 +367,7 @@
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-md btn-default" id="search_patient_recent" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.recent_patients') }}"><i class="fa fa-history fa-lg"></i></button>
                                 </span>
-                                <span class="input-group-btn">
-                                    <a href="{{ route('uma_list') }}" type="button" class="btn btn-md btn-default" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.uma_list') }}"><i class="fa fa-fire fa-lg"></i></a>
-                                </span>
+                            
                                 <span class="input-group-btn">
                                     <a href="{{ route('add_patient') }}" class="btn btn-md btn-default" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.add_patient') }}"><i class="fa fa-plus fa-lg"></i></a>
                                 </span>
@@ -388,9 +396,7 @@
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-md btn-default" id="search_patient_recent" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.recent_patients') }}"><i class="fa fa-history fa-lg"></i></button>
                                 </span>
-                                <span class="input-group-btn">
-                                    <a href="{{ route('uma_list') }}" type="button" class="btn btn-md btn-default" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.uma_list') }}"><i class="fa fa-fire fa-lg"></i></a>
-                                </span>
+                                
                                 <span class="input-group-btn">
                                     <a href="{{ route('add_patient') }}" type="button" class="btn btn-md btn-default" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.add_patient') }}"><i class="fa fa-plus fa-lg"></i></a>
                                 </span>

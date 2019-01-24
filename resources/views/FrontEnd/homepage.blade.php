@@ -310,7 +310,7 @@
     </div>
     <!-- //why us -->
 
-    <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%"></div>
+    <div class="container" style="margin-bottom: 100px"><img src="/images/mobile-app.png" alt="" style="width: 100%"></div>
     <!-- services section -->
     <div class="service-w3l jarallax" id="service">
         <div class="container">

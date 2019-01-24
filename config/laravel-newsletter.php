@@ -6,6 +6,7 @@ return [
          * The api key of a MailChimp account. You can find yours here:
          * https://us10.admin.mailchimp.com/account/api-key-popup/
          */
+        // MAILCHIMP_APIKEY -> 2103e295a8003dde5f5b127b9ac1867f-us7
         'apiKey' => env('MAILCHIMP_APIKEY','e8cc9c324bb0598236430c5cae13b0d1-us20'),
 
         /*
@@ -31,6 +32,9 @@ return [
             ],
             'doctors' => [
                 'id' => '87399f11a1'
+            ],
+            'healthcare' => [
+                'id' => 'fdb5400c4c'
             ],
             'Web Developer' => [
 

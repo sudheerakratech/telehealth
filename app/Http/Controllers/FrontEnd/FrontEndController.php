@@ -137,10 +137,25 @@ class FrontEndController extends Controller
     }
 
     public function subscribeNewsletter(Request $request,Newsletter $newsletter) {
+        $list = '';
+        if(Auth::user()){
+            switch ($user->group_id) {
+                case 100:
+                     $list = 'patients';
+                    break;
+                case 2:
+                     $list = 'doctors';
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            $list = 'healthcare';
+        }
         $email = $request->get('email');
         if (!$newsletter->isSubscribed($email) ) 
         {
-            $newsletter->subscribe($email,[],'Web Developer');
+            $newsletter->subscribe($email,[],$list);
             return 'success';
         }
         return 'error';

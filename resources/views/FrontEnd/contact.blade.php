@@ -28,8 +28,8 @@
                     <div class="contact-grid1 agileits-w3layouts">
                         <i class="fa fa-location-arrow"></i>
                         <div class="con-w3l-info">
-                            <h4>Address </h4>
-                            <p>4 RADIO COLONY Street<span>Chennai</span></p>
+                            <h4>Facebook Share</h4>
+                            <p><a href="">Link for sharing</a></p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -41,6 +41,11 @@
                             <h4>Call Us</h4>
                             <p><span>+91 6381 250 184</span></p>
                         </div>
+                        <div class="con-w3l-info" style="margin-top: 10px">
+                            <h4>Email</h4>
+                            <p><a href="mailto:support@akrahealth.com">support@akrahealth.com</a>
+
+                            </p></div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -48,8 +53,8 @@
                     <div class="contact-grid3 w3l">
                         <i class="fa fa-envelope"></i>
                         <div class="con-w3l-info">
-                            <h4>Email</h4>
-                            <p><a href="mailto:info@akrahealth.com">info@akrahealth.com</a>
+                            <h4>Skype</h4>
+                            <p><a href="">Skype Id</a>
 
                             </p></div>
                         <div class="clearfix"></div>
@@ -72,8 +77,7 @@
                 <ul class="agileits_social_list two">
                     <li class="fallow"> Follow Us :</li>
                     <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="w3_agile_rss"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                    <li><a href="skype:akra.tech?call" class="agile_twitter"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
                 </ul>
 
             </div>

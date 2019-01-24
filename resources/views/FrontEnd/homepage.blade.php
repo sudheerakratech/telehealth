@@ -3,7 +3,12 @@
     <title>Telemedicine | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> --}}
-
+    <style>
+        #JiSlider .jislider__controller {
+            top: 85%;
+            left: -76%;
+        }
+    </style>
     <!-- banner -->
     <div class="banner-silder">
         <div id="JiSlider" class="jislider">
@@ -67,7 +72,7 @@
             <div class="about-w3lsrow">
 
                 <div class="col-md-6 w3about-img">
-                    <img src="{{asset('images/front/sprott-shaw-college-post-grad-in-nursing-1.jpg')}}" style="height: 450px; width: 520px" alt="">
+                    <img src="/images/Home page-we care section (2).jpg" style="height: 450px; width: 520px" alt="">
                 </div>
                 <div class="col-md-6 col-sm-7 w3about-img two">
                     <div class="w3about-text">
@@ -83,7 +88,7 @@
                         <li> - Eliminate the need for you to walk down to click for medical consultation.</li>
                         </ul>
 
-                        <div class="read"><a href="{{route('singlepage')}}" class="hvr-rectangle-in">Read More</a></div>
+                        <div class="read" style="margin-top: 18px;"><a href="{{route('singlepage')}}" class="hvr-rectangle-in">Read More</a></div>
                     </div>
                 </div>
                 <div class="clearfix"> </div>
@@ -304,6 +309,8 @@
         </div>
     </div>
     <!-- //why us -->
+
+    <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%"></div>
     <!-- services section -->
     <div class="service-w3l jarallax" id="service">
         <div class="container">
@@ -428,20 +435,20 @@
                     <p class="counter">120</p>
                     <h3>Physicians</h3>
                 </div>
-                <div class="col-md-3 w3layouts_stats_left w3_counter_grid1">
-                    <i class="fa fa-stethoscope" aria-hidden="true"></i>
-                    <p class="counter">165</p>
-                    <h3>Assistants</h3>
+                <div class="col-md-3 w3layouts_stats_left w3_counter_grid3">
+                    <i class="fa fa-heartbeat" aria-hidden="true"></i>
+                    <p class="counter">245</p>
+                    <h3>Saved hearts</h3>
                 </div>
                 <div class="col-md-3 w3layouts_stats_left w3_counter_grid2">
                     <i class="fa fa-wheelchair" aria-hidden="true"></i>
                     <p class="counter">563</p>
                     <h3>Patients</h3>
                 </div>
-                <div class="col-md-3 w3layouts_stats_left w3_counter_grid3">
-                    <i class="fa fa-heartbeat" aria-hidden="true"></i>
-                    <p class="counter">245</p>
-                    <h3>Saved hearts</h3>
+                <div class="col-md-3 w3layouts_stats_left w3_counter_grid1">
+                    <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                    <p class="counter">165</p>
+                    <h3>Consultations</h3>
                 </div>
                 <div class="clearfix"> </div>
             </div>

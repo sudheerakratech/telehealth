@@ -18,7 +18,8 @@
 }
 .ziehharmonika h3.active {
     margin-bottom: 21px;
-  background: #207fdc;
+   	background: #207fdc;
+   	color: #eee;
     border: 6px solid rgba(44, 185, 139, 0.01);
 }
 .ziehharmonika h3::before {

@@ -51,14 +51,14 @@
             </ul>
         </div>
     </div>
-    {{-- <div class="services-breadcrumb">
+    <div class="services-breadcrumb">
         <div class="container">
             <ul>
                 <li><a href="{{route('homepage')}}">Home</a><i>|</i></li>
                 <li>Features</li>
             </ul>
         </div>
-    </div> --}}
+    </div>
 
     <!-- services-bottom -->
     <div class="services-bottom row">
@@ -102,7 +102,8 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                     </p>
 
                 </div>
@@ -219,7 +220,7 @@
             <div class="col-md-3 w3ls_banner_bottom_grid">
                 <img src="{{asset('images/p1.png')}}" alt=" " class="img-responsive" />
                 <div class="overlay">
-                    <h4><a onclick="document.getElementById('id01').style.display='block'">Patient Profile</a></h4>
+                     <h4><a onclick="document.getElementById('id01').style.display='block'">Patient Profile</a></h4>
                     <!-- Modal -->
                     <div class="w3-container">
                         <div id="id01" class="w3-modal w3-animate-opacity">
@@ -346,6 +347,12 @@
 
     
     <script src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
-    <script>$('#moble_nav_item_6').addClass('menu__item--current');</script>	<!-- Custom Css -->
+    <script>$('#moble_nav_item_6').addClass('menu__item--current');
+</script>	<!-- Custom Css -->
+
+    <script>
+
+        
+    </script>
 
     @endsection

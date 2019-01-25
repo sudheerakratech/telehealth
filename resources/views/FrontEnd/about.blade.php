@@ -201,7 +201,7 @@
             <div class="about-w3lsrow">
 
                 <div class="col-md-6 w3about-img">
-                    <img src="{{asset('images/front/professionals.jpg')}}" alt=" " class="img-responsive">
+                <img src="{{asset('images/front/professionals.jpg')}}" alt=" " class="img-responsive" style="min-height: 510px;">
                 </div>
                 <div class="col-md-6 col-sm-7 w3about-img two">
                     <ul class="w3about-text main-list" style="font-size: 17px;">

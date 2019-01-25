@@ -377,7 +377,7 @@
             </div>
         </div>
     </div>
-
+ --}}
     </div>
     <!-- services section -->
     <div class="service-w3l jarallax" id="service">
@@ -522,7 +522,7 @@
                 <div class="clearfix"> </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- //stats -->
     <!-- services-bottom -->
    {{--  <div class="services-bottom">

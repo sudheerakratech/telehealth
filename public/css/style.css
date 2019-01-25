@@ -8,17 +8,17 @@ html, body{
   font-size: 100%;
 	background:#ffffff;
 	margin: 0;
-	font-family: 'proxima-nova', sans-serif;
+	font-family: robotu, sans-serif;
 }
 p,ul li,ol li{
 	margin:0;
   font-size: 1.05em;
 	letter-spacing: 1px;
 	color: #756d6d;
-	font-family: 'proxima-nova', sans-serif;
+	font-family: robotu, sans-serif;
 }
 h1,h2,h3,h4,h5,h6{
-font-family: 'proxima-nova', sans-serif;
+font-family: robotu, sans-serif;
 
 	margin:0;
 }
@@ -996,8 +996,8 @@ ul.social-icons .icon-border::after {
     text-align: center;
 }
 .wthree_services_bottom_left_grid img {
-    min-height: 270px;
-    max-height: 270px;
+    min-height: 325px;
+    max-height: 325px;
 }
 .w3_agileits_services_bottom_l_grid:hover .w3_service_bottom_grid_pos {
     opacity: 1;
@@ -3070,7 +3070,7 @@ ul.agileits_social_list.two li {
 		min-height: 285px;
 	}
 	.w3_agile_services_bottom_right_grid, .w3_agile_services_bottom_right_grid1, .w3_agile_services_bottom_right_grid2 {
-		min-height: 570px;
+		min-height: 651px;
 		padding: 5em;
 	}
 	.w3_service_bottom_grid_pos h3 {
@@ -3129,7 +3129,7 @@ ul.agileits_social_list.two li {
 		margin: 0.1em 0 0.2em 0;
 	}
 	.w3_agile_services_bottom_right_grid, .w3_agile_services_bottom_right_grid1, .w3_agile_services_bottom_right_grid2 {
-		min-height: 540px;
+		min-height: 651px;
 		padding: 2.5em;
 	}
 	.w3_service_bottom_grid_pos h3 {
@@ -3169,7 +3169,7 @@ ul.agileits_social_list.two li {
 		padding: 6em 2em 0em;
 	}
 	.w3_agile_services_bottom_right_grid, .w3_agile_services_bottom_right_grid1, .w3_agile_services_bottom_right_grid2 {
-		min-height: 506px;
+		min-height: 651px;
 		padding: 2.5em;
 	}
 }
@@ -4204,4 +4204,53 @@ ul.agileits_social_list.two li {
 		margin: -10px auto 2px;
 	}
 }
+/* 
+Begining of Styles
+@author
+Timur-ul-Hasan
+ */
+.mobile-banner {
+    padding: 0 100px;
+}
+.mobile-banner img.mobile-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 60%;
+}
+.mobile-banner h3 > span {
+    color: #000;
+    font-family: "Ubuntu Condensed",Sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+}
+.mobile-banner h3 > i {
+    transform: rotate(0deg);
+    color: #50d0e3;
+    width: 1em;
+    height: 1em;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+.mobile-banner section {
+    margin-bottom: 100px;
+}
+
+.mobile-banner .right-block i{
+    float: right;
+}
+
+.mobile-banner .right-block h3{
+    align-content:right;
+}
+
+
+
+/* 
+Ending of Styles
+Timur-ul-hasan.
+
+ */
+
 /*--//responsive-stats-here--*/

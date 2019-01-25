@@ -97,7 +97,7 @@
     </div>
     <!-- /about-bottom -->
     <!-- /girds_agileits -->
-    <div class="Department_girds_agileits">
+    {{-- <div class="Department_girds_agileits">
         <div class="agile_team_grid">
             <div class="col-md-3 w3ls_banner_bottom_grid">
                 <img src="{{asset('images/p1.png')}}" alt=" " class="img-responsive" />
@@ -225,10 +225,10 @@
 
         </div>
         <div class="clearfix"></div>
-    </div>
+    </div> --}}
     <!-- //girds_agileits -->
     <!-- why us -->
-    <div class="agile_menu" id="menu">
+    {{-- <div class="agile_menu" id="menu">
         <div class="container">
             <h3 class="w3_heade_tittle_agile">Why Us</h3>
             <p class="sub_t_agileits">Our customers choose us because we provide leading technology.</p>
@@ -307,15 +307,75 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- //why us -->
 
-    <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%">
+    {{-- <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%"> --}}
     {{-- For Mobile Image Banner Which will be connected to Play Store. --}}
-    <div class="row">
-        <div class="col-md-4 col-sm-12"></div>
-        <div class="col-md-4 col-sm-12"></div>
-        <div class="col-md-4 col-sm-12"></div>
+    <div class="container"></div>
+        <div class="row mobile-banner">
+            <div class="col-md-4 col-sm-12">
+                <section>
+                    <h3>
+                        <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
+                        <span>Lorem ipsum dolor.</span>
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
+                        <span>Lorem ipsum dolor.</span>
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
+                        <span>Lorem ipsum dolor.</span>
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                    </p>
+                </section>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                 <img src="/images/mobile-app-banner.png" class="mobile-image" alt="" style="max-width : 60%">
+            </div>
+            <div class="col-md-4 col-sm-12 right-block">
+                 <section>
+                    <h3>
+                        <span>Lorem ipsum dolor.</span>
+                        <i class="fa fa-bar-chart"  aria-hidden="true"></i>
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        <span>Lorem ipsum dolor.</span> 
+                        <i class="fa fa-bar-chart"  aria-hidden="true"></i>
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                    </p>
+                </section>
+                <section>
+                    <h3>
+                        <span>Lorem ipsum dolor.</span>
+                        <i class="fa fa-bar-chart"  aria-hidden="true"></i>
+                    </h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                    </p>
+                </section>
+            </div>
+        </div>
     </div>
 
     </div>
@@ -465,7 +525,7 @@
     </div>
     <!-- //stats -->
     <!-- services-bottom -->
-    <div class="services-bottom">
+   {{--  <div class="services-bottom">
         <div class="col-md-5 wthree_services_bottom_right">
             <section class="slider">
                 <div class="flexslider">
@@ -525,7 +585,7 @@
         </div>
 
         <div class="clearfix"> </div>
-    </div>
+    </div> --}}
     <!-- //services-bottom -->
     <script src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
     <script>$('#m_nav_item_1').addClass('menu__item--current');</script>	<!-- Custom Css -->

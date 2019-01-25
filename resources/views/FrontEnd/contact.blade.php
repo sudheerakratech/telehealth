@@ -41,12 +41,12 @@
                             <h4>Call Us</h4>
                             <p><span>+91 6381 250 184</span></p>
                         </div>
-                        {{-- <div class="con-w3l-info" style="margin-top: 10px">
+                        <div class="con-w3l-info" style="margin-top: 10px">
                             <h4>Email</h4>
                             <p><a href="mailto:support@akrahealth.com">support@akrahealth.com</a>
 
                             </p></div>
-                        <div class="clearfix"></div> --}}
+                        <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="col-md-4 contact-grid">

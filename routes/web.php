@@ -22,6 +22,7 @@ Route::get('singlepage', 'FrontEnd\FrontEndController@singlepage')->name('single
 Route::get('department', 'FrontEnd\FrontEndController@department')->name('department');
 Route::get('appointment', 'FrontEnd\FrontEndController@appointment')->name('appointment');
 Route::get('subscribe', 'FrontEnd\FrontEndController@subscribe')->name('subscribe');
+Route::get('features', 'FrontEnd\FrontEndController@features')->name('features');
 Route::any('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
 Route::post('subscribe-newsletter', 'FrontEnd\FrontEndController@subscribeNewsletter')
 			->name('subscribe-newsletter');

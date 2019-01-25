@@ -22,6 +22,13 @@ font-family: 'proxima-nova', sans-serif;
 
 	margin:0;
 }
+ul.main-list{
+    list-style: none;
+    list-style-image: url('../images/icons/square.png');
+}
+ul.main-list li{
+    margin-bottom: 5px;
+}
 ul,label{
 	margin:0;
 	padding:0;

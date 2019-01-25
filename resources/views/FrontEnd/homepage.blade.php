@@ -77,7 +77,7 @@
                 <div class="col-md-6 col-sm-7 w3about-img two">
                     <div class="w3about-text">
                         <h5 class="w3l-subtitle">We Care About Your Health</h5>
-                        <ul style="text-align: justify; font-size: 17px; list-style: square;">
+                        <ul class="main-list" style="text-align: justify; font-size: 17px;">
                         <li>  Maintain Patient and Related Family Members Health Information.</li>
                         <li>  Allow Users to Create Profiles for as many family members as needed.</li>
                         <li>  Keep your medical history in one place, under your control.</li>

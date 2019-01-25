@@ -624,9 +624,9 @@
                     <h3>Patients</h3>
                 </div>
                 <div class="col-md-3 w3layouts_stats_left w3_counter_grid3">
-                    <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                    <i class="fa fa-heartbeat" aria-hidden="true"></i>
                     <p class="counter">245</p>
-                    <h3>Consultation</h3>
+                    <h3>Saved hearts</h3>
                 </div>
                 <div class="clearfix"> </div>
             </div>

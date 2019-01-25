@@ -35,6 +35,9 @@ class FrontEndController extends Controller
     public function singlepage() {
         return view('FrontEnd.single');
     }
+    public function features() {
+        return view('FrontEnd.features');
+    }
 
     public function department() {
         return view('FrontEnd.department');

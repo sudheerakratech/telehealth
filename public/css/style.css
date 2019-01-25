@@ -5,20 +5,20 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 html, body{
-    font-size: 100%;
+  font-size: 100%;
 	background:#ffffff;
 	margin: 0;
-	font-family: 'Lato', sans-serif;
+	font-family: 'proxima-nova', sans-serif;
 }
 p,ul li,ol li{
 	margin:0;
 	font-size:1em;
 	letter-spacing: 1px;
 	color:#555;
-	font-family: 'Lato', sans-serif;
+	font-family: 'proxima-nova', sans-serif;
 }
 h1,h2,h3,h4,h5,h6{
-font-family: 'Raleway', sans-serif;
+font-family: 'proxima-nova', sans-serif;
 
 	margin:0;
 }
@@ -237,7 +237,7 @@ ul.top_agile_w3l_info_icons i {
 }
 .m_nav_item a {
     text-decoration: none;
-    color: #333;
+    color: #7C7E7F;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
@@ -479,9 +479,9 @@ ul.top_agile_w3l_info_icons i {
 h3.w3_heade_tittle_agile,h2.w3_heade_tittle_agile  {
     text-align: center;
     font-weight: 700;
-    color: #111;
+    color: #138EC7;
     font-size: 3em;
-	    letter-spacing: 1px;
+    letter-spacing: 1px;
 
 }
 h3.w3_heade_tittle_agile.two {
@@ -502,7 +502,7 @@ p.ab {
     line-height: 2em;
     width: 98%;
     margin-bottom: 3em;
-    color: #333;
+    color: #756d6d;
     font-size: 1.1em;
     font-weight: 600;
 }
@@ -3428,6 +3428,7 @@ ul.agileits_social_list.two li {
 	}
 	.m_nav_item a {
 		font-size: 0.7em;
+		color : #7C7E7F;
 	}
 	.w3-agile-blog-right {
 		margin-top: 40px;

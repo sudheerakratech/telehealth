@@ -204,7 +204,7 @@
                     <img src="{{asset('images/front/professionals.jpg')}}" alt=" " class="img-responsive">
                 </div>
                 <div class="col-md-6 col-sm-7 w3about-img two">
-                    <ul class="w3about-text" style="font-size: 17px;">
+                    <ul class="w3about-text" style="font-size: 17px;list-style: square;">
                         {{--<h5 class="w3l-subtitle">What we do</h5>--}}
                         <p style="text-align: justify;">
                             <li>   Store yours and your families a: medical history b: prescriptions c. doctors d. pharmacies e: insurance.</li>

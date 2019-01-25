@@ -14,7 +14,7 @@
         <div id="JiSlider" class="jislider">
             <ul>
                 <li>
-                    <div class="w3layouts-banner-top">
+                    <div class="w3layouts-banner-top w3layouts-banner-top0">
 
                         <div class="container">
                             <div class="agileits-banner-info">

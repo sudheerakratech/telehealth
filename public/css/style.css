@@ -396,7 +396,7 @@ ul.top_agile_w3l_info_icons i {
 /*-- //header --*/
 /*--//slider --*/
 /*-- banner-top --*/
-.w3layouts-banner-top{
+.w3layouts-banner-top0{
     background: url(../images/Homepage-Banner-Video-Consultation.jpg) no-repeat 0px 0px;
     background-size: cover;	
 	-webkit-background-size: cover;	
@@ -422,6 +422,37 @@ ul.top_agile_w3l_info_icons i {
 	-o-background-size: cover;		
 	-moz-background-size: cover;	
 	max-height:415px;
+}
+
+// Features Page banners.
+
+.features-banner-1{
+  background: url(../images/Homepage-Banner-Medical-Appointment.jpg) no-repeat 0px 0px;
+    background-size: cover; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;      
+    -moz-background-size: cover;    
+    max-height:415px;
+}
+
+.features-banner-2{
+    background: url(../images/features-banner-2.jpg) no-repeat 0px 0px;
+    background-size: cover; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;      
+    -moz-background-size: cover;
+    max-height:415px !important;
+}
+.features-banner-3{
+    background: url(../images/features-banner-3.jpg) no-repeat 0px 0px;
+    background-size: cover; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;      
+    -moz-background-size: cover;    
+    max-height:415px;
 }
 .agileits-banner-info h3 {
     color: #fff;
@@ -1513,6 +1544,7 @@ figure.effect-apollo:hover figcaption::before {
     min-height:400px;
     z-index: 999;
 }
+
 .banner1.blog-page {
     background: url(../images/about-us.jpg) no-repeat 0px -99px !important;
     background-size: cover;

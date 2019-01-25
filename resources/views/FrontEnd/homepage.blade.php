@@ -78,14 +78,14 @@
                     <div class="w3about-text">
                         <h5 class="w3l-subtitle">We Care About Your Health</h5>
                         <ul style="text-align: justify; font-size: 17px; list-style: square;">
-                        <li> - Maintain Patient and Related Family Members Health Information.</li>
-                        <li> - Allow Users to Create Profiles for as many family members as needed.</li>
-                        <li> - Keep your medical history in one place, under your control.</li>
-                        <li> - Provide or Remove access to your medical history to medical providers of your choice.</li>
-                        <li> - Ensure accuracy of information communicated by patients.</li>
-                        <li> - Keep track of prescription information for yourself and family members.</li>
-                        <li> - Ensure vital allergy and other health conditions are known your new physician.</li>
-                        <li> - Eliminate the need for you to walk down to click for medical consultation.</li>
+                        <li>  Maintain Patient and Related Family Members Health Information.</li>
+                        <li>  Allow Users to Create Profiles for as many family members as needed.</li>
+                        <li>  Keep your medical history in one place, under your control.</li>
+                        <li>  Provide or Remove access to your medical history to medical providers of your choice.</li>
+                        <li>  Ensure accuracy of information communicated by patients.</li>
+                        <li>  Keep track of prescription information for yourself and family members.</li>
+                        <li>  Ensure vital allergy and other health conditions are known your new physician.</li>
+                        <li>  Eliminate the need for you to walk down to click for medical consultation.</li>
                         </ul>
 
                         <div class="read" style="margin-top: 18px;"><a href="{{route('singlepage')}}" class="hvr-rectangle-in">Read More</a></div>

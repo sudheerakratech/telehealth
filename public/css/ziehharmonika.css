@@ -2,7 +2,7 @@
 
 .ziehharmonika h3 {
     background: rgba(255, 255, 255, 0);
-    color: #151414;
+    color: #7C7E7F;
     text-align: left;
     border-radius: 0px;
     padding: 25px 20px;
@@ -12,7 +12,7 @@
     padding-right: 40px;
     transition: 0.25s all;
     position: relative;
-    border: 6px solid #191919;
+    border: 6px solid #756d6d;
     font-weight: 700;
     letter-spacing: 1px;
 }

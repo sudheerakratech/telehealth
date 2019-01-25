@@ -997,6 +997,7 @@ ul.social-icons .icon-border::after {
 }
 .wthree_services_bottom_left_grid img {
     min-height: 270px;
+    max-height: 270px;
 }
 .w3_agileits_services_bottom_l_grid:hover .w3_service_bottom_grid_pos {
     opacity: 1;

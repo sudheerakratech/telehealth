@@ -312,7 +312,7 @@
 
     {{-- <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%"> --}}
     {{-- For Mobile Image Banner Which will be connected to Play Store. --}}
-    <div class="container"></div>
+    {{-- <div class="container"></div>
         <div class="row mobile-banner">
             <div class="col-md-4 col-sm-12">
                 <section>
@@ -522,7 +522,7 @@
                 <div class="clearfix"> </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- //stats -->
     <!-- services-bottom -->
    {{--  <div class="services-bottom">

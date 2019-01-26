@@ -996,8 +996,8 @@ ul.social-icons .icon-border::after {
     text-align: center;
 }
 .wthree_services_bottom_left_grid img {
-    min-height: 326px;
-    max-height: 326px;
+    min-height: 333px;
+    max-height: 333px;
 }
 .w3_agileits_services_bottom_l_grid:hover .w3_service_bottom_grid_pos {
     opacity: 1;
@@ -3129,7 +3129,7 @@ ul.agileits_social_list.two li {
 		margin: 0.1em 0 0.2em 0;
 	}
 	.w3_agile_services_bottom_right_grid, .w3_agile_services_bottom_right_grid1, .w3_agile_services_bottom_right_grid2 {
-		min-height: 651px;
+		min-height: 665px;
 		padding: 2.5em;
 	}
 	.w3_service_bottom_grid_pos h3 {

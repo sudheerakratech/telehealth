@@ -61,6 +61,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     @if (!Auth::guest())
+                        <li><a href="{{ route('subscribe') }}">Call Doctor</a></li>
                         <li><a href="{{ route('dashboard') }}">{{ trans('nosh.tasks') }}</a></li>
                         @if (Session::get('group_id') == '1')
                             <li><a href="{{ route('setup') }}">{{ trans('nosh.setup') }}</a></li>

@@ -9,12 +9,12 @@ use OAuth2\Response;
 use Illuminate\Http\JsonResponse;
 
 use DB;
+use App\User;
 use FunctionUtils;
 
 class DoctorsController extends Controller
 {
     public function doctors(Request $request) {
-        
         $data = array();
         $locations = DB::table('providers')->select('city')->where('city', '!=', '')->distinct()->get();
 
@@ -33,7 +33,10 @@ class DoctorsController extends Controller
         $where = array();
         $where[] = array('users.group_id', '=', 2);
         
-        $is_online = $request->has('is_online') ? array($request->get('is_online')) : array(0,1);        
+        $is_online = $request->has('is_online') ? array($request->get('is_online')) : array(0,1);
+
+       
+
 
         if($request->isMethod('post')) {                        
             if($request->has('specialist') && $request->get('specialist') != '') {
@@ -44,13 +47,22 @@ class DoctorsController extends Controller
             }
         }
 
-        $doctors = DB::table('users')            
+        $base_query = DB::table('users')            
             ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','users.active','providers.description','providers.language','providers.city','providers.Country','providers.photo','providers.certificate','providers.specialty','providers.sun_o','providers.sun_c','providers.mon_o','providers.mon_c','providers.tue_o','providers.tue_c','providers.wed_o','providers.wed_c','providers.thu_o','providers.thu_c','providers.fri_o','providers.fri_c','providers.sat_o','providers.sat_c')
             ->leftjoin('providers', 'providers.id', '=', 'users.id')            
-            ->where($where)
-            ->whereIn('users.active',$is_online)
-            ->orderBy('providers.id','DESC')
-            ->paginate(5);
+            ->where($where);
+
+        $doctors_online = $request->get('is_online');
+
+        if($doctors_online){
+            $online_doctors = User::getOnlineDoctors();
+            $base_query = $base_query->whereIn('users.id',$online_doctors);
+        }
+
+
+        $doctors  = $base_query
+                            ->orderBy('providers.id','DESC')
+                            ->paginate(5);
 
         if(\Request::ajax()) {
 

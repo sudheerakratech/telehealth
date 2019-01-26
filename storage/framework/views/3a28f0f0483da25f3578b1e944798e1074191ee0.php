@@ -1,13 +1,12 @@
-@extends('FrontEnd.layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <title>Telemedicine | About</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> --}}
+    
 
     <style>
         /* FontAwesome for working BootSnippet :> */
 
-        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+        @import  url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
         #team {
             background: #eee !important;
         }
@@ -135,7 +134,7 @@
             border-radius: 50%;
         }
         .w3layouts-banner-top123{
-        background-image: url("{{url('images/EMR.jpg')}}");
+        background-image: url("<?php echo e(url('images/EMR.jpg')); ?>");
             background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -143,7 +142,7 @@
             min-height:700px;
         }
         .w3layouts-banner-top1234{
-            background-image: url("{{url('images/EMR2.jpg')}}");
+            background-image: url("<?php echo e(url('images/EMR2.jpg')); ?>");
             background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -151,7 +150,7 @@
             min-height:700px;
         }
         .w3layouts-banner-top12345{
-            background-image: url("{{url('images/about-us-video-consultation.jpg')}}");
+            background-image: url("<?php echo e(url('images/about-us-video-consultation.jpg')); ?>");
             background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -174,7 +173,7 @@
     <div class="services-breadcrumb">
         <div class="container">
             <ul>
-                <li><a href="{{route('homepage')}}">Home</a><i>|</i></li>
+                <li><a href="<?php echo e(route('homepage')); ?>">Home</a><i>|</i></li>
                 <li>About</li>
             </ul>
         </div>
@@ -184,20 +183,20 @@
     <div class="about" id="about">
         <div class="container">
             <h2 class="w3_heade_tittle_agile">Our vision</h2>
-            {{--<p class="sub_t_agileits">Impacting lives through technology</p>--}}
+            
 
             <p class="ab" style="text-align: justify">
                 To have intelligent smart healthcare services armed with diagnostic and treatment information capabilities with enhanced features and monitor patients on an ongoing and continuous basis.
-                {{--<br>--}}
+                
                 To enable patients to take charge of their health information, even becoming co-creators of their personal health records. Our platform would allow clinicians to monitor patients from a distance online
 
             </p>
             <h2 class="w3_heade_tittle_agile">What we do</h2>
-            {{--<p class="sub_t_agileits">Impacting lives through technology</p>--}}
+            
 
             <p class="ab" style="text-align: justify">
                 Through effective coordination involving multiple healthcare stakeholders our features help clinicians, social workers and care coordinators to monitor patients with calls and visits, encouraging them to embrace healthy lifestyle regimens, fill prescriptions and keep physician appointments
-                {{--<br>--}}
+                
                 Our apps are designed to become as important to clinicians as they are to patients ensuring health record information are secure and handled for data streaming from many sources, including personal health devices.
 
             </p>
@@ -205,11 +204,11 @@
             <div class="about-w3lsrow">
 
                 <div class="col-md-6 w3about-img">
-                <img src="{{asset('images/front/professionals.jpg')}}" alt=" " class="img-responsive" style="min-height: 510px;">
+                <img src="<?php echo e(asset('images/front/professionals.jpg')); ?>" alt=" " class="img-responsive" style="min-height: 510px;">
                 </div>
                 <div class="col-md-6 col-sm-7 w3about-img two">
                     <ul class="w3about-text main-list" style="font-size: 17px;">
-                        {{--<h5 class="w3l-subtitle">What we do</h5>--}}
+                        
                         <p style="text-align: justify;">
                             <li>Store yours and your families a: medical history b: prescriptions c. doctors d. pharmacies e: insurance.</li>
                             <li>Save time, able to retrieve accurate information about the condition for your history on health and prescriptions, helps you and your doctor assess yours and your family medical needs faster and more accurately, you don't have to rely on your memory</li>
@@ -228,7 +227,7 @@
     <!-- services-bottom -->
     <div class="services-bottom">
         <div class="col-md-5 wthree_services_bottom_right" style="height: 540px;">
-                {{--<div class="banner-silder">--}}
+                
                     <div id="JiSlider" class="jislider">
                         <ul>
                             <li>
@@ -247,7 +246,7 @@
                                         <div class="agileits-banner-info">
                                             <span>Hospital Departments</span>
 
-                                            {{--<p>Store all of your medical records in our secure blockchain and access anywhere anytime.</p>--}}
+                                            
 
                                         </div>
                                     </div>
@@ -259,7 +258,7 @@
                                         <div class="agileits-banner-info">
                                             <span>Video Consultation</span>
 
-                                            {{--<p>Stay organized and check in at your next appointment through our Telemedicine App.</p>--}}
+                                            
 
                                         </div>
 
@@ -269,13 +268,13 @@
 
                         </ul>
                     </div>
-                {{--</div>--}}
+                
         </div>
         <div class="col-md-7 wthree_services_bottom_left">
             <div class="wthree_services_bottom_left_grid">
                 <div class="col-md-6 w3_agileits_services_bottom_l_grid">
                     <div class="agile_services_bottom_l_grid1">
-                        <img src="{{asset('images/g6.jpg')}}" alt=" " class="img-responsive" />
+                        <img src="<?php echo e(asset('images/g6.jpg')); ?>" alt=" " class="img-responsive" />
                         <div class="w3_service_bottom_grid_pos">
                             <h3>Quality Care</h3>
                         </div>
@@ -296,7 +295,7 @@
                 </div>
                 <div class="col-md-6 w3_agileits_services_bottom_l_grid">
                     <div class="agile_services_bottom_l_grid1">
-                        <img src="{{asset('images/g9.jpg')}}" alt=" " class="img-responsive" />
+                        <img src="<?php echo e(asset('images/g9.jpg')); ?>" alt=" " class="img-responsive" />
                         <div class="w3_service_bottom_grid_pos">
                             <h3>Quality Care</h3>
                         </div>
@@ -322,7 +321,7 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="{{asset('images/index_team2.png')}}" alt="card image"></p>
+                                        <p><img class=" img-fluid" src="<?php echo e(asset('images/index_team2.png')); ?>" alt="card image"></p>
                                         <h4 class="card-title">Dr. Annabella Edlin</h4>
                                         <p class="card-text">Profile Details have been hidden for now to ensure confidentiality !</p>
                                         <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
@@ -370,7 +369,7 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="{{asset('images/index_team1.png')}}" alt="card image"></p>
+                                        <p><img class=" img-fluid" src="<?php echo e(asset('images/index_team1.png')); ?>" alt="card image"></p>
                                         <h4 class="card-title">Dr. Jade Urps</h4>
                                         <p class="card-text">Profile Details have been hidden for now to ensure confidentiality !</p>
                                         <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
@@ -418,7 +417,7 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="{{asset('images/index_team3.png')}}" alt="card image"></p>
+                                        <p><img class=" img-fluid" src="<?php echo e(asset('images/index_team3.png')); ?>" alt="card image"></p>
                                         <h4 class="card-title">Dr. Eric Martt</h4>
                                         <p class="card-text">Profile Details have been hidden for now to ensure confidentiality !</p>
                                         <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
@@ -466,7 +465,7 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="{{asset('images/index_team5.png')}}" alt="card image"></p>
+                                        <p><img class=" img-fluid" src="<?php echo e(asset('images/index_team5.png')); ?>" alt="card image"></p>
                                         <h4 class="card-title">Dr. Ann Anreozzi</h4>
                                         <p class="card-text">Profile Details have been hidden for now to ensure confidentiality !</p>
                                         <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
@@ -562,7 +561,7 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <p><img class=" img-fluid" src="{{asset('images/index_team4.png')}}" alt="card image"></p>
+                                        <p><img class=" img-fluid" src="<?php echo e(asset('images/index_team4.png')); ?>" alt="card image"></p>
                                         <h4 class="card-title">Dr. Jeffrey Poynor</h4>
                                         <p class="card-text">Profile Details have been hidden for now to ensure confidentiality !</p>
                                         <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
@@ -637,7 +636,8 @@
         </div>
     </div>
     <!-- //stats -->
-    <script src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
+    <script src="<?php echo e(asset('js/jquery-2.2.3.min.js')); ?>"></script>
     <script>$('#moble_nav_item_2').addClass('menu__item--current');</script>	<!-- Custom Css -->
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+<?php echo $__env->make('FrontEnd.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

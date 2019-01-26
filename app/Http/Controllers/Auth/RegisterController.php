@@ -11,6 +11,7 @@ use Validator;
 use DB;
 use Auth;
 use Session;
+use App\Helper\FunctionUtils;
 
 class RegisterController extends Controller
 {
@@ -41,7 +42,11 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        view()->composer('auth.register', function($view){
+            return $view->with('specialties',FunctionUtils::specialties());
+        });
         $this->middleware('guest');
+       
     }
 
     /**

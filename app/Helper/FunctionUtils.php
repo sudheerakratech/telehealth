@@ -86,5 +86,18 @@ class FunctionUtils {
         });
         return $data;
     }
+
+    public static function specialties(){
+        $as_specialist = \DB::table('providers')->select('specialty')->where('specialty', '!=', '')->get();
+        $specialist = array();
+        foreach ($as_specialist as $as_value) {            
+            foreach ($as_value as $value) {                
+                foreach (explode(',', $value) as $un) {
+                    $specialist[] = $un;
+                }
+            }
+        }
+        return array_unique($specialist);
+    }
 }
 ?>

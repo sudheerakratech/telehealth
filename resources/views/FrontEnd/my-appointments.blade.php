@@ -15,7 +15,7 @@
             </ul>
         </div>
     </div>
-
+<?php $provider_list = []; ?>
     <div class="portfolio">
         <div class="container">
             <div class="row">
@@ -27,58 +27,37 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 col-sm-4" id="location1">
-
+                <div class="col-md-3">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h4 class="panel-title">Filter Results</h4>
+                            <h4 class="panel-title">Schedule</h4>
                         </div>
                         <div class="panel-body">
-
-                            <form method="post" id="filter-doctor-frm">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group doctors">
-                                            <label>Speciality</label>
-                                            <select name="specialist" class="form-control select2 dept_select2" style="width: 100%">
-                                                <option value="" selected="">Choose</option>
-                                                {{--@foreach($specialist as $specialist)--}}
-                                                    {{--<option value="{{$specialist}}">{{$specialist}}</option>--}}
-                                                {{--@endforeach--}}
-                                            </select>
-                                        </div>
-                                        <div class="form-group doctors">
-                                            <label>Location</label>
-                                            <select name="location" class="form-control select2 dept_select2" style="width: 100%">
-                                                <option value="" selected="">Choose</option>
-                                                {{--@foreach($locations as $location)--}}
-                                                    {{--<option value="{{$location->city}}">{{$location->city}}</option>--}}
-                                                {{--@endforeach--}}
-                                            </select>
-                                        </div>
-                                        <div class="form-group doctors">
-                                            <label style="cursor: pointer;"><input type="checkbox" name="is_online" value="1"> Online Doctors</label>
-                                        </div>
-                                        {{-- <input type="hidden" name="doc_type" value="physicians" id="doc_type"> --}}
-                                        <div class="text-center m-t-20">
-                                            <button type="submit" class="btn btn-primary m-b-20">Search</button>
-                                            <button type="reset" class="btn btn-warning m-b-20" id="clear-filter">Clear</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div id="datetimepicker"></div>
+                            <form class="form-horizontal" role="form">
+                                 <div class="form-group">
+                                     <label for="provider_list" class="col-md-4 control-label">Provider</label>
+                                     <div class="col-md-8">
+                                         <select id="provider_list" class="form-control" name="provider_list" value="@if (isset($provider_id)){{ $provider_id }}@endif">
+                                             {{-- {!! $provider_list !!} --}}
+                                         </select>
+                                     </div>
+                                 </div>
                             </form>
+                            @if (isset($colorlegend))
+                                <div style="margin:5px;"><i style="color:green;" class="fa fa-square-o fa-lg"></i> Attended</div>
+                                <div style="margin:5px;"><i style="color:black;" class="fa fa-square-o fa-lg"></i> DNKA</div>
+                                <div style="margin:5px;"><i style="color:red;" class="fa fa-square-o fa-lg"></i> LMC</div>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-8">
-
                     <div id="doctors_list">
                         @include('FrontEnd.all-appointments')
                     </div>
-
                 </div>
             </div>
-        </div>
     </div>
 
 
@@ -190,6 +169,15 @@
                 $('#doc_messsage_modal').modal('show');
             });
 
+        });
+
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+                inline: true,
+                keepOpen: true,
+                showTodayButton: true,
+                format: 'MM/dd/YYYY'
+            });
         });
 
     </script>

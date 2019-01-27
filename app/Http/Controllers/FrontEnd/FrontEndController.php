@@ -163,4 +163,31 @@ class FrontEndController extends Controller
         }
         return 'error';
     }
+
+    public function myAppointments(Request $request){
+        $appointments = \DB::table('schedule as s')
+                        ->join('users as patient','s.user_id','=','patient.id')
+                        ->join('providers as p','s.provider_id','=','p.id')
+                        ->join('users as doctor','p.id','=','doctor.id')
+                        ->join('demographics as demo','s.pid','=','demo.pid')
+                        ->select([
+                            'doctor.displayname as name',
+                            'p.specialty as specialty',
+                            'p.language as language',
+                            'p.photo as photo',
+                            \DB::raw('DATE(s.start) AS appointment_date'),
+                            \DB::raw('SEC_TO_TIME(10000)  AS time'),
+                            \DB::raw('SEC_TO_TIME(s.end - s.start) AS duration'),
+                            's.title',
+                            's.visit_type',
+                            's.reason',
+                            's.notes',
+                            's.status',
+                            \DB::raw('DATE(s.timestamp)  AS date'),
+                            'demo.address as city',
+                            'demo.email as email'
+                        ])
+                        ->get();
+        return view('FrontEnd.my-appointments',['appointments' => $appointments]);
+    }
 }

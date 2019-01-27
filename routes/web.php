@@ -26,6 +26,9 @@ Route::get('features', 'FrontEnd\FrontEndController@features')->name('features')
 Route::any('registration', 'FrontEnd\FrontEndController@registration')->name('registration');
 Route::post('subscribe-newsletter', 'FrontEnd\FrontEndController@subscribeNewsletter')
 			->name('subscribe-newsletter');
+// My Appointments.
+Route::get('my-appointments', 'FrontEnd\FrontEndController@myAppointments')->name('my-appointments');
+
 
 Route::any('patient_register', 'FrontEnd\LoginController@patient_register')->name('patient_register');
 

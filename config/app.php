@@ -166,7 +166,8 @@ return [
         Devfactory\Minify\MinifyServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Elibyy\TCPDF\ServiceProvider::class,
-        Spatie\Newsletter\NewsletterServiceProvider::class
+        Spatie\Newsletter\NewsletterServiceProvider::class,
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
     ],
 
     /*
@@ -220,7 +221,8 @@ return [
         'Htmldom' => Yangqi\Htmldom\Htmldom::class,
         'Minify' => Devfactory\Minify\Facades\MinifyFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class
     ],
 
 ];

@@ -70,10 +70,11 @@ $( document ).ready(function() {
         formProviderSubmit();
 
         $('.request_app_doc').click( function () {                    
-            $('#app_provider_id').val($(this).data('provider_id'));                                        
+            $('#app_provider_id').val($(this).data('provider_id'));  
             $('#find_provider_block').text('');
-            $('#create_appointment_btn').show();                    
-            $('#app-modal-image').show();
+            $('#create_appointment_frm').submit();             
+            // $('#create_appointment_btn').show();                    
+            // $('#app-modal-image').show();
         });
     }    
 

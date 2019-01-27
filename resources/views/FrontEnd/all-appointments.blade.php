@@ -32,7 +32,7 @@
                         @if($appointment->reason != '')
                             <p class="text-justify small">
                                 <i class="fa fa-thumbs-up font20 text-primary"></i>
-                                <span>Notes : </span>
+                                <span>Reason : </span>
                                 {{$appointment->reason}}
                             </p>
                             {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor->description}}</p> --}}
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-5 doc_feedback collapse navbar-collapse" id="location2" style="margin-left: 5px;">
-                <ul class="m-t-10">
+                <ul class="m-t-10 appointment-info-list">
                     @if($appointment->city != '')
                         <li>
                             <i class="fa font20 fa-home m-b-15 m-r-15 text-primary"></i>
@@ -85,9 +85,11 @@
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
-                    <a href="javascript:void(0);" data-provider_id="{{$doctor->id}}" class="btn btn-primary make-direct-appointment">Make An Appointment</a>
-                    {{-- <a href="javascript:void(0);" data-provider_id="{{$doctor->id}}" data-provider_name="{{ucfirst($doctor->firstname)}} {{$doctor->lastname}}" class="btn btn-primary send-doc-message"><i class="fa fa-commenting"></i> Message</a> --}}
-                    <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0'])}}" data-provider_id="{{$doctor->id}}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>
+                    <a href="{{route('call_conference',['room' => mt_rand(00000000,99999999),'uname' => Auth::user()->firstname,'pname' => $appointment->name])}}" class="btn btn-success" target="_blank">
+                        Video Call
+                    </a>
+                    <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0'])}}" data-provider_id="{{ $appointment->doctor_id }}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>
+
                 @else
                     <a href="{{route('login')}}" class="btn btn-primary" disabled>Video Call</a>
                     <a href="{{route('login')}}" class="btn btn-primary" disabled>Message</a>

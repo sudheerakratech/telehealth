@@ -26,6 +26,11 @@ ul.main-list{
     list-style: none;
     list-style-image: url('../images/icons/square.png');
 }
+
+ul.appointment-info-list {
+    list-style: none;
+    /*list-style-image: url('../images/icons/square.png');*/
+}
 ul.main-list li{
     margin-bottom: 5px;
 }

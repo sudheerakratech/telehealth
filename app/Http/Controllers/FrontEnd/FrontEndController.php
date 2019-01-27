@@ -171,6 +171,7 @@ class FrontEndController extends Controller
                         ->join('users as doctor','p.id','=','doctor.id')
                         ->join('demographics as demo','s.pid','=','demo.pid')
                         ->select([
+                            \DB::raw('doctor.id AS doctor_id'),
                             'doctor.displayname as name',
                             'p.specialty as specialty',
                             'p.language as language',

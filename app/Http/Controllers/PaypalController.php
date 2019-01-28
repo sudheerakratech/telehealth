@@ -11,28 +11,40 @@ class PaypalController extends Controller
     {
         $provider = PayPal::setProvider('adaptive_payments');
 
+        $shares = $this->splitShares($request->amount);
+
         $data = [
             'receivers'  => [
                 [
-                    'email' => 'johndoe@example.com',
-                    'amount' => 10,
+                    'email' => 'demo_doctor@akrahealth.com',
+                    'amount' => $shares['doctor'],
                     'primary' => true,
                 ],
                 [
-                    'email' => 'janedoe@example.com',
-                    'amount' => 5,
+                    'email' => 'ash.syed-facilitator@gmail.com',
+                    'amount' => $shares['akra'],
                     'primary' => false
                 ]
             ],
             'payer' => 'EACHRECEIVER', // (Optional) Describes who pays PayPal fees. Allowed values are: 'SENDER', 'PRIMARYRECEIVER', 'EACHRECEIVER' (Default), 'SECONDARYONLY'
-            'return_url' => url('payment/success'),
-            'cancel_url' => url('payment/cancel'),
+            'return_url' => url('home'),
+            'cancel_url' => url('/home'),
         ];
 
         $response = $provider->createPayRequest($data);
-  
+
         $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);
 
         return redirect($redirect_url);
+    }
+
+    private function splitShares($amount)
+    {
+        $akra = number_format((($amount * 2.5) / 100), 2);
+
+        return [
+            'doctor'    => number_format($amount - $akra, 2),
+            'akra'      => $akra
+        ];
     }
 }

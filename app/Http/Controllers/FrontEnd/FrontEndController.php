@@ -176,17 +176,18 @@ class FrontEndController extends Controller
                             'p.specialty as specialty',
                             'p.language as language',
                             'p.photo as photo',
-                            \DB::raw('DATE(s.start) AS appointment_date'),
-                            \DB::raw('SEC_TO_TIME(10000)  AS time'),
-                            \DB::raw('SEC_TO_TIME(s.end - s.start) AS duration'),
+                            rsql("FROM_UNIXTIME(s.start) AS time"),
+                            rsql("FROM_UNIXTIME(s.start,'%Y-%m-%d') AS appointment_date"),
+                            rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                             's.title',
                             's.visit_type',
                             's.reason',
                             's.notes',
                             's.status',
-                            \DB::raw('DATE(s.timestamp)  AS date'),
+                            rsql('DATE(s.timestamp)  AS date'),
                             'demo.address as city',
-                            'demo.email as email'
+                            'demo.email as email',
+                            rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,FALSE) AS call_enable")
                         ])
                         ->get();
         return view('FrontEnd.my-appointments',['appointments' => $appointments]);

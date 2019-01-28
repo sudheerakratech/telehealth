@@ -55,7 +55,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/common.php"
+            "app/Helper/common.php"
         ]
     },
     "autoload-dev": {

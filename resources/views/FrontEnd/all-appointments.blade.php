@@ -85,7 +85,8 @@
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
-                    <a href="{{route('call_conference',['room' => mt_rand(00000000,99999999),'uname' => Auth::user()->firstname,'pname' => $appointment->name])}}" class="btn btn-success" target="_blank">
+                    <a href="{{route('call_conference',['room' => mt_rand(00000000,99999999),'uname' => Auth::user()->firstname,'pname' => $appointment->name])}}" class="btn btn-success" target="_blank"
+                        {{ $appointment->call_enable ? '' : 'disabled' }} >
                         Video Call
                     </a>
                     <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0'])}}" data-provider_id="{{ $appointment->doctor_id }}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>

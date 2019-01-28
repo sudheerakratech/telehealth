@@ -174,7 +174,7 @@ class FrontEndController extends Controller
                             \DB::raw('doctor.id AS doctor_id'),
                             'doctor.displayname as name',
                             'p.specialty as specialty',
-                            'p.language as language',
+                            rsql("IFNULL(p.language,'english') as language"),
                             'p.photo as photo',
                             rsql("FROM_UNIXTIME(s.start) AS time"),
                             rsql("FROM_UNIXTIME(s.start,'%Y-%m-%d') AS appointment_date"),

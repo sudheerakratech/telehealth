@@ -21,18 +21,19 @@
                     <div class="col-md-9 col-xs-9">
                         <h4>Dr. {{ucfirst($appointment->name)}} </h4>
                         <p>{{str_replace(',',' / ',$appointment->specialty)}}</p>
+                        <p>{{ $appointment->visit_type }}</p>
                         @if($appointment->notes != '')
                             <p class="text-justify small">
-                                <i class="fa fa-thumbs-up font20 text-primary"></i>
-                                <span>Notes : </span>
+                                <i class="fa fa-sticky-note font20 text-primary"></i>
+                                <strong>Notes : </strong>
                                 {{$appointment->notes}}
                             </p>
                             {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor->description}}</p> --}}
                         @endif
                         @if($appointment->reason != '')
                             <p class="text-justify small">
-                                <i class="fa fa-thumbs-up font20 text-primary"></i>
-                                <span>Reason : </span>
+                                <i class="fa fa-tasks font20 text-primary"></i>
+                                <strong>Reason : </strong>
                                 {{$appointment->reason}}
                             </p>
                             {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor->description}}</p> --}}
@@ -58,25 +59,25 @@
 
                     @if($appointment->language != '')
                         <li>
-                            <i class="fa font20 fa-money m-b-15 m-r-15 text-primary"></i>
+                            <i class="fa font20 fa fa-language m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment->language}}</span>
                         </li>
                     @endif
                     @if($appointment->time != '')
                         <li>
-                            <i class="fa font20 fa-money m-b-15 m-r-15 text-primary"></i>
+                            <i class="fa font20 fa-calendar-o m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment->time}}</span>
                         </li>
                     @endif
                     @if($appointment->duration != '')
                         <li>
-                            <i class="fa font20 fa-money m-b-15 m-r-15 text-primary"></i>
+                            <i class="fa font20 fa-clock-o m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment->duration}}</span>
                         </li>
                     @endif
                     @if($appointment->date != '')
                         <li>
-                            <i class="fa font20 fa-money m-b-15 m-r-15 text-primary"></i>
+                            <i class="fa font20 fa-calendar m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment->date}}</span>
                         </li>
                     @endif

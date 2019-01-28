@@ -14,6 +14,7 @@ use FunctionUtils;
 use Validator;
 use Session;
 use Spatie\Newsletter\Newsletter;
+use Carbon\Carbon;
 
 class FrontEndController extends Controller
 {
@@ -165,31 +166,71 @@ class FrontEndController extends Controller
     }
 
     public function myAppointments(Request $request){
-        $appointments = \DB::table('schedule as s')
-                        ->join('users as patient','s.user_id','=','patient.id')
-                        ->join('providers as p','s.provider_id','=','p.id')
-                        ->join('users as doctor','p.id','=','doctor.id')
-                        ->join('demographics as demo','s.pid','=','demo.pid')
-                        ->select([
-                            \DB::raw('doctor.id AS doctor_id'),
-                            'doctor.displayname as name',
-                            'p.specialty as specialty',
-                            rsql("IFNULL(p.language,'english') as language"),
-                            'p.photo as photo',
-                            rsql("FROM_UNIXTIME(s.start) AS time"),
-                            rsql("FROM_UNIXTIME(s.start,'%Y-%m-%d') AS appointment_date"),
-                            rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
-                            's.title',
-                            's.visit_type',
-                            's.reason',
-                            's.notes',
-                            's.status',
-                            rsql('DATE(s.timestamp)  AS date'),
-                            'demo.address as city',
-                            'demo.email as email',
-                            rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,FALSE) AS call_enable")
-                        ])
-                        ->get();
+        $base_query = $this->allAppointments(); 
+
+        $provider = $request->get('provider');
+        if($provider){
+               
+        }
+        $date = $request->get('date');
+        if($date){
+            $date = Carbon::parse($date);
+            $start_of_day = $date->copy()->startOfDay();
+            $end_of_day = $date->copy()->endOfDay();
+            $sql = rsql("appointment_date BETWEEN $start_of_day AND $end_of_day");
+            $base_query = $base_query->havingRaw("appointment_date BETWEEN '$start_of_day' AND '$end_of_day'");
+        }
+
+        $appointments = $base_query->get();
         return view('FrontEnd.my-appointments',['appointments' => $appointments]);
+    }
+
+    public function allAppointmentsPanel(Request $request)
+    {   
+        $base_query = $this->allAppointments();
+        $provider = $request->get('provider');
+        if($provider){
+               
+        }
+        $date = $request->get('date');
+        if($date){
+            $date = Carbon::parse($date);
+            $start_of_day = $date->copy()->startOfDay();
+            $end_of_day = $date->copy()->endOfDay();
+            $sql = rsql("appointment_date BETWEEN $start_of_day AND $end_of_day");
+            $base_query = $base_query->havingRaw("appointment_date BETWEEN '$start_of_day' AND '$end_of_day'");
+        }
+
+        $appointments = $base_query->get();
+
+        return view('FrontEnd.all-appointments',['appointments' => $appointments])->render();
+    }
+
+    private function allAppointments()
+    {
+        return \DB::table('schedule as s')
+                ->join('users as patient','s.user_id','=','patient.id')
+                ->join('providers as p','s.provider_id','=','p.id')
+                ->join('users as doctor','p.id','=','doctor.id')
+                ->join('demographics as demo','s.pid','=','demo.pid')
+                ->select([
+                    \DB::raw('doctor.id AS doctor_id'),
+                    'doctor.displayname as name',
+                    'p.specialty as specialty',
+                    rsql("IFNULL(p.language,'english') as language"),
+                    'p.photo as photo',
+                    rsql("FROM_UNIXTIME(s.start) AS time"),
+                    rsql("FROM_UNIXTIME(s.start,'%Y-%m-%d') AS appointment_date"),
+                    rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
+                    's.title',
+                    's.visit_type',
+                    's.reason',
+                    's.notes',
+                    's.status',
+                    rsql('DATE(s.timestamp)  AS date'),
+                    'demo.address as city',
+                    'demo.email as email',
+                    rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,FALSE) AS call_enable")
+                ]);
     }
 }

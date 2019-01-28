@@ -28,6 +28,7 @@ Route::post('subscribe-newsletter', 'FrontEnd\FrontEndController@subscribeNewsle
 			->name('subscribe-newsletter');
 // My Appointments.
 Route::get('my-appointments', 'FrontEnd\FrontEndController@myAppointments')->name('my-appointments');
+Route::get('all-appointments', 'FrontEnd\FrontEndController@allAppointmentsPanel')->name('all-appointments');
 
 
 Route::any('patient_register', 'FrontEnd\LoginController@patient_register')->name('patient_register');

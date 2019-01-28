@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-8">
-                    <div id="doctors_list">
+                    <div id="all-appointments">
                         @include('FrontEnd.all-appointments')
                     </div>
                 </div>
@@ -178,7 +178,16 @@
                 showTodayButton: true,
                 format: 'MM/dd/YYYY'
             });
+            $('#datetimepicker').on('dp.change', function (e) {
+                $.get('{{ route('all-appointments') }}',{
+                    date : e.date.toString()                     
+                },function(response) {
+                    $('#all-appointments').html(response);
+                });
+            });
         });
+
+       
 
     </script>
 

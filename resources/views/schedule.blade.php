@@ -452,7 +452,66 @@
             $('#patient_name').html('');
             $('#event_delete').show();
             $('#eventModal').modal('hide');
+
+            let appt_id =  $("#event_id").val();
+            console.log(appt_id);
+
+            swal({
+                title : 'Appointment Date',
+                text  : 'Please provide the alternative date for Appointment.',
+                icon : "warning",
+                content: {
+                    element: "input",
+                    attributes: {
+                      placeholder: "Please provide date",
+                      type: "date",
+                      id : 'appointmentdatepicker'
+                    },
+                },
+                button : {
+                  text: "Send Message",
+                  value: true,
+                  visible: true,
+                  className: "btn-success",
+                  closeModal: true,
+                }
+            })
+            .then(date => {
+                
+
+                return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
+            })
+            .then(results => {
+                return results.json();
+            })
+            .then(json => {
+                const movie = json.results[0];
+
+                if (!movie) {
+                return swal("No movie was found!");
+                }
+
+                const name = movie.trackName;
+                const imageURL = movie.artworkUrl100;
+
+                swal({
+                title: "Top result:",
+                text: name,
+                icon: imageURL,
+                });
+            })
+            .catch(err => {
+                if (err) {
+                    swal("Oh noes!", "The AJAX request failed!", "error");
+                } else {
+                    swal.stopLoading();
+                    swal.close();
+                }
+            });
         });
+        $()
+
+
         $('#event_delete').css('cursor', 'pointer').click(function() {
             if(confirm('Are you sure you want to delete this appointment?')){
                 var appt_id = $("#event_id").val();

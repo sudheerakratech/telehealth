@@ -594,7 +594,7 @@
         </div>
     </div>
     @endif
-
+    <script src="{{asset('js/sweetalert.js')}}"></script>
     <!-- JavaScripts -->
     <script type="text/javascript">
         // Global variables

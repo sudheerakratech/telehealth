@@ -247,6 +247,7 @@
                             $('#event_form').clearForm();
                             $('#start_date').val(date.format('YYYY-MM-DD'));
                             $('#start_time').val(date.format('hh:mmA'));
+                            $('#end').val(date.format('hh:mmA'));
                             $('#event_id_div').hide();
                             $('#pid_div').hide();
                             $('#scheduleModal').modal('show');
@@ -257,6 +258,7 @@
                                 $('#event_form').clearForm();
                                 $('#start_date').val(date.format('YYYY-MM-DD'));
                                 $('#start_time').val(date.format('hh:mmA'));
+                                $('#end').val(date.format('hh:mmA'));
                                 if (noshdata.pid !== '') {
                                     $('#pid').val(noshdata.pid);
                                     $('#title').val(noshdata.pt_name);
@@ -292,7 +294,7 @@
                         $('#event_encounter').show();
                         $('#eventModal_title').text('{{ trans('nosh.edit_appointment') }}');
                         $('#patient_name').text(calEvent.title);
-                        $('#end').val('');
+                        $('#end').val(calEvent.end.format('hh:mmA'));
                         $('#end').prop('required', false);
                         $('#visit_type').prop('required', true);
                         $('#visit_type').focus();

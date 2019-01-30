@@ -57,7 +57,9 @@
                     <div class="panel-heading text-center" id="register_title">Patient Registration</div>
                     <div class="panel-body" style="min-height: 440px;">                        
                         <div class="col-md-12">
-                            <form method="POST" id="register_frm" action="{{route('register')}}">
+                            <form method="POST" id="register_frm" action="{{route('register')}}" 
+                                enctype="multipart/form-data"
+                            >
                                 {{ csrf_field() }}
                                 <input type="hidden" name="practice_id" id="register_practice_id" value="1">
                                 <input type="hidden" name="group_id" id="register_group_id" value="100">
@@ -68,7 +70,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">
-                                                        Browse… <input type="file" id="imgInp">
+                                                        Browse… <input type="file" name="profile_image" id="imgInp">
                                                     </span>
                                                 </span>
                                                 <input type="text" class="form-control" readonly>
@@ -205,7 +207,7 @@
                                                 <option value=""{{ old('specialty') }}></option>
                                                 @if(isset($specialties))
                                                     @foreach($specialties as $specialty)
-                                                        <option value=""{{ $specialty }}>{{ $specialty }}</option>
+                                                        <option value="{{ $specialty }}">{{ $specialty }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>

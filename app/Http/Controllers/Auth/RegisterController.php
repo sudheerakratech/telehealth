@@ -76,16 +76,15 @@ class RegisterController extends Controller
             $rules["phone_number"] = "required|regex:/^[0-9 +]+$/u";
             /*$rules["country"] = "required|max:100";*/
             $rules["city"] = "required|max:100";
-            /*$rules["photo"] = "required|image|mimes:jpg,jpeg,png|max:5120";*/
+            $rules["profile_image"] = "required|image|mimes:jpg,jpeg,png,gif|max:5120";
             $rules["specialty"] = "required|max:255";
 
             $rules_messages["phone_number.regex"] = "Please enter valid phone no";
-            /*$rules_msg["photo.required"] = "Please upload job image";
-            $rules_msg["photo.image"] = "Please upload only image";
-            $rules_msg["photo.mimes"] = "Please upload only jpg, jpeg, png image";
-            $rules_msg["photo.max"] = "Please upload image less than 5 MB";*/
+            $rules_msg["profile_image.required"] = "Please upload job image";
+            $rules_msg["profile_image.image"] = "Please upload only image";
+            $rules_msg["profile_image.mimes"] = "Please upload only jpg, jpeg, png image";
+            $rules_msg["profile_image.max"] = "Please upload image less than 5 MB";
         }       
-
         return Validator::make($data, $rules, $rules_msg);       
     }
 
@@ -96,7 +95,10 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    { 
+        
+
+
         $user = User::create([
             "firstname" => $data['first_name'],
             "lastname" => $data['last_name'],
@@ -159,6 +161,9 @@ class RegisterController extends Controller
             }
 
             if($user->group_id == '2') {
+                $profile_image = $data['profile_image'];
+                $extension = $profile_image->extension();
+                $path = \Storage::putFileAs('profile_images', $profile_image, $data['user_name'].'.'.$extension);
 
                 $providers = DB::table('providers')->insert([
                     "id" => $user->id,
@@ -167,12 +172,11 @@ class RegisterController extends Controller
                     "Mobile" => $data['phone_number'],                    
                     /*"Country" => $data['country'],*/
                     "city" => $data['city'],
-                    /*"photo" => $data['photo'],*/
+                    "photo" => $path,
                     "specialty" => $data['specialty'],
                     "practice_id" => $practice->practice_id
                 ]);                
             }
-
             return $user;
         }
         return redirect()->intended('register');

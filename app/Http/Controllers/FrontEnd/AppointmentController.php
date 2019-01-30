@@ -35,6 +35,7 @@ use Auth;
 use Session;
 use URL;
 use App\User;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller {
 
@@ -759,6 +760,92 @@ class AppointmentController extends Controller {
             Session::put('message_action', 'Encounter created.');
             return redirect()->route('superquery_patient', ['encounter', $query1->pid, $eid]);
         }
+    }
+
+    public function patientSchedule(Request $request)
+     {
+        $start = strtotime($request->input('start')) ?: Carbon::now()->startOfDay()->timestamp;
+        $end   = strtotime($request->input('end')) ?: Carbon::now()->endOfDay()->timestamp;
+        $date = $request->get('date');
+        if ($date) {
+            $date = Carbon::parse($date);
+            $start = $date->copy()->startOfDay()->timestamp;
+            $end = $date->copy()->endOfDay()->timestamp;
+        }
+        $user  = \Auth::user();
+        $id =  $user ? $user->id : '';
+        $events = [];
+        $query = DB::table('schedule as s')  
+                    ->leftjoin('users as patient','s.user_id','=','patient.id')
+                    ->leftjoin('providers as p','s.provider_id','=','p.id')
+                    ->leftjoin('users as doctor','p.id','=','doctor.id')
+                    ->leftjoin('demographics as demo','s.pid','=','demo.pid')
+                    ->where('s.user_id', '=', $id)
+                    ->whereBetween('s.start', [$start, $end])
+                    ->select([
+                        's.*',
+                        'doctor.displayname as name',
+                        'p.specialty as specialty',
+                        rsql("IFNULL(p.language,'english') as language"),
+                        'p.photo as photo',
+                        'demo.address as city',
+                        rsql("FROM_UNIXTIME(s.start) AS time"),
+                        rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
+                        rsql('DATE(s.timestamp)  AS date'),
+                        rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,FALSE) AS call_enable")
+                    ])
+                    ->get();
+        if ($query) {
+            foreach ($query as $row) {
+                if ($row->visit_type != '') {
+                    $row1 = DB::table('calendar')
+                        ->select('classname')
+                        ->where('visit_type', '=', $row->visit_type)
+                        ->where('practice_id', '=', Session::get('practice_id'))
+                        ->first();
+                    $classname = $row1->classname;
+                } else {
+                    $classname = 'colorblack';
+                }
+                if ($row->pid == '0') {
+                    $pid = '';
+                } else {
+                    $pid = $row->pid;
+                }
+                if ($row->timestamp == '0000-00-00 00:00:00' || $row->user_id == '') {
+                    $timestamp = '';
+                } else {
+                    $user_row = DB::table('users')->where('id', '=', $row->user_id)->first();
+                    $timestamp = 'Appointment added by ' . $user_row->displayname . ' on ' . $row->timestamp;
+                }
+                $row_start = date('c', $row->start);
+                $row_end = date('c', $row->end);
+                $event = [
+                    'id' => $row->appt_id,
+                    'start' => $row_start,
+                    'end' => $row_end,
+                    'visit_type' => $row->visit_type,
+                    'className' => $classname,
+                    'doctor_id' => $row->provider_id,
+                    'pid'=> $pid,
+                    'timestamp' => $timestamp,
+                    'notes' =>  $row->notes,
+                    'reason' =>  $row->reason,
+                    'name' =>  $row->name,
+                    'specialty' =>  $row->specialty,
+                    'language' =>  $row->language,
+                    'photo' =>  $row->photo,
+                    'city' =>  $row->city,
+                    'time' =>  $row->time,
+                    'duration' =>  $row->duration,
+                    'date' =>  $row->date,
+                    'call_enable' =>  $row->call_enable,
+                ];
+             
+                $events[] = $event;
+            }
+        }
+        return view('FrontEnd.all-appointments',['appointments' => $events]);
     }
 
 }

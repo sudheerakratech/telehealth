@@ -217,7 +217,9 @@ class AjaxScheduleController extends Controller {
         $end = strtotime($request->input('end'));
         $id = Session::get('provider_id');
         $events = [];
-        $query = DB::table('schedule')->where('provider_id', '=', $id)->whereBetween('start', [$start, $end])->get();
+        $query = DB::table('schedule')
+                    ->where('provider_id', '=', $id)
+                    ->whereBetween('start', [$start, $end])->get();
         if ($query) {
             foreach ($query as $row) {
                 if ($row->visit_type != '') {

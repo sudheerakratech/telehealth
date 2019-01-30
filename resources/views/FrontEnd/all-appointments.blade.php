@@ -12,9 +12,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-xs-3 m-t-20">
-                        @if($appointment['photo'] != '' && file_exists(public_path('uploads/profile/'.$appointment['photo'])))
-                            <img src="{{asset('uploads/profile/'.${appointment['photo']})}}" alt="{{$appointment[
-                                'name']}}" class="img-responsive img-circle img_border">
+                        @if($appointment['photo'] == '' && file_exists(public_path('uploads/profile/'.$appointment['photo'])))
+                            @php  $url =  'uploads/profile/'. "${appointment['photo']}" @endphp 
+                            <img src="{{asset($url)}}" alt="{{$appointment['name']}}" class="img-responsive img-circle img_border">
                         @else
                             <img src="{{asset('images/no_mdoctor.png')}}" alt="{{$appointment['name']}}" class="img-responsive img-circle img_border">
                         @endif

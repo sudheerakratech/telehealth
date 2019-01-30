@@ -5603,7 +5603,9 @@ class CoreController extends Controller
         }
         if ($provider_id !== '') {
             // Show default schedule
-            $practice = DB::table('practiceinfo')->where('practice_id', '=', Session::get('practice_id'))->first();
+            $practice = DB::table('practiceinfo')
+                                ->where('practice_id', '=', Session::get('practice_id'))
+                                ->first();  
             if ($practice->weekends == '1') {
                 $data['weekends'] = 'true';
             } else {
@@ -5649,6 +5651,7 @@ class CoreController extends Controller
         $data['back'] .= '<ul class="dropdown-menu"><li><a href="#">Action</a></li><li><a href="#">Another action</a></li><li><a href="#">Something else here</a></li><li role="separator" class="divider"></li><li><a href="#">Separated link</a></li></ul></div>';
         $data['assets_js'] = $this->assets_js('schedule');
         $data['assets_css'] = $this->assets_css('schedule');
+
         return view('schedule', $data);
     }
 

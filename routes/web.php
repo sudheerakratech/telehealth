@@ -30,6 +30,10 @@ Route::post('subscribe-newsletter', 'FrontEnd\FrontEndController@subscribeNewsle
 Route::get('my-appointments', 'FrontEnd\FrontEndController@myAppointments')->name('my-appointments');
 Route::get('all-appointments', 'FrontEnd\FrontEndController@allAppointmentsPanel')->name('all-appointments');
 
+Route::get('patient-schedule', 'FrontEnd\AppointmentController@patientSchedule')->name('patient-schedule');
+
+
+
 
 Route::any('patient_register', 'FrontEnd\LoginController@patient_register')->name('patient_register');
 
@@ -58,6 +62,7 @@ Route::post('drag_event1', ['as' => 'drag_event1', 'uses' => 'FrontEnd\Appointme
 Route::post('edit_event1', ['as' => 'edit_event1', 'uses' => 'FrontEnd\AppointmentController@edit_event1']);
 Route::get('event_encounter1/{appt_id}', ['as' => 'event_encounter1', 'uses' => 'FrontEnd\AppointmentController@event_encounter1']);
 Route::get('provider_schedule1', ['as' => 'provider_schedule1', 'uses' => 'FrontEnd\AppointmentController@provider_schedule1']);
+
 
 
 // payment

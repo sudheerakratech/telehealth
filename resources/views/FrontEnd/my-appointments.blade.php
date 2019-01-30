@@ -15,7 +15,6 @@
             </ul>
         </div>
     </div>
-<?php $provider_list = []; ?>
     <div class="portfolio">
         <div class="container">
             <div class="row">
@@ -39,7 +38,7 @@
                                      <label for="provider_list" class="col-md-4 control-label">Provider</label>
                                      <div class="col-md-8">
                                          <select id="provider_list" class="form-control" name="provider_list" value="@if (isset($provider_id)){{ $provider_id }}@endif">
-                                             {{-- {!! $provider_list !!} --}}
+                                             {!! $provider_list !!}
                                          </select>
                                      </div>
                                  </div>
@@ -54,7 +53,7 @@
                 </div>
                 <div class="col-md-9 col-sm-8">
                     <div id="all-appointments">
-                        @include('FrontEnd.all-appointments')
+                        
                     </div>
                 </div>
             </div>
@@ -179,12 +178,18 @@
                 format: 'MM/dd/YYYY'
             });
             $('#datetimepicker').on('dp.change', function (e) {
-                $.get('{{ route('all-appointments') }}',{
-                    date : e.date.toString()                     
+                $.get('patient-schedule',{
+                     date : e.date.toString()          
                 },function(response) {
                     $('#all-appointments').html(response);
                 });
             });
+
+            $.get('patient-schedule',{
+
+            },function(response){
+                 $('#all-appointments').html(response);
+            })
         });
 
        

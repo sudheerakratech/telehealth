@@ -1,5 +1,5 @@
-@if($appointments->count() > 0)
-    @foreach($appointments as $key => $appointment)
+@if(is_array($appointments) && count($appointments))
+    @foreach($appointments as $appointment)
         <div class="row">
             <div class="col-md-offset-1 col-md-7 col-sm-7 doctors" style="margin-right: 5px;">
                 <div class="row">
@@ -12,31 +12,32 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 col-xs-3 m-t-20">
-                        @if($appointment->photo != '' && file_exists(public_path('uploads/profile/'.$appointment->photo)))
-                            <img src="{{asset('uploads/profile/'.$appointment->photo)}}" alt="{{$appointment->name}}" class="img-responsive img-circle img_border">
+                        @if($appointment['photo'] != '' && file_exists(public_path('uploads/profile/'.$appointment['photo'])))
+                            <img src="{{asset('uploads/profile/'.${appointment['photo']})}}" alt="{{$appointment[
+                                'name']}}" class="img-responsive img-circle img_border">
                         @else
-                            <img src="{{asset('images/no_mdoctor.png')}}" alt="{{$appointment->name}}" class="img-responsive img-circle img_border">
+                            <img src="{{asset('images/no_mdoctor.png')}}" alt="{{$appointment['name']}}" class="img-responsive img-circle img_border">
                         @endif
                     </div>
                     <div class="col-md-9 col-xs-9">
-                        <h4>Dr. {{ucfirst($appointment->name)}} </h4>
-                        <p>{{str_replace(',',' / ',$appointment->specialty)}}</p>
-                        <p>{{ $appointment->visit_type }}</p>
-                        @if($appointment->notes != '')
+                        <h4>Dr. {{ucfirst($appointment['name'])}} </h4>
+                        <p>{{str_replace(',',' / ',$appointment['specialty'])}}</p>
+                        <p>{{ $appointment['visit_type'] }}</p>
+                        @if($appointment['notes'] != '')
                             <p class="text-justify small">
                                 <i class="fa fa-sticky-note font20 text-primary"></i>
                                 <strong>Notes : </strong>
-                                {{$appointment->notes}}
+                                {{$appointment['notes']}}
                             </p>
-                            {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor->description}}</p> --}}
+                            {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor['description']}}</p> --}}
                         @endif
-                        @if($appointment->reason != '')
+                        @if($appointment['reason'] != '')
                             <p class="text-justify small">
                                 <i class="fa fa-tasks font20 text-primary"></i>
                                 <strong>Reason : </strong>
-                                {{$appointment->reason}}
+                                {{$appointment['reason']}}
                             </p>
-                            {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor->description}}</p> --}}
+                            {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor['description']}}</p> --}}
                         @endif
                         {{-- <div class="row doctors_links">
                             <ul>
@@ -50,35 +51,35 @@
             </div>
             <div class="col-md-3 col-sm-5 doc_feedback collapse navbar-collapse" id="location2" style="margin-left: 5px;">
                 <ul class="m-t-10 appointment-info-list">
-                    @if($appointment->city != '')
+                    @if($appointment['city'] != '')
                         <li>
                             <i class="fa font20 fa-home m-b-15 m-r-15 text-primary"></i>
-                            <span class="font15"> {{$appointment->city}}</span>
+                            <span class="font15"> {{$appointment['city']}}</span>
                         </li>
                     @endif
 
-                    @if($appointment->language != '')
+                    @if($appointment['language'] != '')
                         <li>
                             <i class="fa font20 fa fa-language m-b-15 m-r-15 text-primary"></i>
-                            <span class=" font15"> {{$appointment->language}}</span>
+                            <span class=" font15"> {{$appointment['language']}}</span>
                         </li>
                     @endif
-                    @if($appointment->time != '')
+                    @if($appointment['time'] != '')
                         <li>
                             <i class="fa font20 fa-calendar-o m-b-15 m-r-15 text-primary"></i>
-                            <span class=" font15"> {{$appointment->time}}</span>
+                            <span class=" font15"> {{$appointment['time']}}</span>
                         </li>
                     @endif
-                    @if($appointment->duration != '')
+                    @if($appointment['duration'] != '')
                         <li>
                             <i class="fa font20 fa-clock-o m-b-15 m-r-15 text-primary"></i>
-                            <span class=" font15"> {{$appointment->duration}}</span>
+                            <span class=" font15"> {{$appointment['duration']}}</span>
                         </li>
                     @endif
-                    @if($appointment->date != '')
+                    @if($appointment['date'] != '')
                         <li>
                             <i class="fa font20 fa-calendar m-b-15 m-r-15 text-primary"></i>
-                            <span class=" font15"> {{$appointment->date}}</span>
+                            <span class=" font15"> {{$appointment['date']}}</span>
                         </li>
                     @endif
 
@@ -86,11 +87,11 @@
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
-                    <a href="{{route('call_conference',['room' => mt_rand(00000000,99999999),'uname' => Auth::user()->firstname,'pname' => $appointment->name])}}" class="btn btn-success" target="_blank"
-                        {{ $appointment->call_enable ? '' : 'disabled' }} >
+                    <a href="{{route('call_conference',['room' => mt_rand(00000000,99999999),'uname' => Auth::user()['firstname'],'pname' => $appointment['name']])}}" class="btn btn-success" target="_blank"
+                        {{ $appointment['call_enable'] ? '' : 'disabled' }} >
                         Video Call
                     </a>
-                    <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0'])}}" data-provider_id="{{ $appointment->doctor_id }}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>
+                    <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0'])}}" data-provider_id="{{ $appointment['doctor_id'] }}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>
 
                 @else
                     <a href="{{route('login')}}" class="btn btn-primary" disabled>Video Call</a>
@@ -102,7 +103,7 @@
     @endforeach
 
     {{--<div class="row">--}}
-        {{--<div class="col-md-12 text-center">{{ $doctors->links() }}</div>--}}
+        {{--<div class="col-md-12 text-center">{{ $doctors['links']() }}</div>--}}
     {{--</div>--}}
 
 @else

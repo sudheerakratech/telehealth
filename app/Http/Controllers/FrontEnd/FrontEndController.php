@@ -182,7 +182,14 @@ class FrontEndController extends Controller
         }
 
         $appointments = $base_query->get();
-        return view('FrontEnd.my-appointments',['appointments' => $appointments]);
+        $provider_arr = $this->array_providers();
+
+        $provider_list = '<option value="">Select a provider</option>';
+        foreach ($provider_arr as $provider_id_key => $provider_name) {
+            $provider_list .= '<option value="' . $provider_id_key . '">' . $provider_name . '</option>';
+        }
+
+        return view('FrontEnd.my-appointments',['appointments' => $appointments,'provider_list' => $provider_list]);
     }
 
     public function allAppointmentsPanel(Request $request)

@@ -477,9 +477,26 @@
                 }
             })
             .then(date => {
-                
+                return fetch('core_action/messaging/save/0/message_id',{
+                    method : 'post',
+                    body : {
+                        "message_id" : "",
+                        "pid" : "",
+                        "practice_id" : "1",
+                        "message_from" : "10",
+                        "t_messages_id" : "",
+                        "subject" : "Theh",
+                        "patient_name" : "",
+                        "message_to" :  [
+                             "Prem Ananth, Dr. (3)"
+                        ],
+                        "cc" : [
+                         "Prem Ananth, Dr. (3)",
+                        ],
+                        "body" : "fjfpjf",
+                    }
+                });
 
-                return fetch(`https://itunes.apple.com/search?term=${name}&entity=movie`);
             })
             .then(results => {
                 return results.json();

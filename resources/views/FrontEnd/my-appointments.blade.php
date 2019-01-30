@@ -37,7 +37,7 @@
                                  <div class="form-group">
                                      <label for="provider_list" class="col-md-4 control-label">Provider</label>
                                      <div class="col-md-8">
-                                         <select id="provider_list" class="form-control" name="provider_list" value="@if (isset($provider_id)){{ $provider_id }}@endif">
+                                         <select id="provider_list" class="form-control" name="provider_list" 
                                              {!! $provider_list !!}
                                          </select>
                                      </div>
@@ -185,11 +185,18 @@
                 });
             });
 
-            $.get('patient-schedule',{
-
-            },function(response){
+            $.get('patient-schedule',{},function(response){
                  $('#all-appointments').html(response);
             })
+
+            $(document).on('change','#provider_list',function(e) {
+                var id = $('#provider_list').val();
+                $.get('patient-schedule',{
+                    provider_id : id
+                },function(response){
+                     $('#all-appointments').html(response);
+                });
+            });
         });
 
        

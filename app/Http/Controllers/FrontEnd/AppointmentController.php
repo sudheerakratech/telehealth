@@ -763,26 +763,31 @@ class AppointmentController extends Controller {
     }
 
     public function patientSchedule(Request $request)
-     {
-        $start = strtotime($request->input('start')) ?: Carbon::now()->startOfDay()->timestamp;
-        $end   = strtotime($request->input('end')) ?: Carbon::now()->endOfDay()->timestamp;
+    {
+        $user  = \Auth::user();
+        $id =  $user ? $user->id : '';
+        $events = [];
+        $base_query = DB::table('schedule as s')  
+                    ->leftjoin('users as patient','s.user_id','=','patient.id')
+                    ->leftjoin('providers as p','s.provider_id','=','p.id')
+                    ->leftjoin('users as doctor','p.id','=','doctor.id')
+                    ->leftjoin('demographics as demo','s.pid','=','demo.pid')
+                    ->where('s.user_id', '=', $id);
+
         $date = $request->get('date');
         if ($date) {
             $date = Carbon::parse($date);
             $start = $date->copy()->startOfDay()->timestamp;
             $end = $date->copy()->endOfDay()->timestamp;
+            $base_query = $base_query->whereBetween('s.start', [$start, $end]);
         }
-        $user  = \Auth::user();
-        $id =  $user ? $user->id : '';
-        $events = [];
-        $query = DB::table('schedule as s')  
-                    ->leftjoin('users as patient','s.user_id','=','patient.id')
-                    ->leftjoin('providers as p','s.provider_id','=','p.id')
-                    ->leftjoin('users as doctor','p.id','=','doctor.id')
-                    ->leftjoin('demographics as demo','s.pid','=','demo.pid')
-                    ->where('s.user_id', '=', $id)
-                    ->whereBetween('s.start', [$start, $end])
-                    ->select([
+
+        $provider_id = $request->get('provider_id');
+        if($provider_id){
+            $base_query = $base_query->where('s.provider_id','=',$provider_id);
+        }
+
+        $query = $base_query->select([
                         's.*',
                         'doctor.displayname as name',
                         'p.specialty as specialty',
@@ -793,8 +798,8 @@ class AppointmentController extends Controller {
                         rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                         rsql('DATE(s.timestamp)  AS date'),
                         rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,FALSE) AS call_enable")
-                    ])
-                    ->get();
+                    ])->get();
+
         if ($query) {
             foreach ($query as $row) {
                 if ($row->visit_type != '') {

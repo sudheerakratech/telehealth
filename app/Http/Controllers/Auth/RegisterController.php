@@ -163,7 +163,8 @@ class RegisterController extends Controller
             if($user->group_id == '2') {
                 $profile_image = $data['profile_image'];
                 $extension = $profile_image->extension();
-                $path = \Storage::putFileAs('profile_images', $profile_image, $data['user_name'].'.'.$extension);
+                $file_name = $data['user_name'].'.'.$extension;
+                $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
 
                 $providers = DB::table('providers')->insert([
                     "id" => $user->id,
@@ -172,7 +173,7 @@ class RegisterController extends Controller
                     "Mobile" => $data['phone_number'],                    
                     /*"Country" => $data['country'],*/
                     "city" => $data['city'],
-                    "photo" => $path,
+                    "photo" => $file_name,
                     "specialty" => $data['specialty'],
                     "practice_id" => $practice->practice_id
                 ]);                

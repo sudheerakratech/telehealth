@@ -853,4 +853,34 @@ class AppointmentController extends Controller {
         return view('FrontEnd.all-appointments',['appointments' => $events]);
     }
 
+    public function cancelAppointment (Request $request){
+        $appt_id = $request->get('appt_id');
+        if ($appt_id) {
+            \DB::table('schedule')
+                ->where('appt_id',$appt_id)
+                ->update(['status' => 'cancel']);
+            
+        }
+        $message = $request->get('message');
+        \DB::table('messaging')->insert($message);
+        /*
+            //message_id   
+            //pid          
+            //message_to   
+            message_from 
+            date         
+            //cc           
+            //subject      
+            //body         
+            //patient_name 
+            status       
+            //t_messages_id
+            //mailbox      
+            practice_id  
+            read         
+            documents_id 
+        */
+        return $request->all();
+    }
+
 }

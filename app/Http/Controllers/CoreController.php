@@ -525,6 +525,7 @@ class CoreController extends Controller
 
     public function core_action(Request $request, $table, $action, $id, $index, $subtype='')
     {
+        dd($request->all(), $table, $action, $id, $index, $subtype);
         $date_convert_array = [
             'imm_expiration',
             'date_purchase',
@@ -656,6 +657,7 @@ class CoreController extends Controller
             }
         }
         if ($table == 'messaging') {
+
             if (isset($data['patient_name'])) {
                 if ($data['patient_name'] !== '') {
                     $data['subject'] = $data['subject'] . ' [RE: ' . $data['patient_name'] . ']';
@@ -1032,7 +1034,7 @@ class CoreController extends Controller
             }
             if ($subtype == 'billing') {
                 $data['panel_header'] = 'Billing';
-            }
+        }
             if ($subtype == 'extensions') {
                 $data['panel_header'] = 'Extensions';
             }
@@ -4236,6 +4238,7 @@ class CoreController extends Controller
         $dropdown_array['items'] = $items;
         $data['panel_dropdown'] = $this->dropdown_build($dropdown_array);
         $list_array = [];
+
         if ($type == 'inbox') {
             $query = DB::table('messaging')->where('mailbox', '=', Session::get('user_id'))->orderBy('date', 'desc')->get();
             $columns = Schema::getColumnListing('messaging');

@@ -479,4 +479,6 @@ class AjaxScheduleController extends Controller {
         }
         return $events;
     }
+
+    
 }

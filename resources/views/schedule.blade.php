@@ -75,7 +75,8 @@
                             <div class="list-group" id="search_patient_appointment_results"></div>
                         </div>
                     @endif
-                    <form id="event_form" class="form-horizontal form" role="form" method="POST" action="{{ url('edit_event') }}">
+                    <form id="event_form" class="form-horizontal form" role="form" method="POST" action="{{ url('edit_event') }}"
+                    >
                         <input type="hidden" name="pid" id="pid">
                         <input type="hidden" name="event_id" id="event_id">
                         <input type="hidden" name="title" id="title">
@@ -448,14 +449,22 @@
             window.location = noshdata.event_encounter + '/' + appt_id;
         });
         $('#event_cancel').css('cursor', 'pointer').click(function() {
+            let $appt_form = $('#event_form');
+            let appt_id = $appt_form.find("#event_id").val();
+            let provider_id = $appt_form.find("#provider_id").val();
+            let title = $appt_form.find("#title").val();
+            let pid = $appt_form.find("#pid").val();
+            let patient_name = $appt_form.find("#patient_name").text();
+            let status = $appt_form.find("#status").val();
+
+            console.log(patient_name);
+
+
             $('#event_form').clearForm();
             $('#patient_name').html('');
             $('#event_delete').show();
             $('#eventModal').modal('hide');
-
-            let appt_id =  $("#event_id").val();
-            console.log(appt_id);
-
+          
             swal({
                 title : 'Appointment Date',
                 text  : 'Please provide the alternative date for Appointment.',
@@ -476,62 +485,37 @@
                   closeModal: true,
                 }
             })
-            .then(date => {
-                return fetch('core_action/messaging/save/0/message_id',{
-                    method : 'post',
-                    body : {
-                        "message_id" : "",
-                        "pid" : "",
-                        "practice_id" : "1",
-                        "message_from" : "10",
-                        "t_messages_id" : "",
-                        "subject" : "Theh",
-                        "patient_name" : "",
-                        "message_to" :  [
-                             "Prem Ananth, Dr. (3)"
-                        ],
-                        "cc" : [
-                         "Prem Ananth, Dr. (3)",
-                        ],
-                        "body" : "fjfpjf",
-                    }
+            .then((date) => {
+               $.post('{{ route('cancel-appointment') }}',{
+                        date : date,
+                        appt_id : appt_id,
+                        message : {
+                            "status" : 'sent',
+                            "message_id" : "",
+                            "pid" : pid,
+                            "practice_id" : "1",
+                            "t_messages_id" : "",
+                            "subject" : "Appointment Cancel",
+                            "patient_name" : patient_name,
+                            "message_to" :  patient_name,
+                            "cc" : patient_name,
+                            "mailbox" : pid,
+                            "body" : `The Doctor cannot available on this date, He is available on this date   ${date}`,
+                            "date" : date,
+                            "message_from" : '{{ \Auth::user()->id }}',
+                        }
+                    },function(response){
+                        console.log(response);
                 });
 
-            })
-            .then(results => {
-                return results.json();
-            })
-            .then(json => {
-                const movie = json.results[0];
-
-                if (!movie) {
-                return swal("No movie was found!");
-                }
-
-                const name = movie.trackName;
-                const imageURL = movie.artworkUrl100;
-
-                swal({
-                title: "Top result:",
-                text: name,
-                icon: imageURL,
-                });
-            })
-            .catch(err => {
-                if (err) {
-                    swal("Oh noes!", "The AJAX request failed!", "error");
-                } else {
-                    swal.stopLoading();
-                    swal.close();
-                }
             });
         });
-        $()
 
 
         $('#event_delete').css('cursor', 'pointer').click(function() {
             if(confirm('Are you sure you want to delete this appointment?')){
-                var appt_id = $("#event_id").val();
+               
+                return;
                 $.ajax({
                     type: "POST",
                     url: noshdata.delete_event,

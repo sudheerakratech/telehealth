@@ -4250,6 +4250,9 @@ Timur-ul-Hasan
     align-content:right;
 }
 
+.appointment-period-tabs li{
+    width: 33% !important;
+}
 
 
 /* 

@@ -764,6 +764,12 @@ class AppointmentController extends Controller {
 
     public function patientSchedule(Request $request)
     {
+        $now = Carbon::now();
+
+
+        $start = $now->copy()->startOfDay()->timestamp;
+        $end = $now->copy()->endOfDay()->timestamp;
+
         $user  = \Auth::user();
         $id =  $user ? $user->id : '';
         $events = [];
@@ -774,18 +780,41 @@ class AppointmentController extends Controller {
                     ->leftjoin('demographics as demo','s.pid','=','demo.pid')
                     ->where('s.user_id', '=', $id);
 
+        $period = $request->get('period');
+
+
+        if($period){
+            switch ($period) {
+                case 'today':
+                    break;
+                case 'past':
+                    $end = $now->copy()->startOfDay()->timestamp;
+                    $start = $now->copy()->subYear()->timestamp;
+                    break;
+                case 'future':
+                    $start = $now->copy()->endOfDay()->timestamp;
+                    $end = $now->copy()->addYear()->timestamp;
+
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+
         $date = $request->get('date');
         if ($date) {
             $date = Carbon::parse($date);
             $start = $date->copy()->startOfDay()->timestamp;
             $end = $date->copy()->endOfDay()->timestamp;
-            $base_query = $base_query->whereBetween('s.start', [$start, $end]);
         }
 
         $provider_id = $request->get('provider_id');
         if($provider_id){
             $base_query = $base_query->where('s.provider_id','=',$provider_id);
         }
+        $base_query = $base_query->whereBetween('s.start', [$start, $end]);
 
         $query = $base_query->select([
                         's.*',

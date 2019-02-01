@@ -52,6 +52,23 @@
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-8">
+                    <ul class="nav nav-tabs" class="appointment-periods-tabs">
+                      <li style="width: 33%">
+                        <a href="javascript:;" data-period='past' class="change-appointment-period">
+                            Past Appointments
+                        </a>
+                        </li>
+                      <li style="width: 33%" class="active">
+                        <a href="javascript:;" data-period='today' class="change-appointment-period">
+                            Today Appointments
+                        </a>
+                      </li>
+                      <li style="width: 33%">
+                            <a href="javascript:;" data-period='future' class="change-appointment-period">
+                            Future Appointments
+                            </a>
+                      </li>
+                    </ul>
                     <div id="all-appointments">
                         
                     </div>
@@ -177,6 +194,11 @@
                 showTodayButton: true,
                 format: 'MM/dd/YYYY'
             });
+
+            $.get('patient-schedule',{},function(response){
+                 $('#all-appointments').html(response);
+            })
+
             $('#datetimepicker').on('dp.change', function (e) {
                 $.get('patient-schedule',{
                      date : e.date.toString()          
@@ -185,9 +207,7 @@
                 });
             });
 
-            $.get('patient-schedule',{},function(response){
-                 $('#all-appointments').html(response);
-            })
+          
 
             $(document).on('change','#provider_list',function(e) {
                 var id = $('#provider_list').val();
@@ -197,6 +217,20 @@
                      $('#all-appointments').html(response);
                 });
             });
+
+            $(document).on('click','.change-appointment-period',function(e){
+                e.preventDefault();
+                let period = $(this).data('period');
+                let parent = $(this).parent();
+                parent.siblings().removeClass('active');
+                parent.addClass('active'); 
+
+                $.get('patient-schedule',{
+                    period
+                },function(response){
+                     $('#all-appointments').html(response);
+                });
+            })
         });
 
        

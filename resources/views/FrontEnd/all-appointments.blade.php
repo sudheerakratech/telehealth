@@ -20,9 +20,15 @@
                         @endif
                     </div>
                     <div class="col-md-9 col-xs-9">
-                        <h4>Dr. {{ucfirst($appointment['name'])}} </h4>
+                        @if(\Auth::user()->group_id == 100)
+                               <h4>Dr. {{ucfirst($appointment['name'])}} </h4>
+                                <p>{{str_replace(',',' / ',$appointment['specialty'])}}</p>
+                        @elseif(\Auth::user()->group_id == 2 )
+                               <h4>Patient : {{ucfirst($appointment['patient_name'])}} </h4>
+                        @endif
                         <p>{{str_replace(',',' / ',$appointment['specialty'])}}</p>
-                        <p>{{ $appointment['visit_type'] }}</p>
+                        <p><i class="fa fa-hospital-o font20 text-primary"></i>
+                            <strong>Type : </strong> {{ $appointment['visit_type'] }}</p>
                         @if($appointment['notes'] != '')
                             <p class="text-justify small">
                                 <i class="fa fa-sticky-note font20 text-primary"></i>

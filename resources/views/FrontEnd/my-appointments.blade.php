@@ -69,6 +69,7 @@
                             </a>
                       </li>
                     </ul>
+                    <br>
                     <div id="all-appointments">
                         
                     </div>

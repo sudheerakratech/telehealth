@@ -764,24 +764,27 @@ class AppointmentController extends Controller {
 
     public function patientSchedule(Request $request)
     {
-        $now = Carbon::now();
-
-
-        $start = $now->copy()->startOfDay()->timestamp;
-        $end = $now->copy()->endOfDay()->timestamp;
-
         $user  = \Auth::user();
+        if(!$user) return '';
         $id =  $user ? $user->id : '';
         $events = [];
         $base_query = DB::table('schedule as s')  
-                    ->leftjoin('users as patient','s.user_id','=','patient.id')
-                    ->leftjoin('providers as p','s.provider_id','=','p.id')
-                    ->leftjoin('users as doctor','p.id','=','doctor.id')
-                    ->leftjoin('demographics as demo','s.pid','=','demo.pid')
-                    ->where('s.user_id', '=', $id);
+            ->leftjoin('users as patient','s.user_id','=','patient.id')
+            ->leftjoin('providers as p','s.provider_id','=','p.id')
+            ->leftjoin('users as doctor','p.id','=','doctor.id')
+            ->leftjoin('demographics as demo','s.pid','=','demo.pid');
+
+        if($user->group_id == 100){
+            $base_query = $base_query->where('s.user_id', '=', $id);
+        }else if ($user->group_id == 2) {
+            $base_query = $base_query->where('s.provider_id', '=', $id);
+        }
+                    
+        $now = Carbon::now();
+        $start = $now->copy()->startOfDay()->timestamp;
+        $end = $now->copy()->endOfDay()->timestamp;
 
         $period = $request->get('period');
-
 
         if($period){
             switch ($period) {
@@ -802,7 +805,6 @@ class AppointmentController extends Controller {
 
         }
 
-
         $date = $request->get('date');
         if ($date) {
             $date = Carbon::parse($date);
@@ -819,6 +821,7 @@ class AppointmentController extends Controller {
         $query = $base_query->select([
                         's.*',
                         'doctor.displayname as name',
+                        rsql("CONCAT(patient.firstname,' ',patient.lastname) AS patient_name"),
                         'p.specialty as specialty',
                         rsql("IFNULL(p.language,'english') as language"),
                         'p.photo as photo',
@@ -826,8 +829,9 @@ class AppointmentController extends Controller {
                         rsql("FROM_UNIXTIME(s.start) AS time"),
                         rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                         rsql('DATE(s.timestamp)  AS date'),
-                        rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,TRUE) AS call_enable")
+                        rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,TRUE) AS call_enable"),
                     ])->get();
+
 
         if ($query) {
             foreach ($query as $row) {
@@ -874,6 +878,7 @@ class AppointmentController extends Controller {
                     'duration' =>  $row->duration,
                     'date' =>  $row->date,
                     'call_enable' =>  $row->call_enable,
+                    'patient_name' =>  $row->patient_name,                    
                 ];
              
                 $events[] = $event;

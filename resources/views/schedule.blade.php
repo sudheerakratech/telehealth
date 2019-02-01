@@ -457,9 +457,6 @@
             let patient_name = $appt_form.find("#patient_name").text();
             let status = $appt_form.find("#status").val();
 
-            console.log(patient_name);
-
-
             $('#event_form').clearForm();
             $('#patient_name').html('');
             $('#event_delete').show();
@@ -505,7 +502,7 @@
                             "message_from" : '{{ \Auth::user()->id }}',
                         }
                     },function(response){
-                        console.log(response);
+                        location.reload();
                 });
 
             });
@@ -513,24 +510,60 @@
 
 
         $('#event_delete').css('cursor', 'pointer').click(function() {
-            if(confirm('Are you sure you want to delete this appointment?')){
-               
-                return;
-                $.ajax({
-                    type: "POST",
-                    url: noshdata.delete_event,
-                    data: "appt_id=" + appt_id,
-                    success: function(data){
-                        toastr.success(data);
-                        $('#eventModal').modal('hide');
-                        $('#event_form').clearForm();
-                        $('#patient_name').html('');
-                        $('#event_delete').show();
-                        $('#calendar').fullCalendar('removeEvents');
-                        $('#calendar').fullCalendar('refetchEvents');
-                    }
-                });
-            }
+            let $appt_form = $('#event_form');
+            let appt_id = $appt_form.find("#event_id").val();
+            let provider_id = $appt_form.find("#provider_id").val();
+            let title = $appt_form.find("#title").val();
+            let pid = $appt_form.find("#pid").val();
+            let patient_name = $appt_form.find("#patient_name").text();
+            let status = $appt_form.find("#status").val();
+
+            swal({
+              title: "Delete Appointment",
+              text: "Are you sure, You want to delele the Appointment.",
+              icon: "error",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((deleteAppointment) => {
+              if (deleteAppointment) {
+                  $.post('{{ route('delete-appointment') }}',{
+                        appt_id : appt_id,
+                        message : {
+                            "status" : 'sent',
+                            "message_id" : "",
+                            "pid" : pid,
+                            "practice_id" : "'{{ \Auth::user()->practice_id }}'",
+                            "t_messages_id" : "",
+                            "subject" : "Appointment Deleted",
+                            "patient_name" : patient_name,
+                            "message_to" :  patient_name,
+                            "cc" : patient_name,
+                            "mailbox" : pid,
+                            "body" : `The Doctor cannot have this Appointment due to his busy schedule.`,
+                            "date" : (new Date()).toDateString(),
+                            "message_from" : '{{ \Auth::user()->id }}',
+                        }
+                    },function(response){
+                        location.reload();
+                    });
+              } 
+            });
+            return;
+            $.ajax({
+                type: "POST",
+                url: noshdata.delete_event,
+                data: "appt_id=" + appt_id,
+                success: function(data){
+                    toastr.success(data);
+                    $('#eventModal').modal('hide');
+                    $('#event_form').clearForm();
+                    $('#patient_name').html('');
+                    $('#event_delete').show();
+                    $('#calendar').fullCalendar('removeEvents');
+                    $('#calendar').fullCalendar('refetchEvents');
+                }
+            });
         });
         if (noshdata.message_action !== '') {
             if (noshdata.message_action.search('Error - ') == -1) {

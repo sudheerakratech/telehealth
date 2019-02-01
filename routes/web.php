@@ -33,6 +33,8 @@ Route::get('all-appointments', 'FrontEnd\FrontEndController@allAppointmentsPanel
 Route::get('patient-schedule', 'FrontEnd\AppointmentController@patientSchedule')->name('patient-schedule');
 Route::post('cancel-appointment', 'FrontEnd\AppointmentController@cancelAppointment')->name('cancel-appointment');
 
+Route::post('delete-appointment', 'FrontEnd\AppointmentController@deleteAppointment')->name('delete-appointment');
+
 
 Route::any('patient_register', 'FrontEnd\LoginController@patient_register')->name('patient_register');
 

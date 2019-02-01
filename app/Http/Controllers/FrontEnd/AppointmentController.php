@@ -882,5 +882,18 @@ class AppointmentController extends Controller {
         */
         return $request->all();
     }
+    public function deleteAppointment (Request $request){
+        $appt_id = $request->get('appt_id');
+        if ($appt_id) {
+            \DB::table('schedule')
+                ->where('appt_id',$appt_id)
+                ->delete();
+            
+        }
+        $message = $request->get('message');
+        \DB::table('messaging')->insert($message);
+       
+        return $request->all();
+    }
 
 }

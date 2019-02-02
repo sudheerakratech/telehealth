@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Payment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Facades\PayPal;
 
@@ -27,7 +29,7 @@ class PaypalController extends Controller
                 ]
             ],
             'payer' => 'EACHRECEIVER', // (Optional) Describes who pays PayPal fees. Allowed values are: 'SENDER', 'PRIMARYRECEIVER', 'EACHRECEIVER' (Default), 'SECONDARYONLY'
-            'return_url' => url('home'),
+            'return_url' => url('/process_paid/?'.http_build_query($request->except('_token')).''),
             'cancel_url' => url('/home'),
         ];
 
@@ -36,6 +38,26 @@ class PaypalController extends Controller
         $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);
 
         return redirect($redirect_url);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function processPaid(Request $request)
+    {
+        $user_data = $request->query();
+
+        Payment::create([
+            'patient_id'    =>  1,
+            'doctor_id' =>  2,
+            'amount'    =>  $user_data['amount'],
+            'person'    =>  $user_data['person'],
+            'session_from'  => Carbon::now(),
+            'session_to'  => Carbon::now()->addMinutes($user_data['session'])
+        ]);
+
+        return redirect('home');
     }
 
     private function splitShares($amount)

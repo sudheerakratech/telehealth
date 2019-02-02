@@ -47,7 +47,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px">
+                <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px;padding-top: 10px">
                    <a href="{{route('homepage')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
                 </span>
                 @if (Session::has('pid'))

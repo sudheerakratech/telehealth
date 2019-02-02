@@ -769,9 +769,9 @@ class AppointmentController extends Controller {
         $id =  $user ? $user->id : '';
         $events = [];
         $base_query = DB::table('schedule as s')  
-            ->leftjoin('users as patient','s.user_id','=','patient.id')
-            ->leftjoin('providers as p','s.provider_id','=','p.id')
-            ->leftjoin('users as doctor','p.id','=','doctor.id')
+            ->join('users as patient','s.user_id','=','patient.id')
+            ->join('providers as p','s.provider_id','=','p.id')
+            ->join('users as doctor','p.id','=','doctor.id')
             ->leftjoin('demographics as demo','s.pid','=','demo.pid');
 
         if($user->group_id == 100){

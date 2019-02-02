@@ -917,7 +917,7 @@ class CoreController extends Controller
         return redirect(Session::get('last_page'));
     }
 
-    public function core_form(Request $request, $table, $index, $id, $subtype='')
+    public function core_form(Request $request, $table, $index, $id, $subtype='',$info = [])
     {
         if ($id == '0') {
             $result = [];
@@ -955,7 +955,9 @@ class CoreController extends Controller
             }
         }
         $form_function = 'form_' . $table;
-        $items = array_merge($items, $this->{$form_function}($result, $table, $id, $subtype));
+        $info = $request->get('info');
+
+        $items = array_merge($items, $this->{$form_function}($result, $table, $id, $subtype,$info));
         // Address Book
         if ($table == 'addressbook') {
             if ($subtype == 'Referral') {
@@ -1093,7 +1095,15 @@ class CoreController extends Controller
         if ($table == 'users') {
             $form_array['action'] = route('core_action', ['table' => $table, 'action' => 'save', 'index' => $index, 'id' => $id, 'subtype' => $subtype]);
         }
-        $data['content'] = $this->form_build($form_array);
+
+
+        
+        if(count($info)){
+            $data['content'] = $this->form_build($form_array);
+        }else{
+            $data['content'] = $this->form_build($form_array);
+        }
+
         $data['message_action'] = Session::get('message_action');
         Session::forget('message_action');
         if (Session::has('pid')) {

@@ -5911,7 +5911,7 @@ class Controller extends BaseController
         return $items;
     }
 
-    protected function form_messaging($result, $table, $id, $subtype)
+    protected function form_messaging($result, $table, $id, $subtype,$info = [])
     {
         if ($id == '0') {
             $messaging = [
@@ -5932,6 +5932,12 @@ class Controller extends BaseController
                 $messaging['message_to'] = $new_arr['message_to'];
                 $messaging['patient_name'] = $new_arr['patient_name'];
             }
+            if(count($info)){
+                $provider = DB::table('users')->where('id',$info['provider_id'])->first();
+                $provider = $provider->displayname . ' (' . $provider->id . ')';
+                $messaging['message_to'] = $provider;
+            }
+
         } else {
             $message_to = null;
             $cc = null;

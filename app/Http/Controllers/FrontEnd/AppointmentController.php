@@ -832,7 +832,6 @@ class AppointmentController extends Controller {
                         rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,TRUE) AS call_enable"),
                     ])->get();
 
-
         if ($query) {
             foreach ($query as $row) {
                 if ($row->visit_type != '') {

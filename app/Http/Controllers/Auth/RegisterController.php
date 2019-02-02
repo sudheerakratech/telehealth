@@ -76,9 +76,9 @@ class RegisterController extends Controller
             $rules["phone_number"] = "required|regex:/^[0-9 +]+$/u";
             /*$rules["country"] = "required|max:100";*/
             $rules["city"] = "required|max:100";
-            $rules["profile_image"] = "required|image|mimes:jpg,jpeg,png,gif|max:5120";
             $rules["specialty"] = "required|max:255";
 
+            $rules["profile_image"] = "required|image|mimes:jpg,jpeg,png,gif|max:5120";
             $rules_messages["phone_number.regex"] = "Please enter valid phone no";
             $rules_msg["profile_image.required"] = "Please upload job image";
             $rules_msg["profile_image.image"] = "Please upload only image";
@@ -114,6 +114,11 @@ class RegisterController extends Controller
         ]);
 
         if($user) {
+            $profile_image = $data['profile_image'];
+            $extension = $profile_image->extension();
+            $file_name = $data['user_name'].'.'.$extension;
+            $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
+
 
             Session::put('user_id', $user->id);
             Session::put('displayname', $user->displayname);
@@ -140,7 +145,8 @@ class RegisterController extends Controller
                     "sex" => $data['sex'],
                     "reminder_method" => "Email",
                     "reminder_interval" => "Default",
-                    "active" => 1
+                    "active" => 1,
+                    'photo' => $file_name 
                 ));
 
                 $demographics = DB::table('demographics')->select('pid')->where('id',$user->id)->first();
@@ -160,11 +166,8 @@ class RegisterController extends Controller
                 )); 
             }
 
+       
             if($user->group_id == '2') {
-                $profile_image = $data['profile_image'];
-                $extension = $profile_image->extension();
-                $file_name = $data['user_name'].'.'.$extension;
-                $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
 
                 $providers = DB::table('providers')->insert([
                     "id" => $user->id,

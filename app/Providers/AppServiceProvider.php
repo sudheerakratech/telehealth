@@ -20,8 +20,10 @@ class AppServiceProvider extends ServiceProvider
             $user = \Auth::user();
             $isDoctor = false;
             if($user){
+                $profile_image = $user->getProfilePhoto();
+
                 $isDoctor = $user->group_id === 2 ? true : false;
-                $view->with('isDoctor', $isDoctor);
+                $view->with(['isDoctor' => $isDoctor,'profile_image' => $profile_image]);
             }
         });
     }

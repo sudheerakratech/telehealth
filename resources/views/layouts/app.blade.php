@@ -186,6 +186,18 @@
         <!-- Sidebar -->
         <div id="sidebar" class="sidebar-offcanvas">
             <div class="col-md-12" style="background-color: #161817;">
+                @if($profile_image)
+                <div class="user-img-div">
+                 <img src="{{ asset('uploads/profile').'/'. $profile_image}} " 
+                style="height: 200px;
+                        margin: 0 auto;
+                        display: block;
+                        margin-top: 12px;
+                        background-color: #40ACE9;
+                        border: 1px solid #40ACE9;"
+                 class="img-thumbnail" />
+                </div>
+                @endif
                 @if (isset($name))
                     <a href="{{ url('patient') }}">
                         <h4>{{ $name }}</h4>

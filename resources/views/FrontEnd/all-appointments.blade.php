@@ -25,8 +25,8 @@
                                 <p>{{str_replace(',',' / ',$appointment['specialty'])}}</p>
                         @elseif(\Auth::user()->group_id == 2 )
                                <h4>Patient : {{ucfirst($appointment['patient_name'])}} </h4>
+                                <p>{{str_replace(',',' / ',$appointment['specialty'])}}</p>
                         @endif
-                        <p>{{str_replace(',',' / ',$appointment['specialty'])}}</p>
                         <p><i class="fa fa-hospital-o font20 text-primary"></i>
                             <strong>Type : </strong> {{ $appointment['visit_type'] }}</p>
                         @if($appointment['notes'] != '')

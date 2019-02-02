@@ -33,4 +33,24 @@ class User extends Authenticatable
                 ->where('u.group_id',2)
                 ->pluck('u.id')->toArray();
     }
+
+    public function getProfilePhoto()
+    {
+        if($this->group_id == 100){
+            $demo =  \DB::table('demographics')
+                ->where('id',$this->id)
+                ->first();
+            if ($demo) {
+                return $demo->photo;
+            }
+        }elseif ($this->group_id == 2) {
+            $provider = \DB::table('providers')
+                ->where('id',$this->id)
+                ->first();
+            if ($provider) {
+                return $provider->photo;
+            }
+
+        }
+    }
 }

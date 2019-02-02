@@ -18049,6 +18049,7 @@ function SimpleWebRTC(opts) {
     });
 
     this.webrtc.on('peerStreamAdded', this.handlePeerStreamAdded.bind(this));
+
     this.webrtc.on('peerStreamRemoved', this.handlePeerStreamRemoved.bind(this));
 
     // echo cancellation attempts

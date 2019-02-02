@@ -245,7 +245,6 @@ function loggedInListener(roomName, otherPeers) {
 function sendmessage() {
 
     let text = document.getElementById('message').value;
-
     if (text.replace(/\s/g, "").length === 0) { // Don't send just whitespace
 
         return;

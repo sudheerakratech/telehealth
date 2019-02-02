@@ -16,6 +16,12 @@
     {!! Minify::stylesheet($assets_css)->withFullUrl() !!}
     @yield('view.stylesheet')
     <style>
+        #sidebar {
+            margin-top: -20px;
+        }
+        #sidebar > div.col-md-12 {
+            padding-top: 15px
+        }
         #search_patient_form{
             display: block;
         }
@@ -47,7 +53,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px;padding-top: 10px">
+                <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px;">
                    <a href="{{route('homepage')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
                 </span>
                 @if (Session::has('pid'))

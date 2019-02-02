@@ -14,7 +14,7 @@
         @endif
     </title>
     {!! Minify::stylesheet($assets_css)->withFullUrl() !!}
-    @yield('view.stylesheet')\
+    @yield('view.stylesheet')
     <style>
         #search_patient_form{
             display: block;

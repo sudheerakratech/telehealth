@@ -525,7 +525,6 @@ class CoreController extends Controller
 
     public function core_action(Request $request, $table, $action, $id, $index, $subtype='')
     {
-        dd($request->all(), $table, $action, $id, $index, $subtype);
         $date_convert_array = [
             'imm_expiration',
             'date_purchase',

@@ -409,7 +409,7 @@
         <div class="col-md-12">
             @if (!Auth::guest())
                 @if (Session::get('patient_centric') !== 'y' && Session::get('patient_centric') !== 'yp' && Session::get('group_id') != '100')
-                    <div class="container">
+                    <div class="fluid-container">
                         <form class="input-group form" border="0" id="search_patient_form" role="search" action="{{ url('search_patient') }}" method="POST" style="margin-bottom:0px;" data-nosh-target="search_patient_results">
                             <input type="hidden" name="type" value="div">
                             <input type="text" class="form-control search" id="search_patient" name="search_patient" placeholder="{{ trans('nosh.search_patient') }}" style="margin-bottom:0px;" required autocomplete="off">

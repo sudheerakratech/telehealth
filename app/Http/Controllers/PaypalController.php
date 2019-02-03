@@ -33,6 +33,9 @@ class PaypalController extends Controller
             'cancel_url' => url('/home'),
         ];
 
+        // temp
+        return redirect('process_paid/?'.http_build_query($request->except('_token')).'');
+
         $response = $provider->createPayRequest($data);
 
         $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);
@@ -49,15 +52,16 @@ class PaypalController extends Controller
         $user_data = $request->query();
 
         Payment::create([
-            'patient_id'    =>  1,
-            'doctor_id' =>  2,
+            'patient_id'    =>  \Auth::user()->id,
+            'doctor_id' =>  $user_data['doctor'],
             'amount'    =>  $user_data['amount'],
             'person'    =>  $user_data['person'],
             'session_from'  => Carbon::now(),
-            'session_to'  => Carbon::now()->addMinutes($user_data['session'])
+            'session_to'  => Carbon::now()->addMinutes($user_data['session']),
+            'room_id'   => $user_data['room']
         ]);
 
-        return redirect('home');
+        return redirect('my-appointments');
     }
 
     private function splitShares($amount)

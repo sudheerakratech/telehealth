@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
+use App\Payment;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -53,7 +54,16 @@ class FrontEndController extends Controller
     }
 
     public function subscribe() {
-        return view('FrontEnd.subscribe');
+
+        $room_id  = Session::get('room_id');
+        $schedule = \DB::table('schedule')->where('room_id', $room_id)->first();
+
+        if(Auth::user() && Auth::user()->group_id == 100 && !isset($room_id)){
+            return redirect('my-appointments');
+        }
+
+        return view('FrontEnd.subscribe')
+            ->with(['room_id' => $room_id, 'doctor' => $schedule->provider_id]);
     }
        
     public function registration(Request $request) {
@@ -139,6 +149,22 @@ class FrontEndController extends Controller
     public function videoConferenceRoom(Request $request) {
         if(!Auth::user()){
             return redirect()->route('login');
+        }
+
+        $room_id = $request->get('room');
+
+        if(Auth::user()->group_id == 100){
+
+            $payments = \DB::table('schedule as sh')
+                ->join('payments as p', 'p.patient_id', '=', 'sh.user_id')
+                ->where('p.room_id', $room_id)
+                ->whereRaw('p.session_to is not null')
+                ->whereRaw('p.session_from is not null')
+                ->first();
+
+            if(!$payments){
+                return redirect('subscribe')->with(['room_id' => $room_id]);
+            }
         }
         return view('FrontEnd.conferencePage');
     }

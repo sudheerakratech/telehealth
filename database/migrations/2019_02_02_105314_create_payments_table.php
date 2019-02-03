@@ -19,8 +19,8 @@ class CreatePaymentsTable extends Migration
             $table->integer('doctor_id');
             $table->double('amount');
             $table->integer('person');
-            $table->dateTime('session_from');
-            $table->dateTime('session_to');
+            $table->dateTime('session_from')->nullable();
+            $table->dateTime('session_to')->nullable();
             $table->timestamps();
         });
     }

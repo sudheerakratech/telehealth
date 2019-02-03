@@ -137,6 +137,9 @@ class FrontEndController extends Controller
     }
 
     public function videoConferenceRoom(Request $request) {
+        if(!Auth::user()){
+            return redirect()->route('login');
+        }
         return view('FrontEnd.conferencePage');
     }
 

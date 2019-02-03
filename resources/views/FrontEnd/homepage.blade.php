@@ -72,7 +72,7 @@
             <div class="about-w3lsrow">
 
                 <div class="col-md-6 w3about-img">
-                    <img src="/images/Home page-we care section (2).jpg" style="height: 100%;padding-top: 60px" alt="">
+                    <img src="/images/Home page-we care section (2).jpg" style="height: 100%;padding-top: 60px;width: 100%;" alt="">
                 </div>
                 <div class="col-md-6 col-sm-7 w3about-img two">
                     <div class="w3about-text">

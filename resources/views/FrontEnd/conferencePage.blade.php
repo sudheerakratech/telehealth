@@ -1,9 +1,9 @@
 @extends('FrontEnd.layouts.master')
 @section('content')
-<title>Online Video Conference</title>    
+<title>Online Video Conference</title>
 
-	<div id="content">		
-		<div class="container">			
+	<div id="content">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="panel panel-primary">
@@ -12,7 +12,7 @@
 						</div>
 						<div class="panel-body panel-video">
 							<div id="subscriber" style="min-height:475px; background-color: #000; width: 100%;">
-								<!--video id="partner" style="min-height:500px; width: 100%;background-color: #000;"></video>-->
+								{{--<video id="partner" style="min-height:500px; width: 100%;background-color: #000;"></video>--}}
 							</div>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 						</div>
 					</div> --}}
 
-					
+
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<h3 class="panel-title">Chat</h3>
@@ -96,9 +96,8 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+	<script type="text/javascript" src="{{asset('js/webrtc/adapter-latest.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/webrtc/simplewebrtc.bundle.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/webrtc/socket.io.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/webrtc/simplertc.js')}}"></script>
-
 @endsection

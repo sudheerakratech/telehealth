@@ -59,7 +59,7 @@ var webrtc = new SimpleWebRTC({
 webrtc.testReadiness();
 webrtc.on('readyToCall', function () {
      webrtc.joinRoom(room_name, (err, roomDesc) => {
-        let len = Object.keys(roomDesc.clients).length
+        let len = Object.keys(roomDesc.clients).length;
         if (len > maxUsers) {
             webrtc.disconnect();
             alert('Room is busy right now. Please try again later.');

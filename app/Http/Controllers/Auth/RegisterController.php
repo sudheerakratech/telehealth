@@ -67,10 +67,15 @@ class RegisterController extends Controller
         $rules["secret_question"] = "required";
         $rules["secret_answer"] = "required";
         $rules["group_id"] = "required";
+        $rules["profile_image"] = "required|image|mimes:jpg,jpeg,png,gif|max:5120";
 
         $rules_msg = array();
         $rules_msg["group_id.required"] = "Please select registration type.";
         $rules_msg["confirm_password.same"] = "Confirm password could not match.";
+        $rules_msg["profile_image.required"] = "Please upload profile image";
+        $rules_msg["profile_image.image"] = "Please upload only image";
+        $rules_msg["profile_image.mimes"] = "Please upload only jpg, jpeg, png image";
+        $rules_msg["profile_image.max"] = "Please upload image less than 5 MB";
 
         if(isset($data['group_id']) && $data['group_id'] == 2) {
             $rules["phone_number"] = "required|regex:/^[0-9 +]+$/u";
@@ -78,12 +83,8 @@ class RegisterController extends Controller
             $rules["city"] = "required|max:100";
             $rules["specialty"] = "required|max:255";
 
-            $rules["profile_image"] = "required|image|mimes:jpg,jpeg,png,gif|max:5120";
             $rules_messages["phone_number.regex"] = "Please enter valid phone no";
-            $rules_msg["profile_image.required"] = "Please upload job image";
-            $rules_msg["profile_image.image"] = "Please upload only image";
-            $rules_msg["profile_image.mimes"] = "Please upload only jpg, jpeg, png image";
-            $rules_msg["profile_image.max"] = "Please upload image less than 5 MB";
+          
         }       
         return Validator::make($data, $rules, $rules_msg);       
     }
@@ -114,10 +115,12 @@ class RegisterController extends Controller
         ]);
 
         if($user) {
-            $profile_image = $data['profile_image'];
-            $extension = $profile_image->extension();
-            $file_name = $data['user_name'].'.'.$extension;
-            $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
+            if(array_key_exists('profile_image', $data)){
+                $profile_image = $data['profile_image'];
+                $extension = $profile_image->extension();
+                $file_name = $data['user_name'].'.'.$extension;
+                $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
+            }
 
 
             Session::put('user_id', $user->id);

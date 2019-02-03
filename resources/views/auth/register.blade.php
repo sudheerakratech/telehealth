@@ -72,9 +72,13 @@
                                                     <span class="btn btn-default btn-file">
                                                         Browse… <input type="file" name="profile_image" id="imgInp">
                                                     </span>
+                                                    
                                                 </span>
                                                 <input type="text" class="form-control" readonly>
                                             </div>
+                                            @if ($errors->has('profile_image'))
+                                                <span class="error_msg">{{ $errors->first('profile_image') }}</span>
+                                            @endif
                                             <div id="img-upload-container">
                                                 <img id='img-upload'/>
                                             </div>

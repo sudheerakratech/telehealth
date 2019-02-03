@@ -275,7 +275,7 @@
             <div class="wthree_services_bottom_left_grid">
                 <div class="col-md-6 w3_agileits_services_bottom_l_grid">
                     <div class="agile_services_bottom_l_grid1">
-                        <img src="{{asset('images/g6.jpg')}}" alt=" " class="img-responsive" />
+                        <img src="{{asset('images/front/professionals.jpg')}}" alt=" " class="img-responsive" />
                         <div class="w3_service_bottom_grid_pos">
                             <h3>Quality Care</h3>
                         </div>

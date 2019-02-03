@@ -188,6 +188,7 @@ class AppointmentController extends Controller {
                     'provider_id' => $request->get('provider_id'),
                     'user_id' => $user->id,
                     'notes' => $request->get('notes'),
+                    'room_id' => (int)($start.$user->id.$request->get('provider_id'))
                 ];        
 
                 $appt_id = DB::table('schedule')->insertGetId($data);       
@@ -786,6 +787,8 @@ class AppointmentController extends Controller {
 
         $period = $request->get('period');
 
+        $period = 'past';
+
         if($period){
             switch ($period) {
                 case 'today':
@@ -830,7 +833,9 @@ class AppointmentController extends Controller {
                         rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                         rsql('DATE(s.timestamp)  AS date'),
                         rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,TRUE) AS call_enable"),
+                        rsql("IFNULL(s.room_id,CONCAT(s.start,patient.id,doctor.id)) AS room_id")
                     ])->get();
+
 
         if ($query) {
             foreach ($query as $row) {
@@ -878,11 +883,14 @@ class AppointmentController extends Controller {
                     'date' =>  $row->date,
                     'call_enable' =>  $row->call_enable,
                     'patient_name' =>  $row->patient_name,                    
+                    'room_id' =>  $row->room_id,                    
                 ];
              
                 $events[] = $event;
             }
         }
+
+        dd($events);
         return view('FrontEnd.all-appointments',['appointments' => $events]);
     }
 

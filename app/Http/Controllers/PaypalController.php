@@ -64,6 +64,21 @@ class PaypalController extends Controller
         return redirect('my-appointments');
     }
 
+    public function sessionWatcher(Request $request)
+    {
+        $room_id = $request->get('room_id');
+
+        $payments = Payment::where('room_id', $room_id)->first();
+        $payments->session_to = Carbon::parse($payments->session_to)->subMinute(1);
+        $payments->save();
+
+        if(Carbon::parse($payments->session_from)->equalTo(Carbon::parse($payments->session_to))){
+            $payments->delete();
+        }
+
+        return 'ok';
+    }
+
     private function splitShares($amount)
     {
         $akra = number_format((($amount * 2.5) / 100), 2);

@@ -100,4 +100,23 @@
 	<script type="text/javascript" src="{{asset('js/webrtc/simplewebrtc.bundle.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/webrtc/socket.io.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/webrtc/simplertc.js')}}"></script>
+
+	@if(isset($room_id) && isset($session_time) && $user_type)
+		<script>
+            var count = '{{$session_time}}';
+            var counter = setInterval(timer, 1000 * 60); //1000 * 60 will  run it every 1 minute
+
+            function timer() {
+                count = count - 1;
+                if (count === -1) {
+                    clearInterval(counter);
+                    location.reload();
+                }
+
+                $.post('session_watcher',{room_id:'{{$room_id}}'}, function () {
+
+                });
+            }
+		</script>
+	@endif
 @endsection

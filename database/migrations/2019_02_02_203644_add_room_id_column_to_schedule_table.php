@@ -14,7 +14,7 @@ class AddRoomIdColumnToScheduleTable extends Migration
     public function up()
     {
         Schema::table('schedule', function($table) {
-            $table->bigInteger('room_id')->nullable()->default(rsql('FLOOR(1000000 + (RAND() * 8999999))'));
+            $table->bigInteger('room_id')->nullable();
         });
     }
 

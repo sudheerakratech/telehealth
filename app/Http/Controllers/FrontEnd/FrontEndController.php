@@ -152,8 +152,12 @@ class FrontEndController extends Controller
         }
 
         $room_id = $request->get('room');
+        $session_time = null;
+        $user_type = false;
 
         if(Auth::user()->group_id == 100){
+
+            $user_type = true;
 
             $payments = \DB::table('schedule as sh')
                 ->join('payments as p', 'p.patient_id', '=', 'sh.user_id')
@@ -164,9 +168,15 @@ class FrontEndController extends Controller
 
             if(!$payments){
                 return redirect('subscribe')->with(['room_id' => $room_id]);
+            }else if($payments){
+                //get session minutes
+                $from = Carbon::parse($payments->session_from);
+                $to = Carbon::parse($payments->session_to);
+                $session_time = $to->diffInMinutes($from);
             }
         }
-        return view('FrontEnd.conferencePage');
+        return view('FrontEnd.conferencePage')
+            ->with(['room_id' => $room_id, 'session_time' => $session_time, 'user_type' => $user_type]);
     }
 
     public function subscribeNewsletter(Request $request,Newsletter $newsletter) {

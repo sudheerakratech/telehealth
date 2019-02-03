@@ -97,7 +97,7 @@
                         {{ $appointment['call_enable'] ? '' : 'disabled' }} >
                         Video Call
                     </a>
-                    <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0','subtype'=> '','info'=>[ 'provider_id'=> $appointment['doctor_id']]
+                    <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0','subtype'=> '','info' => [ 'provider_id'=> $appointment['doctor_id']]
                     ])}}" data-provider_id="{{ $appointment['doctor_id'] }}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>
 
                 @else

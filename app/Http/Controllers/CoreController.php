@@ -956,7 +956,7 @@ class CoreController extends Controller
         $form_function = 'form_' . $table;
         $info = $request->get('info');
 
-        $items = array_merge($items, $this->{$form_function}($result, $table, $id, $subtype,$info));
+        $items = array_merge($items, $this->{$form_function}($result, $table, $id, $subtype,$info = []));
         // Address Book
         if ($table == 'addressbook') {
             if ($subtype == 'Referral') {
@@ -4256,13 +4256,15 @@ class CoreController extends Controller
                 foreach ($query as $row) {
                     $arr = [];
                     $user = DB::table('users')->where('id', '=', $row->message_from)->first();
-                    $arr['label'] = '<b>' . $user->displayname . '</b> - ' . $row->subject . ' - ' . date('Y-m-d', $this->human_to_unix($row->date));
-                    $arr['view'] = route('messaging_view', [$row->$row_index]);
-                    $arr['delete'] = route('core_action', ['table' => 'messaging', 'action' => 'delete', 'index' => $row_index, 'id' => $row->$row_index]);
-                    if ($row->read == 'n' || $row->read == null) {
-                        $arr['active'] = true;
+                    if($user){
+                        $arr['label'] = '<b>' . $user->displayname . '</b> - ' . $row->subject . ' - ' . date('Y-m-d', $this->human_to_unix($row->date));
+                        $arr['view'] = route('messaging_view', [$row->$row_index]);
+                        $arr['delete'] = route('core_action', ['table' => 'messaging', 'action' => 'delete', 'index' => $row_index, 'id' => $row->$row_index]);
+                        if ($row->read == 'n' || $row->read == null) {
+                            $arr['active'] = true;
+                        }
+                        $list_array[] = $arr;
                     }
-                    $list_array[] = $arr;
                 }
             }
         }

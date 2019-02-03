@@ -151,11 +151,17 @@ class FrontEndController extends Controller
             return redirect()->route('login');
         }
 
+
         $room_id = $request->get('room');
         $session_time = null;
         $user_type = false;
 
+
         if(Auth::user()->group_id == 100){
+            $this->attendMeeting([
+                'room_id' => $room_id,
+                'url' => $request->fullUrl()
+            ]);
 
             $user_type = true;
 
@@ -278,5 +284,35 @@ class FrontEndController extends Controller
                     'demo.email as email',
                     rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,FALSE) AS call_enable")
                 ]);
+    }
+
+
+    private function attendMeeting($data){
+        $room_id = $data['room_id'];
+        $url = $data['url'];
+
+        $schedule = \DB::table('schedule')->where('room_id',$room_id)->first();
+
+        $sender_id   = $schedule->user_id;
+        $reciever_id = $schedule->provider_id;
+        $patient     = \DB::table('users')->where('id',$sender_id)->first();
+        $doctor      = \DB::table('users')->where('id',$reciever_id)->first();
+
+        $message = [
+                        "status" => 'sent',
+                        "message_id" => "",
+                        "pid" => $reciever_id,
+                        "practice_id" => $doctor->practice_id,
+                        "t_messages_id" => "",
+                        "subject" => "Please Attend Appointment.",
+                        "patient_name" => $patient->displayname,
+                        "message_to" =>  $doctor->displayname,
+                        "cc" => $doctor->displayname,
+                        "mailbox" => $reciever_id,
+                        "body" => "Please Attend the Appointment by following link, patient is waiting for appointment \n $url \n",
+                        "date" => Carbon::now(),
+                        "message_from" => $sender_id,
+                    ];
+        \DB::table('messaging')->insert($message);
     }
 }

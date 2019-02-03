@@ -34,8 +34,6 @@ class PaypalController extends Controller
         ];
 
         // temp
-        // return redirect('process_paid/?'.http_build_query($request->except('_token')).'');
-
         $response = $provider->createPayRequest($data);
 
         $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);

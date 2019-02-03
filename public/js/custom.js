@@ -61,7 +61,6 @@ $( document ).ready(function() {
     formProviderSubmit();
 
     function findProviderAjaxResponse(data) {
-        console.log(data);
         $('#loader').fadeOut();                                
         $('#app-modal-image').hide();                            
         $("#find_provider_block").html('');

@@ -3,7 +3,7 @@
     <title>Telemedicine | Appointments</title>
     <!-- banner -->
     <!-- banner1 -->
-    <div class="banner1 jarallax physicians-page-banner">
+    <div class="banner1 jarallax appointments-page-banner">
         <div class="container">
         </div>
     </div>

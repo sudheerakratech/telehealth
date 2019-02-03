@@ -731,7 +731,7 @@ h5.w3l-subtitle {
 
 /*--//agile_bottom --*/
 .stats_inner{
-    background: url(../images/banner3.jpg)no-repeat 0px 0px;
+    background: url(../images/home-page-features.jpg)no-repeat 0px 0px;
     background-size: cover;
     z-index: 999;
     padding-top: 6em;
@@ -1168,7 +1168,7 @@ button.close {
 .service-w3l p.text-center {
     font-size: 14px;
     line-height: 30px;
-    color: #8eadca;
+    color: #fff;
 }
 .ch-grid {
 	margin: 0;
@@ -1562,6 +1562,15 @@ figure.effect-apollo:hover figcaption::before {
 }
 .banner1.physicians-page-banner {
     background: url(../images/physicians-page-banner.jpg) no-repeat 0px -99px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height:400px;
+    z-index: 999;
+}
+.banner1.appointments-page-banner {
+    background: url(../images/appointments-page-banner.jpg) no-repeat 0px -99px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

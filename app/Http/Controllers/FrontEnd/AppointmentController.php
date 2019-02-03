@@ -787,8 +787,6 @@ class AppointmentController extends Controller {
 
         $period = $request->get('period');
 
-        $period = 'past';
-
         if($period){
             switch ($period) {
                 case 'today':

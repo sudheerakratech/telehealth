@@ -25,6 +25,7 @@ font-family: robotu, sans-serif;
 ul.main-list{
     list-style: none;
     list-style-image: url('../images/icons/square.png');
+    list-style-position: inside;
 }
 
 ul.appointment-info-list {

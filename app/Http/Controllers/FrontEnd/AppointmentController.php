@@ -890,7 +890,6 @@ class AppointmentController extends Controller {
             }
         }
 
-        dd($events);
         return view('FrontEnd.all-appointments',['appointments' => $events]);
     }
 

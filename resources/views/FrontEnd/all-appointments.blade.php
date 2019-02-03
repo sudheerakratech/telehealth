@@ -93,7 +93,7 @@
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
-                    <a href="{{route('call_conference',['room' => mt_rand(00000000,99999999),'uname' => Auth::user()['firstname'],'pname' => $appointment['name']])}}" class="btn btn-success" target="_blank"
+                    <a href="{{route('call_conference',['room' => $appointment['room_id'],'uname' => Auth::user()['firstname'],'pname' => $appointment['name']])}}" class="btn btn-success" target="_blank"
                         {{ $appointment['call_enable'] ? '' : 'disabled' }} >
                         Video Call
                     </a>

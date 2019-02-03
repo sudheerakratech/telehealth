@@ -34,7 +34,7 @@ class PaypalController extends Controller
         ];
 
         // temp
-        return redirect('process_paid/?'.http_build_query($request->except('_token')).'');
+        // return redirect('process_paid/?'.http_build_query($request->except('_token')).'');
 
         $response = $provider->createPayRequest($data);
 
@@ -61,7 +61,13 @@ class PaypalController extends Controller
             'room_id'   => $user_data['room']
         ]);
 
-        return redirect('my-appointments');
+        $doctor = \DB::table('users')->where('id',$user_data['doctor'])->first();
+
+        return redirect()->route('call_conference', [
+                        'room' => $user_data['room'],
+                        'uname' => \Auth::user()['username'],
+                        'pname' => $doctor->username
+                    ]);
     }
 
     public function sessionWatcher(Request $request)

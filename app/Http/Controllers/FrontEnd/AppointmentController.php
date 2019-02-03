@@ -822,6 +822,8 @@ class AppointmentController extends Controller {
         $query = $base_query->select([
                         's.*',
                         'doctor.displayname as name',
+                        'doctor.username as d_username',
+                        'patient.username as p_username',
                         rsql("CONCAT(patient.firstname,' ',patient.lastname) AS patient_name"),
                         'p.specialty as specialty',
                         rsql("IFNULL(p.language,'english') as language"),
@@ -882,6 +884,8 @@ class AppointmentController extends Controller {
                     'call_enable' =>  $row->call_enable,
                     'patient_name' =>  $row->patient_name,                    
                     'room_id' =>  $row->room_id,                    
+                    'p_username' =>  $row->p_username,                    
+                    'd_username' =>  $row->d_username,                    
                 ];
              
                 $events[] = $event;

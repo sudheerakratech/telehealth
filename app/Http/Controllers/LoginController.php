@@ -352,7 +352,14 @@ class LoginController extends Controller {
                     $credentials['practice_id'] = $practice_id;
                     $user = DB::table('users')->where('username', '=', $username)->where('active', '=', '1')->where('practice_id', '=', $practice_id)->first();
                 }
+                $rawUser = DB::table('users')->where('username', '=', $username)->first();
+                if($rawUser){
+                    if(!$user){$user = $rawUser;}
+                    $credentials['active'] = $rawUser->active;
+                    $credentials['practice_id'] = $rawUser->practice_id;
+                }
                 if (Auth::attempt($credentials)) {
+
                     // Authentication successful
                     $practice = DB::table('practiceinfo')->where('practice_id', '=', $user->practice_id)->first();
                     Session::put('user_id', $user->id);

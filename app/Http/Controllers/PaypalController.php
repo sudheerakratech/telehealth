@@ -35,7 +35,7 @@ class PaypalController extends Controller
         ];
 
         //temp testing
-        return redirect('/process_paid/?'.http_build_query($user_data).'');
+        // return redirect('/process_paid/?'.http_build_query($user_data).'');
 
         $response = $provider->createPayRequest($data);
 

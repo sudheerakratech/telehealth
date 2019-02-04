@@ -851,10 +851,9 @@ class AppointmentController extends Controller {
                         rsql("FROM_UNIXTIME(s.start) AS time"),
                         rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                         rsql('DATE(s.timestamp)  AS date'),
-                        rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,TRUE) AS call_enable"),
+                        rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),2000) AND CURRENT_TIMESTAMP()),TRUE,FALSE) AS call_enable"),
                         rsql("IFNULL(s.room_id,CONCAT(s.start,patient.id,doctor.id)) AS room_id")
                     ])->get();
-
 
         if ($query) {
             foreach ($query as $row) {

@@ -315,4 +315,25 @@ class FrontEndController extends Controller
                     ];
         \DB::table('messaging')->insert($message);
     }
+
+    public function changeImage(Request $request)
+    {
+        $user = \Auth::user();
+
+        $profile_image =  $request->file('file');
+
+        $extension = $profile_image->extension();
+
+        $file_name = $user->username.'.'.$extension;
+        $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
+
+        if($user->group_id == 2){
+            DB::table('providers')->where('id', '=', $user->id)->update(['photo' => $file_name]);
+        }else {
+            DB::table('demographics')->where('id', '=', $user->id)->update(['photo' => $file_name]);
+        }
+
+        return response()->json('ok');
+
+    }
 }

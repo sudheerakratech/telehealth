@@ -193,16 +193,29 @@
         <div id="sidebar" class="sidebar-offcanvas">
             <div class="col-md-12" style="background-color: #161817;">
                 @if($profile_image)
-                <div class="user-img-div">
+                <div class="user-img-div" id="user-img-div" >
                  <img src="{{ asset('uploads/profile').'/'. $profile_image}} " 
                 style="height: 150px;
-                        margin-left:1px;
                         display: block;
-                        margin-top: 12px;
+                        margin: 0 auto;
                         background-color: #40ACE9;
                         border: 1px solid #40ACE9;"
+                        id="user-img-box"
                  class="img-thumbnail" />
+                 <input type="file" id="change-image" name="change-image" style="display: none;" />
+                 <div  style="text-align: center; margin-top: 10px">
+                    <button id="upload-image" class="btn btn-primary" style="width: 90px">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Change
+                    </button>
+                    <button class='btn btn-success' id="save-new-image" style="width: 90px" disabled>
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;Save
+                    </button>
+                 </div>
                 </div>
+                
+                <script>
+                    
+                </script>
                 @endif
                 @if (isset($name))
                     <a href="{{ url('patient') }}">
@@ -419,6 +432,7 @@
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-md" id="search_patient_submit" value="Go"><i class="glyphicon glyphicon-search"></i></button>
                                 </span>
+                                 
                                 @if (Session::get('group_id') != '1')
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-md btn-default" id="search_patient_recent" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.recent_patients') }}"><i class="fa fa-history fa-lg"></i></button>
@@ -2227,6 +2241,48 @@
                 }
             });
         });
+        $(function() {
+            $(document).on('click','#upload-image',function(e){
+                $('#change-image').trigger('click');
+            });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#user-img-box').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                    $('#save-new-image').attr('disabled',false);
+                }
+            }
+
+            $(document).on('click','#save-new-image',function() {
+                let fd = new FormData();
+                let files = $("#change-image")[0].files[0];
+                fd.append('file',files);
+                $.ajax({
+                    url: "{{ route('change-image') }}",
+                    type: 'POST',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        if(response.trim() == 'ok'){
+                            location.reload();
+                        }
+                    },
+                });
+            });
+
+            $("#change-image").change(function(){
+                readURL(this);
+            });     
+
+        });
+
+       
     </script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     @yield('view.scripts')

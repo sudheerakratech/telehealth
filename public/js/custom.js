@@ -139,18 +139,18 @@ $( document ).ready(function() {
         input.trigger('fileselect', [label]);
         });
 
-        $('.btn-file :file').on('fileselect', function(event, label) {
-            
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label;
-            
-            if( input.length ) {
-                input.val(log);
-            } else {
-                if( log ) alert(log);
-            }
+    $('.btn-file :file').on('fileselect', function(event, label) {
         
-        });
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+    
+    });
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -166,4 +166,10 @@ $( document ).ready(function() {
     $("#imgInp").change(function(){
         readURL(this);
     });     
+
+    $(document).on('click','#upload-image',function(e){
+        $('#change-image').trigger('click');
+    });
+
+    
 });

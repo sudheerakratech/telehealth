@@ -48,6 +48,9 @@ Route::post('save_appointment', 'FrontEnd\AppointmentController@makeAppointmentA
 // Front-End Doctors Routes
 Route::any('doctors', 'FrontEnd\DoctorsController@doctors')->name('doctors');
 
+
+Route::post('change-image', 'FrontEnd\FrontEndController@changeImage')->name('change-image');
+
 // Conference Routes
 Route::any('call_conference', 'FrontEnd\FrontEndController@videoConferenceRoom')->name('call_conference');
 

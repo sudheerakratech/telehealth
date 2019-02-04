@@ -349,18 +349,24 @@ class FrontEndController extends Controller
     {
         $user = \Auth::user();
 
-        $profile_image =  $request->file('file');
+        try {
+            $profile_image =  $request->file('file');
 
-        $extension = $profile_image->extension();
+            $extension = $profile_image->extension();
 
-        $file_name = $user->username.'.'.$extension;
-        $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
+            $file_name = $user->username.'.'.$extension;
+            $path = \Storage::disk('public')->putFileAs('profile', $profile_image,$file_name);
 
-        if($user->group_id == 2){
-            DB::table('providers')->where('id', '=', $user->id)->update(['photo' => $file_name]);
-        }else {
-            DB::table('demographics')->where('id', '=', $user->id)->update(['photo' => $file_name]);
+            if($user->group_id == 2){
+                DB::table('providers')->where('id', '=', $user->id)->update(['photo' => $file_name]);
+            }else {
+                DB::table('demographics')->where('id', '=', $user->id)->update(['photo' => $file_name]);
+            }
+            
+        } catch (Exception $e) {
+            return response()->json('ok');
         }
+
 
         return response()->json('ok');
 

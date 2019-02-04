@@ -112,7 +112,7 @@ class AppointmentController extends Controller {
                         'demographics.language',
                         'demographics.address',
                         'demographics.city',
-                        rsql("'this is as description' AS description")
+                        rsql("'This is the description related to the patient.' AS description")
                     ])
                     ->get();
 

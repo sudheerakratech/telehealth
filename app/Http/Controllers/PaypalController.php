@@ -12,8 +12,9 @@ class PaypalController extends Controller
     public function index(Request $request)
     {
         $provider = PayPal::setProvider('adaptive_payments');
+        $user_data = $request->query->all();
 
-        $shares = $this->splitShares($request->amount);
+        $shares = $this->splitShares($user_data['amount']);
 
         $data = [
             'receivers'  => [
@@ -29,11 +30,13 @@ class PaypalController extends Controller
                 ]
             ],
             'payer' => 'EACHRECEIVER', // (Optional) Describes who pays PayPal fees. Allowed values are: 'SENDER', 'PRIMARYRECEIVER', 'EACHRECEIVER' (Default), 'SECONDARYONLY'
-            'return_url' => url('/process_paid/?'.http_build_query($request->except('_token')).''),
+            'return_url' => url('/process_paid/?'.http_build_query($user_data).''),
             'cancel_url' => url('/home'),
         ];
 
-        // temp
+        //temp testing
+        return redirect('/process_paid/?'.http_build_query($user_data).'');
+
         $response = $provider->createPayRequest($data);
 
         $redirect_url = $provider->getRedirectUrl('approved', $response['payKey']);
@@ -85,7 +88,7 @@ class PaypalController extends Controller
 
     private function splitShares($amount)
     {
-        $akra = number_format((($amount * 2.5) / 100), 2);
+        $akra = number_format((($amount * 8) / 100), 2);
 
         return [
             'doctor'    => number_format($amount - $akra, 2),

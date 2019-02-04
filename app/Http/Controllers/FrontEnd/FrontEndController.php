@@ -54,16 +54,7 @@ class FrontEndController extends Controller
     }
 
     public function subscribe() {
-
-        $room_id  = Session::get('room_id');
-        $schedule = \DB::table('schedule')->where('room_id', $room_id)->first();
-
-        if(Auth::user() && Auth::user()->group_id == 100 && !isset($room_id)){
-            return redirect('my-appointments');
-        }
-
-        return view('FrontEnd.subscribe')
-            ->with(['room_id' => $room_id, 'doctor' => $schedule->provider_id]);
+        return view('FrontEnd.subscribe');
     }
        
     public function registration(Request $request) {

@@ -101,6 +101,22 @@ class AppointmentController extends Controller {
         $specialist = array_unique($specialist);
 
         return view('FrontEnd.search_doctor_modal_block', compact('doctors','locations','specialist','request'));
+    } 
+    public function appFindPatients(Request $request) {
+        $patients = DB::table('users as patient')
+                    ->join('demographics','patient.id','=','demographics.id')
+                    ->where('group_id',100)
+                    ->select([
+                        'patient.*',
+                        'demographics.photo',
+                        'demographics.language',
+                        'demographics.address',
+                        'demographics.city',
+                        rsql("'this is as description' AS description")
+                    ])
+                    ->get();
+
+        return view('FrontEnd.search_patient_modal_block', compact('patients','request'));
     }    
 
     public function makeAppointmentAjax(Request $request) {
@@ -176,7 +192,10 @@ class AppointmentController extends Controller {
                 $return['status'] = 0;
                 $return['message'] = 'Doctor has already appointed! Please take another time or Request to another doctor';
             } else {
-
+                $user_id = $user->id;
+                if($user->group_id == 2) {
+                    $user_id = $request->get('app_patient_id');
+                }
                 $data = [                        
                     'pid' => $pid,
                     'start' => $start,
@@ -186,9 +205,9 @@ class AppointmentController extends Controller {
                     'reason' => $request->get('reason'),
                     'status' => 'Pending',
                     'provider_id' => $request->get('provider_id'),
-                    'user_id' => $user->id,
+                    'user_id' => $user_id,
                     'notes' => $request->get('notes'),
-                    'room_id' => (int)($start.$user->id.$request->get('provider_id'))
+                    'room_id' => (int)($start.$user_id.$request->get('provider_id'))
                 ];        
 
                 $appt_id = DB::table('schedule')->insertGetId($data);       

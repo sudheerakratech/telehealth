@@ -195,8 +195,8 @@
                 @if($profile_image)
                 <div class="user-img-div">
                  <img src="{{ asset('uploads/profile').'/'. $profile_image}} " 
-                style="height: 200px;
-                        margin: 0 auto;
+                style="height: 150px;
+                        margin-left:1px;
                         display: block;
                         margin-top: 12px;
                         background-color: #40ACE9;

@@ -42,6 +42,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 Route::post('find-doctors', 'FrontEnd\AppointmentController@appFindDoctors')->name('app_find_doctors');
+Route::post('find-patients', 'FrontEnd\AppointmentController@appFindPatients')->name('app_find_patients');
 Route::post('save_appointment', 'FrontEnd\AppointmentController@makeAppointmentAjax')->name('save_appointment_ajax');
 
 // Front-End Doctors Routes

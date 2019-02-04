@@ -55,7 +55,16 @@
 						</div>
 					</div> --}}
 
-
+					@if($user_type)
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Session Time</h3>
+							</div>
+							<div class="panel-body">
+								<h1 class="text-center"><label class="count-down">{{$session_time}} Minutes Left</label></h1>
+							</div>
+						</div>
+					@endif
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<h3 class="panel-title">Chat</h3>
@@ -70,7 +79,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 
 			</div>
@@ -107,15 +115,17 @@
             var counter = setInterval(timer, 1000 * 60); //1000 * 60 will  run it every 1 minute
 
             function timer() {
-                count = count - 1;
-                if (count === -1) {
-                    clearInterval(counter);
-                    location.reload();
-                }
+                if(partnerID){
+                    count = count - 1;
+                    if (count === -1) {
+                        clearInterval(counter);
+                        location.reload();
+                    }
 
-                $.post('session_watcher',{room_id:'{{$room_id}}'}, function () {
-
-                });
+                    $.post('session_watcher',{room_id:'{{$room_id}}'}, function () {
+                        $('.count-down').text(count+' Minutes Left');
+                    });
+				}
             }
 		</script>
 	@endif

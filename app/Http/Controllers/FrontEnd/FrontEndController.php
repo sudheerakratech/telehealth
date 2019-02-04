@@ -164,7 +164,45 @@ class FrontEndController extends Controller
                 ->first();
 
             if(!$payments){
-                return redirect('subscribe')->with(['room_id' => $room_id]);
+                $schedule = \DB::table('schedule')
+                    ->where('room_id', $room_id)->first();
+
+                $from = Carbon::createFromTimestamp($schedule->start);
+                $to = Carbon::createFromTimestamp($schedule->end);
+                $session_time = $to->diffInMinutes($from);
+
+                switch ($session_time){
+                    case 15:
+                        $data = [
+                            'session'   => 15,
+                            'amount'    => 10,
+                            'person'    => 1,
+                            'room'  => $room_id,
+                            'doctor'    => $schedule->provider_id
+                        ];
+                        break;
+                    case 30:
+                        $data = [
+                            'session'   => 30,
+                            'amount'    => 18,
+                            'person'    => 2,
+                            'room'  => $room_id,
+                            'doctor'    => $schedule->provider_id
+                        ];
+                        break;
+                    case 45:
+                        $data = [
+                            'session'   => 45,
+                            'amount'    => 25,
+                            'person'    => 3,
+                            'room'  => $room_id,
+                            'doctor'    => $schedule->provider_id
+                        ];
+                        break;
+                }
+
+                return redirect('process_payment/?'.http_build_query($data).'');
+
             }else if($payments){
                 //get session minutes
                 $from = Carbon::parse($payments->session_from);

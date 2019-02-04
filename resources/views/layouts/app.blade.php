@@ -16,6 +16,12 @@
     {!! Minify::stylesheet($assets_css)->withFullUrl() !!}
     @yield('view.stylesheet')
     <style>
+        #sidebar {
+            margin-top: -20px;
+        }
+        #sidebar > div.col-md-12 {
+            padding-top: 15px
+        }
         #search_patient_form{
             display: block;
         }
@@ -47,7 +53,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px;padding-top: 10px">
+                <span class="navbar-brand text-left" id="logo" data-toggle="offcanvas" style="padding:0px;">
                    <a href="{{route('homepage')}}"> <img src="{{asset('assets/akrahealth.png') }}" style="height: 52px;"></a>
                 </span>
                 @if (Session::has('pid'))
@@ -403,21 +409,25 @@
         <div class="col-md-12">
             @if (!Auth::guest())
                 @if (Session::get('patient_centric') !== 'y' && Session::get('patient_centric') !== 'yp' && Session::get('group_id') != '100')
-                    <div style="margin:15px">
-                        <form class="input-group form" border="0" id="search_patient_form" role="search" action="{{ url('search_patient') }}" method="POST" style="margin-bottom:0px;" data-nosh-target="search_patient_results">
-                            <input type="hidden" name="type" value="div">
-                            <input type="text" class="form-control search" id="search_patient" name="search_patient" placeholder="{{ trans('nosh.search_patient') }}" style="margin-bottom:0px;" required autocomplete="off">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-md" id="search_patient_submit" value="Go"><i class="glyphicon glyphicon-search"></i></button>
-                            </span>
-                            @if (Session::get('group_id') != '1')
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-md btn-default" id="search_patient_recent" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.recent_patients') }}"><i class="fa fa-history fa-lg"></i></button>
-                            </span>
-                            
-                            <span class="input-group-btn">
-                                <a href="{{ route('add_patient') }}" type="button" class="btn btn-md btn-default" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.add_patient') }}"><i class="fa fa-plus fa-lg"></i></a>
-                            </span>
+                    <div class="fluid-container">
+                        <form class="input-group form row" border="0" id="search_patient_form" role="search" action="{{ url('search_patient') }}" method="POST" style="margin-bottom:0px;" data-nosh-target="search_patient_results">
+                            <div class="col-md-10">
+                                <input type="hidden" name="type" value="div">
+                                <input type="text" class="form-control search" id="search_patient" name="search_patient" placeholder="{{ trans('nosh.search_patient') }}" style="margin-bottom:0px;" required autocomplete="off">
+                            </div>
+                            <div class="col-md-2">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-md" id="search_patient_submit" value="Go"><i class="glyphicon glyphicon-search"></i></button>
+                                </span>
+                                @if (Session::get('group_id') != '1')
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-md btn-default" id="search_patient_recent" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.recent_patients') }}"><i class="fa fa-history fa-lg"></i></button>
+                                </span>
+                                
+                                <span class="input-group-btn">
+                                    <a href="{{ route('add_patient') }}" type="button" class="btn btn-md btn-default" data-toggle="tooltip" data-placement="bottom" title="{{ trans('nosh.add_patient') }}"><i class="fa fa-plus fa-lg"></i></a>
+                                </span>
+                            </div>
                             @endif
                         </form>
                         <div class="list-group" id="search_patient_results"></div>

@@ -437,6 +437,6 @@ Route::any('providerregister/{api}', ['as' => 'providerregister', 'uses' => 'API
 Route::any('test1', array('as' => 'test1', 'uses' => 'InstallController@test1'));
 
 //paypal
-Route::post('process_payment', 'PaypalController@index');
+Route::get('process_payment', 'PaypalController@index');
 Route::get('process_paid', 'PaypalController@processPaid');
 Route::post('session_watcher', 'PaypalController@sessionWatcher');

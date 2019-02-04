@@ -26,9 +26,9 @@
             display: block;
         }
         #search_patient_form #search_patient {
-            margin-left : 65px;
-            width : 78%;
-            max-width: 80%;
+            /*margin-left : 65px;*/
+            /*width : 78%;*/
+            /*max-width: 80%;*/
             border-radius: 5px;
             margin-right: 5px;
        } 
@@ -409,13 +409,13 @@
         <div class="col-md-12">
             @if (!Auth::guest())
                 @if (Session::get('patient_centric') !== 'y' && Session::get('patient_centric') !== 'yp' && Session::get('group_id') != '100')
-                    <div class="fluid-container">
+                    <div class="container">
                         <form class="input-group form row" border="0" id="search_patient_form" role="search" action="{{ url('search_patient') }}" method="POST" style="margin-bottom:0px;" data-nosh-target="search_patient_results">
-                            <div class="col-md-10">
+                            <div class="col-lg-10 col-md-9 col-sm-5 col-xs-5">
                                 <input type="hidden" name="type" value="div">
                                 <input type="text" class="form-control search" id="search_patient" name="search_patient" placeholder="{{ trans('nosh.search_patient') }}" style="margin-bottom:0px;" required autocomplete="off">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-lg-2 col-md-3 col-sm-7 col-lg-2 col-xs-7" style="float: right">
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-md" id="search_patient_submit" value="Go"><i class="glyphicon glyphicon-search"></i></button>
                                 </span>

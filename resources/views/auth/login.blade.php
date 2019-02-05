@@ -26,7 +26,8 @@
                 .login_side_box{
                     margin-right: 0;
                     width: 100%;
-                    margin-bottom: 20px
+                    margin-bottom: 20px;
+                    border:none;
                 }
                
             }

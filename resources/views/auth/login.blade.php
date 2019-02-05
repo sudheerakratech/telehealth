@@ -22,9 +22,18 @@
             .form-horizontal .control-label {
                 font-size: 13px;
             }
+            @media(max-width:990px){
+                .login_side_box{
+                    margin-right: 0;
+                    width: 100%;
+                    margin-bottom: 20px
+                }
+               
+            }
+
             </style>
 
-            <div class="col-md-3 col-md-offset-1 hidden-xs hidden-sm">                
+            <div class="col-md-3 col-md-offset-1" id="login_side_box_wrapper">                
                 <div class="login_side_box">
 
                     <div id="login_practice_logo" class="text-center">

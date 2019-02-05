@@ -89,7 +89,7 @@
             <div class="wthree_services_bottom_left_grid">
                 <div class="col-md-6 w3_agileits_services_bottom_l_grid">
                     <div class="agile_services_bottom_l_grid1">
-                        <img src="{{asset('images/g4.jpg')}}" alt=" " class="img-responsive" width="402.2px" />
+                        <img src="{{asset('images/features-secure-platform.jpg')}}" alt=" " class="img-responsive" width="402.2px" />
                         <div class="w3_service_bottom_grid_pos">
                             <h3>Quality Care</h3>
                         </div>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="col-md-6 w3_agileits_services_bottom_l_grid">
                     <div class="agile_services_bottom_l_grid1">
-                        <img src="{{asset('images/g2.jpg')}}" alt=" " class="img-responsive" height="270px"/>
+                        <img src="{{asset('images/features-enabling-extenders.jpg')}}" alt=" " class="img-responsive" height="270px"/>
                         <div class="w3_service_bottom_grid_pos">
                             <h3>Quality Care</h3>
                         </div>

@@ -1,3 +1,9 @@
+@php
+    $past = false;
+    if(array_key_exists('period', $data) && $data['period'] === 'past'){
+        $past = true;
+    }
+@endphp
 @if(is_array($appointments) && count($appointments))
     @foreach($appointments as $appointment)
         <div class="row">
@@ -93,10 +99,13 @@
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
+                    @if($past)
+                    @else
                     <a href="{{route('call_conference',['room' => $appointment['room_id'],'uname' => Auth::user()['username'],'pname' => $appointment['d_username']])}}" class="btn btn-success" target="_blank"
                         {{ $appointment['call_enable'] ? '' : 'disabled' }} >
                         Video Call
                     </a>
+                    @endif
                     <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0','subtype'=> '','info' => [ 'provider_id'=> $appointment['doctor_id']]
                     ])}}" data-provider_id="{{ $appointment['doctor_id'] }}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>
 

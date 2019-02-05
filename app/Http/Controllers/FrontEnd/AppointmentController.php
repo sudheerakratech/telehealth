@@ -910,7 +910,12 @@ class AppointmentController extends Controller {
             }
         }
 
-        return view('FrontEnd.all-appointments',['appointments' => $events]);
+        $data = [];
+        if (isset($period)) {
+            $data['period'] = $period;
+        }
+
+        return view('FrontEnd.all-appointments',['appointments' => $events,'data'=>$data]);
     }
 
     public function cancelAppointment (Request $request){

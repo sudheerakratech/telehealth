@@ -3,6 +3,11 @@
     <title>Telemedicine | Features</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        img.features-bottom-images {
+            min-height: 225px;
+        }
+    </style>
 
 
     <!-- banner -->
@@ -220,7 +225,7 @@
     <div class="Department_girds_agileits">
         <div class="agile_team_grid">
             <div class="col-md-3 w3ls_banner_bottom_grid">
-                <img src="{{asset('images/p1.png')}}" alt=" " class="img-responsive" />
+                <img src="{{asset('images/feature-bottom/patient-profile.jpg')}}" alt=" " class="img-responsive features-bottom-images" />
                 <div class="overlay">
                      <h4><a onclick="document.getElementById('id01').style.display='block'">Patient Profile</a></h4>
                     <!-- Modal -->
@@ -252,7 +257,7 @@
                 </div>
             </div>
             <div class="col-md-3 w3ls_banner_bottom_grid">
-                <img src="{{asset('images/p2.jpg')}}" alt=" " class="img-responsive" />
+                <img src="{{asset('images/feature-bottom/medical-consultanyc.jpg')}}" alt=" " class="img-responsive features-bottom-images" />
                 <div class="overlay">
                     <h4><a onclick="document.getElementById('id02').style.display='block'">Medical Consultancy</a></h4>
                     <!-- Modal -->
@@ -283,7 +288,7 @@
                 </div>
             </div>
             <div class="col-md-3 w3ls_banner_bottom_grid hvr-shutter-in-horizontal">
-                <img src="{{asset('images/p3.jpg')}}" alt=" " class="img-responsive" />
+                <img src="{{asset('images/feature-bottom/work-flow-image.png')}}" alt=" " class="img-responsive features-bottom-images" />
                 <div class="overlay">
                     <h4><a onclick="document.getElementById('id03').style.display='block'">Information Workflow</a></h4>
                     <!-- Modal -->
@@ -312,7 +317,7 @@
                 </div>
             </div>
             <div class="col-md-3 w3ls_banner_bottom_grid">
-                <img src="{{asset('images/p4.jpg')}}" alt=" " class="img-responsive" />
+                <img src="{{asset('images/feature-bottom/report-image.jpg')}}" alt=" " class="img-responsive features-bottom-images" />
                 <div class="overlay">
                     <h4><a onclick="document.getElementById('id04').style.display='block'">Reports & Integration</a></h4>
                     <!-- Modal -->

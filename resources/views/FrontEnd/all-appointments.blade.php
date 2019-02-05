@@ -79,13 +79,13 @@
                     @if($appointment['time'] != '')
                         <li>
                             <i class="fa font20 fa-calendar-o m-b-15 m-r-15 text-primary"></i>
-                            <span class=" font15"> {{$appointment['time']}}</span>
+                            <span class=" font15"> {{$appointment['time']}} IST</span>
                         </li>
                     @endif
                     @if($appointment['duration'] != '')
                         <li>
                             <i class="fa font20 fa-clock-o m-b-15 m-r-15 text-primary"></i>
-                            <span class=" font15"> {{$appointment['duration']}}</span>
+                            <span class=" font15"> {{$appointment['duration']}} Minutes</span>
                         </li>
                     @endif
                     @if($appointment['date'] != '')

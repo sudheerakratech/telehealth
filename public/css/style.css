@@ -1014,24 +1014,27 @@ ul.social-icons .icon-border::after {
 	-ms-transform: scaleX(1);
 }
 .w3_agile_services_bottom_right_grid{
-	background: url(../images/slid1.jpg) no-repeat 0px 0px;
+	background: url(../images/feature-slider-1.jpg) no-repeat 0px 0px;
     background-size: cover;
+    background-position: center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;
     -o-background-size: cover;
 }
 .w3_agile_services_bottom_right_grid1{
-	background: url(../images/slid2.jpg) no-repeat 0px 0px;
+	background: url(../images/feature-slider-2.jpg) no-repeat 0px 0px;
     background-size: cover;
+    background-position: center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;
     -o-background-size: cover;
 }
 .w3_agile_services_bottom_right_grid2{
-	background: url(../images/slid3.jpg) no-repeat 0px 0px;
+	background: url(../images/feature-slider-3.jpg) no-repeat 0px 0px;
     background-size: cover;
+    background-position: center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;

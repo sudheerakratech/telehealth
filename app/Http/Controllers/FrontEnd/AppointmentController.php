@@ -848,7 +848,7 @@ class AppointmentController extends Controller {
                         rsql("IFNULL(p.language,'english') as language"),
                         'p.photo as photo',
                         'demo.address as city',
-                        rsql("FROM_UNIXTIME(s.start) AS time"),
+                        rsql("FROM_UNIXTIME(s.start,'%D %b, %Y %H:%i:%s') AS time"),
                         rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                         rsql('DATE(s.timestamp)  AS date'),
                         rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),2000) AND CURRENT_TIMESTAMP()),TRUE,TRUE) AS call_enable"),

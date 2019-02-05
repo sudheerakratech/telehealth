@@ -165,6 +165,26 @@
             min-height: 270px;
             max-height: 270px;
         }
+        span.about-circle{
+            min-height: 110px;
+            max-width: 110px;
+            min-width: 110px;
+            border: 2px solid #09ACFF;
+            border-radius: 78px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: -webkit-baseline-middle;
+            color: #756d6d;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        strong.about-circle-text{
+            margin: 25px 0;
+            display: inline-block;
+        }
+        span.about-circle{
+            margin-left: 3vw;
+        }
     </style>
     <!-- banner -->
     <div class="banner1 jarallax about-us">
@@ -183,6 +203,32 @@
     <!-- about -->
     <div class="about" id="about">
         <div class="container">
+            <p class="ab" style="text-align: justify">
+                AKRA HEALTH is an Telehealth system with an integrated mobile-friendly EMR based on Laravel PHP framework and jQuery. Our modular codes runs on Cloud providing a fase,secure,robust and easy-to-use platform to our users
+            </p>
+            <div class="row">
+                <div class="col-md-3">
+                  
+                </div>
+                <div class="col-md-6">
+                    <div class="">
+                        <span class='about-circle' >
+                            <strong class='about-circle-text'>FHIR Integration</strong>
+                        </span>
+                        <span class='about-circle' >
+                            <strong class='about-circle-text'>ICD-10 Integration</strong>
+                        </span>
+                        <span class='about-circle' >  
+                            <strong class='about-circle-text'>Rx API Integration.</strong>
+                    </span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                   
+                </div>
+            </div>
+
+
             <h2 class="w3_heade_tittle_agile">Our vision</h2>
             {{--<p class="sub_t_agileits">Impacting lives through technology</p>--}}
 

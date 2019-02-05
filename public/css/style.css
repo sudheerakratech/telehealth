@@ -1551,6 +1551,16 @@ figure.effect-apollo:hover figcaption::before {
     z-index: 999;
 }
 
+.banner1.pricing-page-banner {
+    background: url(../images/pricing-page-banner.jpg) no-repeat 0px -99px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height:400px;
+    z-index: 999;
+}
+
 .banner1.blog-page {
     background: url(../images/about-us.jpg) no-repeat 0px -99px !important;
     background-size: cover;

@@ -48,7 +48,13 @@ class DoctorsController extends Controller
         }
 
         $base_query = DB::table('users')            
-            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','users.active','providers.description','providers.language','providers.city','providers.Country','providers.photo','providers.certificate','providers.specialty','providers.sun_o','providers.sun_c','providers.mon_o','providers.mon_c','providers.tue_o','providers.tue_c','providers.wed_o','providers.wed_c','providers.thu_o','providers.thu_c','providers.fri_o','providers.fri_c','providers.sat_o','providers.sat_c')
+            ->select('users.id','users.email','users.displayname','users.firstname','users.lastname','users.middle','users.title','users.active',
+                rsql("IFNULL(providers.description,' It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.') AS description"),
+                rsql("IFNULL(providers.language,'English') AS language"),
+                'providers.city',
+                'providers.Country','providers.photo','providers.certificate','providers.specialty','providers.sun_o','providers.sun_c','providers.mon_o','providers.mon_c','providers.tue_o','providers.tue_c','providers.wed_o','providers.wed_c','providers.thu_o','providers.thu_c','providers.fri_o','providers.fri_c','providers.sat_o','providers.sat_c',
+                rsql("'09:00 AM - 10:00 PM' AS working_hours")
+            )
             ->leftjoin('providers', 'providers.id', '=', 'users.id')            
             ->where($where);
 

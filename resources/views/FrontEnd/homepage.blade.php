@@ -8,6 +8,10 @@
             top: 85%;
             left: -76%;
         }
+
+        .mobile-banner h3 > span {
+            color: #138EC7;
+        }
     </style>
     <!-- banner -->
     <div class="banner-silder">
@@ -312,34 +316,37 @@
 
     {{-- <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%"> --}}
     {{-- For Mobile Image Banner Which will be connected to Play Store. --}}
-    {{-- <div class="container"></div>
+    <div class="container"></div>
         <div class="row mobile-banner">
             <div class="col-md-4 col-sm-12">
                 <section>
                     <h3>
                         <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
-                        <span>Lorem ipsum dolor.</span>
+                        <span>ELECTRONIC HEALTH RECORDS</span>
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                        Keep your medical history in one place, secure
+and managed under your control
                     </p>
                 </section>
                 <section>
                     <h3>
                         <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
-                        <span>Lorem ipsum dolor.</span>
+                        <span>APPOINTMENTS</span>
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                        Stay organized and check in your doctor
+appointments through our Telemedicine App
                     </p>
                 </section>
                 <section>
                     <h3>
                         <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
-                        <span>Lorem ipsum dolor.</span>
+                        <span>CHARTS</span>
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                        Maintain growth charts, Immunization Tracking,
+Vaccine Information and much more
                     </p>
                 </section>
             </div>
@@ -349,25 +356,27 @@
             <div class="col-md-4 col-sm-12 right-block">
                  <section>
                     <h3>
-                        <span>Lorem ipsum dolor.</span>
+                        <span>DASHBOARD</span>
                         <i class="fa fa-bar-chart"  aria-hidden="true"></i>
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                        Manage your Medications, Supplements , Doctor
+encounters, List of Issues & Allergies etc..
                     </p>
                 </section>
                 <section>
                     <h3>
-                        <span>Lorem ipsum dolor.</span> 
+                        <span>BLOCKCHAIN</span> 
                         <i class="fa fa-bar-chart"  aria-hidden="true"></i>
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
+                        Store all your medical records through secure
+block-chain and access data anywhere anytime.
                     </p>
                 </section>
                 <section>
                     <h3>
-                        <span>Lorem ipsum dolor.</span>
+                        <span>PATIENT PORTAL</span>
                         <i class="fa fa-bar-chart"  aria-hidden="true"></i>
                     </h3>
                     <p>
@@ -377,7 +386,7 @@
             </div>
         </div>
     </div>
- --}}
+
     </div>
     <!-- services section -->
     <div class="service-w3l jarallax" id="service">

@@ -169,7 +169,7 @@
             min-height: 110px;
             max-width: 110px;
             min-width: 110px;
-            border: 2px solid #09ACFF;
+            border: 3px solid #138EC7;
             border-radius: 78px;
             display: inline-block;
             text-align: center;
@@ -211,7 +211,7 @@
                   
                 </div>
                 <div class="col-md-6">
-                    <div class="">
+                    <div class="" style="text-align: center;">
                         <span class='about-circle' >
                             <strong class='about-circle-text'>FHIR Integration</strong>
                         </span>
@@ -227,6 +227,7 @@
                    
                 </div>
             </div>
+            <br>
 
 
             <h2 class="w3_heade_tittle_agile">Our vision</h2>

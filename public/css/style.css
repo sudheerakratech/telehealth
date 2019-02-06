@@ -459,7 +459,8 @@ ul.top_agile_w3l_info_icons i {
     -o-background-size: cover;      
     -moz-background-size: cover;    
     max-height:415px;
-
+       background-size: contain;
+    background-position: center;
 }
 
 // Features Page banners.

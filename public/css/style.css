@@ -429,6 +429,40 @@ ul.top_agile_w3l_info_icons i {
 	max-height:415px;
 }
 
+.mobile-banner-0{
+    background: url(../images/mobile-banner/home-mobile1.png) no-repeat 0px 0px;
+    background-size: cover; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;      
+    -moz-background-size: cover;
+    max-height:415px;
+    background-size: contain;
+    background-position: center;
+}
+.mobile-banner-1{
+    background: url(../images/mobile-banner/home-mobile2.png) no-repeat 0px 0px;
+    background-size: cover; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;      
+    -moz-background-size: cover;
+    max-height:415px !important;
+    background-size: contain;
+    background-position: center;
+}
+.mobile-banner-2{
+    background: url(../images/mobile-banner/home-mobile3.png) no-repeat 0px 0px;
+    background-size: cover; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;      
+    -moz-background-size: cover;    
+    max-height:415px;
+    background-size: contain;
+    background-position: center;
+}
+
 // Features Page banners.
 
 .features-banner-1{

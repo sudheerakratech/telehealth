@@ -358,7 +358,24 @@ Vaccine Information and much more
                 </section>
             </div>
             <div class="col-md-4 col-sm-12">
-                 <img src="/images/mobile-app-banner.png" class="mobile-image" alt="" style="max-width : 60%">
+                <div id="JiSlider2" class="jislider">
+                        <ul>
+                            <li>
+                                <div class="w3layouts-banner-top mobile-banner-1">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="w3layouts-banner-top mobile-banner-2">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="w3layouts-banner-top mobile-banner-3">
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                 {{-- <img src="/images/mobile-app-banner.png" class="mobile-image" alt="" style="max-width : 60%"> --}}
             </div>
             <div class="col-md-4 col-sm-12 right-block">
                  <section>

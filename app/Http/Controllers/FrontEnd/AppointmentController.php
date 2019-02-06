@@ -829,7 +829,8 @@ class AppointmentController extends Controller {
             ->join('users as patient','s.user_id','=','patient.id')
             ->join('providers as p','s.provider_id','=','p.id')
             ->join('users as doctor','p.id','=','doctor.id')
-            ->leftjoin('demographics as demo','s.pid','=','demo.pid');
+            ->leftjoin('demographics as demo','s.pid','=','demo.pid')
+            ->leftjoin('practiceinfo','p.practice_id','=','practiceinfo.practice_id');
 
         if($user->group_id == 100){
             $base_query = $base_query->where('s.user_id', '=', $id);
@@ -889,8 +890,10 @@ class AppointmentController extends Controller {
                         rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                         rsql("DATE_FORMAT(s.timestamp,'%D %b, %Y')  AS date"),
                         rsql("IF((FROM_UNIXTIME(s.start) BETWEEN SUBTIME(CURRENT_TIMESTAMP(),1000) AND CURRENT_TIMESTAMP()),TRUE,TRUE) AS call_enable"),
-                        rsql("IFNULL(s.room_id,CONCAT(s.start,patient.id,doctor.id)) AS room_id")
+                        rsql("IFNULL(s.room_id,CONCAT(s.start,patient.id,doctor.id)) AS room_id"),
+                        rsql("IFNULL(practiceinfo.timezone,'IST') AS timezone")
                     ])->get();
+
         if ($query) {
             foreach ($query as $row) {
                 if ($row->visit_type != '') {
@@ -940,6 +943,7 @@ class AppointmentController extends Controller {
                     'room_id' =>  $row->room_id,                    
                     'p_username' =>  $row->p_username,                    
                     'd_username' =>  $row->d_username,                    
+                    'timezone' =>  $row->timezone,                    
                 ];
              
                 $events[] = $event;
@@ -951,7 +955,7 @@ class AppointmentController extends Controller {
             $data['period'] = $period;
         }
 
-        return view('FrontEnd.all-appointments',['appointments' => $events,'data'=>$data]);
+        return view('FrontEnd.all-appointments',['appointments' => $events,'data' => $data]);
     }
 
     public function cancelAppointment (Request $request){

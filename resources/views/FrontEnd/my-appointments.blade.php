@@ -33,16 +33,18 @@
                         </div>
                         <div class="panel-body">
                             <div id="datetimepicker"></div>
-                            <form class="form-horizontal" role="form">
-                                 <div class="form-group">
-                                     <label for="provider_list" class="col-md-4 control-label">Provider</label>
-                                     <div class="col-md-8">
-                                         <select id="provider_list" class="form-control" name="provider_list" 
-                                             {!! $provider_list !!}
-                                         </select>
+                            @if(Auth::user() && Auth::user()->group_id == 100)
+                                <form class="form-horizontal" role="form">
+                                     <div class="form-group">
+                                         <label for="provider_list" class="col-md-4 control-label">Provider</label>
+                                         <div class="col-md-8">
+                                             <select id="provider_list" class="form-control" name="provider_list" 
+                                                 {!! $provider_list !!}
+                                             </select>
+                                         </div>
                                      </div>
-                                 </div>
-                            </form>
+                                </form>
+                            @endif
                             @if (isset($colorlegend))
                                 <div style="margin:5px;"><i style="color:green;" class="fa fa-square-o fa-lg"></i> Attended</div>
                                 <div style="margin:5px;"><i style="color:black;" class="fa fa-square-o fa-lg"></i> DNKA</div>

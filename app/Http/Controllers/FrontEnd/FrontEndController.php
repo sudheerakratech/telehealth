@@ -147,13 +147,15 @@ class FrontEndController extends Controller
         $session_time = null;
         $user_type = false;
 
-
-        if(Auth::user()->group_id == 100){
-            $this->attendMeeting([
+        if (Auth::user()->group_id == 100) {
+             $this->attendMeeting([
                 'room_id' => $room_id,
                 'url' => $request->fullUrl()
-            ]);
+            ],'doctor');
+        }
 
+
+        if(Auth::user()->group_id == 100){
             $user_type = true;
 
             $payments = \DB::table('schedule as sh')
@@ -316,33 +318,62 @@ class FrontEndController extends Controller
     }
 
 
-    private function attendMeeting($data){
-        $room_id = $data['room_id'];
-        $url = $data['url'];
+    private function attendMeeting($data,$sender = 'patient'){
+        if($sender = 'patient'){
+            $room_id = $data['room_id'];
+            $url = $data['url'];
 
-        $schedule = \DB::table('schedule')->where('room_id',$room_id)->first();
+            $schedule = \DB::table('schedule')->where('room_id',$room_id)->first();
 
-        $sender_id   = $schedule->user_id;
-        $reciever_id = $schedule->provider_id;
-        $patient     = \DB::table('users')->where('id',$sender_id)->first();
-        $doctor      = \DB::table('users')->where('id',$reciever_id)->first();
+            $sender_id   = $schedule->user_id;
+            $reciever_id = $schedule->provider_id;
+            $patient     = \DB::table('users')->where('id',$sender_id)->first();
+            $doctor      = \DB::table('users')->where('id',$reciever_id)->first();
 
-        $message = [
-                        "status" => 'sent',
-                        "message_id" => "",
-                        "pid" => $reciever_id,
-                        "practice_id" => $doctor->practice_id,
-                        "t_messages_id" => "",
-                        "subject" => "Please Attend Appointment.",
-                        "patient_name" => $patient->displayname,
-                        "message_to" =>  $doctor->displayname,
-                        "cc" => $doctor->displayname,
-                        "mailbox" => $reciever_id,
-                        "body" => "Please Attend the Appointment by following link, patient is waiting for appointment \n $url \n",
-                        "date" => Carbon::now(),
-                        "message_from" => $sender_id,
-                    ];
-        \DB::table('messaging')->insert($message);
+            $message = [
+                            "status" => 'sent',
+                            "message_id" => "",
+                            "pid" => $reciever_id,
+                            "practice_id" => $doctor->practice_id,
+                            "t_messages_id" => "",
+                            "subject" => "Please Attend Appointment.",
+                            "patient_name" => $patient->displayname,
+                            "message_to" =>  $doctor->displayname,
+                            "cc" => $doctor->displayname,
+                            "mailbox" => $reciever_id,
+                            "body" => "Please Attend the Appointment by following link, patient is waiting for appointment \n $url \n",
+                            "date" => Carbon::now(),
+                            "message_from" => $sender_id,
+                        ];
+            \DB::table('messaging')->insert($message);
+        }else if ($sender = 'doctor') {
+            $room_id = $data['room_id'];
+            $url = $data['url'];
+
+            $schedule = \DB::table('schedule')->where('room_id',$room_id)->first();
+
+            $sender_id   = $schedule->provider_id;
+            $reciever_id = $schedule->user_id;
+            $patient     = \DB::table('users')->where('id',$reciever_id)->first();
+            $doctor      = \DB::table('users')->where('id',$sender_id)->first();
+
+            $message = [
+                            "status" => 'sent',
+                            "message_id" => "",
+                            "pid" => $reciever_id,
+                            "practice_id" => $doctor->practice_id,
+                            "t_messages_id" => "",
+                            "subject" => "Please Attend Appointment.",
+                            "patient_name" => $patient->displayname,
+                            "message_to" =>  $patient->displayname,
+                            "cc" => $doctor->displayname,
+                            "mailbox" => $reciever_id,
+                            "body" => "Please Attend the Appointment by following link, patient is waiting for appointment \n $url \n",
+                            "date" => Carbon::now(),
+                            "message_from" => $sender_id,
+                        ];
+            \DB::table('messaging')->insert($message);
+        }
     }
 
     public function changeImage(Request $request)

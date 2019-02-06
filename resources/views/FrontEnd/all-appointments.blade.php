@@ -1,7 +1,7 @@
 @php
-    $past = false;
-    if(array_key_exists('period', $data) && $data['period'] === 'past'){
-        $past = true;
+    $video = true;
+    if(array_key_exists('period', $data) && in_array($data['period'], ['past','future'])){
+        $video = false;
     }
 @endphp
 @if(is_array($appointments) && count($appointments))
@@ -33,20 +33,20 @@
                                <h4>Patient : {{ucfirst($appointment['patient_name'])}} </h4>
                                 <p>{{str_replace(',',' / ',$appointment['specialty'])}}</p>
                         @endif
-                        <p><i class="fa fa-hospital-o font20 text-primary"></i>
-                            <strong>Type : </strong> {{ $appointment['visit_type'] }}</p>
+                        <p class="text-justify"><i class="fa fa-hospital-o font20 text-primary"></i>
+                        <strong> Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong> {{ $appointment['visit_type'] }}</p>
                         @if($appointment['notes'] != '')
-                            <p class="text-justify small">
+                            <p class="text-justify">
                                 <i class="fa fa-sticky-note font20 text-primary"></i>
-                                <strong>Notes : </strong>
+                                <strong> Notes &nbsp;&nbsp;&nbsp;:   </strong>
                                 {{$appointment['notes']}}
                             </p>
                             {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor['description']}}</p> --}}
                         @endif
                         @if($appointment['reason'] != '')
-                            <p class="text-justify small">
+                            <p class="text-justify">
                                 <i class="fa fa-tasks font20 text-primary"></i>
-                                <strong>Reason : </strong>
+                                <strong> Reason : </strong>
                                 {{$appointment['reason']}}
                             </p>
                             {{-- <p class="small m-t-n15"><i class="fa fa-" {{$doctor['description']}}</p> --}}
@@ -79,7 +79,7 @@
                     @if($appointment['time'] != '')
                         <li>
                             <i class="fa font20 fa-calendar-o m-b-15 m-r-15 text-primary"></i>
-                            <span class=" font15"> {{$appointment['time']}} IST</span>
+                            <span class=" font15"> {{$appointment['time']}} {{$appointment['timezone']}}</span>
                         </li>
                     @endif
                     @if($appointment['duration'] != '')
@@ -99,12 +99,12 @@
             </div>
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
-                    @if($past)
+                    @if($video)
+                        <a href="{{route('call_conference',['room' => $appointment['room_id'],'uname' => Auth::user()['username'],'pname' => $appointment['d_username']])}}" class="btn btn-success" target="_blank"
+                            {{ $appointment['call_enable'] ? '' : 'disabled' }} >
+                            Video Call
+                        </a>
                     @else
-                    <a href="{{route('call_conference',['room' => $appointment['room_id'],'uname' => Auth::user()['username'],'pname' => $appointment['d_username']])}}" class="btn btn-success" target="_blank"
-                        {{ $appointment['call_enable'] ? '' : 'disabled' }} >
-                        Video Call
-                    </a>
                     @endif
                     <a href="{{route('core_form',['table'=>'messaging','index'=>'message_id','id'=>'0','subtype'=> '','info' => [ 'provider_id'=> $appointment['doctor_id']]
                     ])}}" data-provider_id="{{ $appointment['doctor_id'] }}" class="btn btn-primary"><i class="fa fa-commenting"></i> Message</a>

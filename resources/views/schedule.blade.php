@@ -451,6 +451,11 @@
         $('#event_cancel').css('cursor', 'pointer').click(function() {
             let $appt_form = $('#event_form');
             let appt_id = $appt_form.find("#event_id").val();
+            if(!appt_id){
+                $('#eventModal').modal('hide');
+                return;
+            }
+
             let provider_id = $appt_form.find("#provider_id").val();
             let title = $appt_form.find("#title").val();
             let pid = $appt_form.find("#pid").val();

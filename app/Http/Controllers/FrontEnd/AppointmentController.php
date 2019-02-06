@@ -165,6 +165,8 @@ class AppointmentController extends Controller {
 
             $title = $row1->lastname . ', ' . $row1->firstname . ' (DOB: ' . date('m/d/Y', strtotime($row1->DOB)) . ') (ID: ' . $pid . ')';        
 
+            $appointment_date = $request->get('app_date'); 
+
             $end_hours = '+'.$request->get('end_time');        
             $start_date_time = $request->get('app_date') . " " . $request->get('start_time');
             $end_date_time = date('Y-m-d h:i A',strtotime($end_hours,strtotime($start_date_time)));
@@ -181,6 +183,41 @@ class AppointmentController extends Controller {
                 ->where('practice_id', '=', $user->practice_id)
                 ->first();                
             $end = $start + $row->duration;*/
+            $valid_time = false;
+
+            try {
+                $appointment_start_time = $request->get('start_time');
+                $dayOfWeek = strtolower(substr(date("l", $start), 0,3));
+                if(in_array($dayOfWeek, ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'] )){
+
+                    $day_o = $dayOfWeek.'_o';
+                    $day_c = $dayOfWeek.'_c';
+
+                    $provider = DB::table('providers')->where('id',$request->get('provider_id'))->first();
+                    if($provider){
+
+                        $schedule_db = DB::table('practiceinfo')->where('practice_id',$provider->practice_id)->select($day_o,$day_c) ->first();
+                        if($schedule_db){
+
+                            $doctor_start  = strtotime($appointment_date ." " .$schedule_db->$day_o);
+                            $doctor_end  = strtotime($appointment_date ." " .$schedule_db->$day_c);
+
+                            $valid_time = ($start > $doctor_start) && ($start < $doctor_end);  
+                        }
+
+                    }
+                }
+            } catch (Exception $e) {
+                $valid_time = false;
+            }
+
+
+            if(!$valid_time){
+                $return['status'] = 0;
+                $return['message'] = 'This Doctor has not Available at this time! Please take another time or Request to another doctor';     
+                return Response::json($return);
+            }
+
 
             $exists_scheduled = DB::table('schedule')
                 ->where('provider_id',$request->get('provider_id'))

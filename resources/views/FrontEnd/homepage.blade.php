@@ -316,6 +316,13 @@
 
     {{-- <div class="container" style="margin-bottom: 100px"><img src="/images/mobile_app.png" alt="" style="width: 100%"> --}}
     {{-- For Mobile Image Banner Which will be connected to Play Store. --}}
+
+    <style>
+        .mobile-banner h3{
+            font-size: 25px;
+        }
+        .mobile-banner 
+    </style>
     <div class="container"></div>
         <div class="row mobile-banner">
             <div class="col-md-4 col-sm-12">

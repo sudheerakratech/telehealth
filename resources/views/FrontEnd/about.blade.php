@@ -143,12 +143,12 @@
             min-height:700px;
         }
         .w3layouts-banner-top1234{
-            background-image: url("{{url('images/EMR2.jpg')}}");
+            background-image: url("{{url('images/medication.jpg')}}");
             background-size: cover;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            min-height:700px;
+            min-height:542px;
         }
         .w3layouts-banner-top12345{
             background-image: url("{{url('images/about-us-video-consultation.jpg')}}");
@@ -156,7 +156,7 @@
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            min-height:700px;
+            min-height:542px;
         }
         .w3about-img img{
             margin-top: 30px;
@@ -276,23 +276,13 @@
     <div class="services-bottom">
         <div class="col-md-5 wthree_services_bottom_right" style="height: 540px;">
                 {{--<div class="banner-silder">--}}
-                    <div id="JiSlider" class="jislider">
+                    <div id="JiSlider-about" class="jislider">
                         <ul>
-                            <li>
-                                <div class="w3layouts-banner-top123">
-
-                                    <div class="container">
-                                        <div class="agileits-banner-info">
-                                            <span>Health Care Center</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li>
                                 <div class="w3layouts-banner-top w3layouts-banner-top1234">
                                     <div class="container">
                                         <div class="agileits-banner-info">
-                                            <span>Hospital Departments</span>
+                                            <span>Medication</span>
 
                                             {{--<p>Store all of your medical records in our secure blockchain and access anywhere anytime.</p>--}}
 

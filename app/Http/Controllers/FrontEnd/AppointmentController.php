@@ -833,7 +833,8 @@ class AppointmentController extends Controller {
             ->join('providers as p','s.provider_id','=','p.id')
             ->join('users as doctor','p.id','=','doctor.id')
             ->leftjoin('demographics as demo','s.pid','=','demo.pid')
-            ->leftjoin('practiceinfo','p.practice_id','=','practiceinfo.practice_id');
+            ->leftjoin('practiceinfo','p.practice_id','=','practiceinfo.practice_id')
+            ->where('s.status','!=','cancel');
 
         if($user->group_id == 100){
             $base_query = $base_query->where('s.user_id', '=', $id);

@@ -131,7 +131,7 @@ background-size: cover;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-min-height:542px;
+min-height:540px;
 }
 .w3layouts-banner-top12345{
 background-image: url("{{url('images/about-us-video-consultation.jpg')}}");
@@ -139,7 +139,7 @@ background-size: cover;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-min-height:542px;
+min-height:540px;
 }
 .w3about-img img{
 margin-top: 30px;

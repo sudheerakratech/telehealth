@@ -24,7 +24,8 @@ font-family: robotu, sans-serif;
 }
 ul.main-list{
     list-style-image: url('../images/icons/square.png');
-    list-style-position: inside;
+    list-style-position: outside;
+    margin-left: 3vw;
 }
 
 ul.appointment-info-list {
@@ -462,7 +463,17 @@ ul.top_agile_w3l_info_icons i {
        background-size: contain;
     background-position: center;
 }
-
+.mobile-banner-3{
+    background: url(../images/mobile-banner/home-mobile4.png) no-repeat 0px 0px;
+    background-size: cover; 
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;      
+    -moz-background-size: cover;    
+    max-height:415px;
+       background-size: contain;
+    background-position: center;
+}
 // Features Page banners.
 
 .features-banner-1{
@@ -4270,8 +4281,12 @@ Begining of Styles
 @author
 Timur-ul-Hasan
  */
+
 .mobile-banner {
     padding: 0 100px;
+}
+.mobile-banner .left-block p{
+    margin-left: 2.4vw;
 }
 .mobile-banner img.mobile-image {
     display: block;
@@ -4281,7 +4296,7 @@ Timur-ul-Hasan
 .mobile-banner h3 > span {
     color: #000;
     font-family: "Ubuntu Condensed",Sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
 }
 .mobile-banner h3 > i {
@@ -4295,7 +4310,7 @@ Timur-ul-Hasan
     -webkit-font-smoothing: antialiased;
 }
 .mobile-banner section {
-    margin-bottom: 50px;
+    margin-bottom: 37px;
 }
 
 .mobile-banner .right-block i{
@@ -4310,6 +4325,11 @@ Timur-ul-Hasan
     width: 33% !important;
 }
 
+@media(max-width:600px){
+    .mobile-banner {
+        padding: 0 20px;
+    }
+}
 
 /* 
 Ending of Styles

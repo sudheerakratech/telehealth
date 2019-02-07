@@ -372,6 +372,10 @@ Vaccine Information and much more
                                 <div class="w3layouts-banner-top mobile-banner-2">
                                 </div>
                             </li>
+                             <li>
+                                <div class="w3layouts-banner-top mobile-banner-2">
+                                </div>
+                            </li>
                         </ul>
                     </div>
                  {{-- <img src="/images/mobile-app-banner.png" class="mobile-image" alt="" style="max-width : 60%"> --}}

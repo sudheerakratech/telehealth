@@ -6,6 +6,14 @@
 @endphp
 @if(is_array($appointments) && count($appointments))
     @foreach($appointments as $appointment)
+        @php 
+        $enable = false;
+        try{
+            $enable = ((time() + 1500) > $appointment['timestamp_time']) && ((time() - 10000) < $appointment['timestamp_time']) ;
+        }catch(\Exception $e){
+
+        }
+        @endphp
         <div class="row">
             <div class="col-md-offset-1 col-md-7 col-sm-7 doctors" style="margin-right: 5px;">
                 <div class="row">
@@ -64,32 +72,32 @@
             <div class="col-md-3 col-sm-5 doc_feedback collapse navbar-collapse" id="location2" style="margin-left: 5px;">
                 <ul class="m-t-10 appointment-info-list">
                     @if($appointment['city'] != '')
-                        <li>
+                        <li title="City">
                             <i class="fa font20 fa-home m-b-15 m-r-15 text-primary"></i>
                             <span class="font15"> {{$appointment['city']}}</span>
                         </li>
                     @endif
 
                     @if($appointment['language'] != '')
-                        <li>
+                        <li title="Language">
                             <i class="fa font20 fa fa-language m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment['language']}}</span>
                         </li>
                     @endif
                     @if($appointment['time'] != '')
-                        <li>
+                        <li title="Appointment Time">
                             <i class="fa font20 fa-calendar-o m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment['time']}} {{$appointment['timezone']}}</span>
                         </li>
                     @endif
                     @if($appointment['duration'] != '')
-                        <li>
+                        <li title="Duration">
                             <i class="fa font20 fa-clock-o m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment['duration']}} Minutes</span>
                         </li>
                     @endif
                     @if($appointment['date'] != '')
-                        <li>
+                        <li title="Appointment Created On">
                             <i class="fa font20 fa-calendar m-b-15 m-r-15 text-primary"></i>
                             <span class=" font15"> {{$appointment['date']}}</span>
                         </li>
@@ -100,8 +108,9 @@
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
                     @if($video)
+
                         <a href="{{route('call_conference',['room' => $appointment['room_id'],'uname' => Auth::user()['username'],'pname' => $appointment['d_username']])}}" class="btn btn-success" target="_blank"
-                            {{ $appointment['call_enable'] ? '' : 'disabled' }} >
+                            {{ $enable ? '' : 'disabled' }} >
                             Video Call
                         </a>
                     @else

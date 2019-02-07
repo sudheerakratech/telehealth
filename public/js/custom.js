@@ -71,7 +71,6 @@ $( document ).ready(function() {
         $('.request_app_doc').click( function () {        
             $('#app_patient_id').val($(this).data('patient_id'))            
             $('#app_provider_id').val($(this).data('provider_id'));  
-            $('#find_provider_block').text('');
             $('#create_appointment_frm').submit();             
             // $('#create_appointment_btn').show();                    
             // $('#app-modal-image').show();

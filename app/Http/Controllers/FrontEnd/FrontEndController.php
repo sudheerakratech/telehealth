@@ -147,7 +147,7 @@ class FrontEndController extends Controller
         $session_time = null;
         $user_type = false;
 
-        if (Auth::user()->group_id == 100) {
+        if (Auth::user()->group_id == 2) {
              $this->attendMeeting([
                 'room_id' => $room_id,
                 'url' => $request->fullUrl()
@@ -177,7 +177,7 @@ class FrontEndController extends Controller
                     case 15:
                         $data = [
                             'session'   => 15,
-                            'amount'    => 10,
+                            'amount'    => 3,
                             'person'    => 1,
                             'room'  => $room_id,
                             'doctor'    => $schedule->provider_id
@@ -186,7 +186,7 @@ class FrontEndController extends Controller
                     case 30:
                         $data = [
                             'session'   => 30,
-                            'amount'    => 18,
+                            'amount'    => 5,
                             'person'    => 2,
                             'room'  => $room_id,
                             'doctor'    => $schedule->provider_id
@@ -195,7 +195,7 @@ class FrontEndController extends Controller
                     case 45:
                         $data = [
                             'session'   => 45,
-                            'amount'    => 25,
+                            'amount'    => 8,
                             'person'    => 3,
                             'room'  => $room_id,
                             'doctor'    => $schedule->provider_id
@@ -319,7 +319,7 @@ class FrontEndController extends Controller
 
 
     private function attendMeeting($data,$sender = 'patient'){
-        if($sender = 'patient'){
+        if($sender === 'patient'){
             $room_id = $data['room_id'];
             $url = $data['url'];
 
@@ -341,12 +341,12 @@ class FrontEndController extends Controller
                             "message_to" =>  $doctor->displayname,
                             "cc" => $doctor->displayname,
                             "mailbox" => $reciever_id,
-                            "body" => "Please Attend the Appointment by following link, patient is waiting for appointment \n $url \n",
+                            "body" => "Please Attend the Appointment by following link, doctor is waiting for appointment \n $url \n",
                             "date" => Carbon::now(),
                             "message_from" => $sender_id,
                         ];
             \DB::table('messaging')->insert($message);
-        }else if ($sender = 'doctor') {
+        }else if ($sender === 'doctor') {
             $room_id = $data['room_id'];
             $url = $data['url'];
 

@@ -219,6 +219,7 @@ class AjaxScheduleController extends Controller {
         $events = [];
         $query = DB::table('schedule')
                     ->where('provider_id', '=', $id)
+                    ->where('status','!=','cancel')
                     ->whereBetween('start', [$start, $end])->get();
         if ($query) {
             foreach ($query as $row) {

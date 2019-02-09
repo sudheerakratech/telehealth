@@ -15,6 +15,7 @@
                 $now->copy()->addMinutes(15)->greaterThan($start_time) && 
                 $now->copy()->lessThanOrEqualTo($end_time)
                 );
+        dd($enable,$now->copy(),$start_time,$end_time);
         try{
         }catch(\Exception $e){
 

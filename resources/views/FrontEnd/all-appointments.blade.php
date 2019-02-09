@@ -9,7 +9,7 @@
         @php 
         $enable = false;
         try{
-            $enable = ((time() + 1500) > $appointment['timestamp_time']) && ((time() - 10000) < $appointment['timestamp_time']) ;
+            // $enable = ((time() + 1500) > $appointment['timestamp_time']) && ((time() - 10000) < $appointment['timestamp_time']) ;
         }catch(\Exception $e){
 
         }

@@ -891,7 +891,8 @@ class AppointmentController extends Controller {
                         rsql("IFNULL(p.language,'english') as language"),
                         'p.photo as photo',
                         'demo.address as city',
-                        rsql("s.start as timestamp_time"),
+                        rsql("s.start as start_time"),
+                        rsql("s.end as end_time"),
                         rsql("FROM_UNIXTIME(s.start,'%D %b, %Y %H:%i:%s') AS time"),
                         rsql('SEC_TO_TIME(s.end - s.start) AS duration'),
                         rsql("DATE_FORMAT(s.timestamp,'%D %b, %Y')  AS date"),
@@ -950,13 +951,13 @@ class AppointmentController extends Controller {
                     'p_username' =>  $row->p_username,                    
                     'd_username' =>  $row->d_username,                    
                     'timezone' =>  $row->timezone,                    
-                    'timestamp_time' =>  $row->timestamp_time,                    
+                    'start_time' =>  $row->start_time,                    
+                    'end_time' =>  $row->end_time,                    
                 ];
              
                 $events[] = $event;
             }
         }
-
         $data = [];
         if (isset($period)) {
             $data['period'] = $period;

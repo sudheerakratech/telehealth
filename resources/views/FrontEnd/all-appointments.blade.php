@@ -8,11 +8,18 @@
     @foreach($appointments as $appointment)
         @php 
         $enable = false;
+        $start_time = Carbon\Carbon::createFromTimestamp($appointment['start_time']);
+        $end_time = Carbon\Carbon::createFromTimestamp($appointment['end_time']);
+        $now = Carbon\Carbon::now()->setTimezone('Asia/Kolkata');
+        $enable = (
+                $now->copy()->addMinutes(15)->greaterThan($start_time) && 
+                $now->copy()->lessThanOrEqualTo($end_time)
+                );
         try{
-            // $enable = ((time() + 1500) > $appointment['timestamp_time']) && ((time() - 10000) < $appointment['timestamp_time']) ;
         }catch(\Exception $e){
 
         }
+
         @endphp
         <div class="row">
             <div class="col-md-offset-1 col-md-7 col-sm-7 doctors" style="margin-right: 5px;">

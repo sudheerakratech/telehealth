@@ -20,7 +20,7 @@
         }catch(\Exception $e){
 
         }
-
+        dump($enable);
         @endphp
         <div class="row">
             <div class="col-md-offset-1 col-md-7 col-sm-7 doctors" style="margin-right: 5px;">

@@ -36,7 +36,7 @@
                             @php  $url =  'uploads/profile/'. "${appointment['photo']}" @endphp 
                             <img src="{{asset($url)}}" alt="{{$appointment['name']}}" class="img-responsive img-circle img_border">
                         @else
-                            <img src="{{asset('images/no_mdoctor.png')}}" alt="{{ config('app.timezone')}}" class="img-responsive img-circle img_border">
+                            <img src="{{asset('images/no_mdoctor.png')}}" alt="{{$appointment['name']}}" class="img-responsive img-circle img_border">
                         @endif
                     </div>
                     <div class="col-md-9 col-xs-9">

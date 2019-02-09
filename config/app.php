@@ -1,5 +1,4 @@
 <?php
-$tz = 'IST';
 if(array_key_exists('nosh_tz', $_COOKIE)) {
     $tz = $_COOKIE['nosh_tz'];
 }
@@ -55,7 +54,7 @@ return [
     |
     */
 
-    'timezone' => $tz,
+    'timezone' => 'Asia/Kolkata',
 
     /*
     |--------------------------------------------------------------------------

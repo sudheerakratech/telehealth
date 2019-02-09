@@ -13,11 +13,11 @@
         $now = Carbon\Carbon::now()->setTimezone('Asia/Kolkata');
         $enable = (
                 $now->copy()->addMinutes(15)->greaterThan($start_time) && 
-                $now->copy()->lessThanOrEqualTo($end_time)
+                $now->copy()->lessThan($end_time)
                 );
+        dump($now->copy(),$start_time,$end_time);
         dump($now->copy()->addMinutes(15)->greaterThan($start_time));
-        dump( $now->copy()->lessThanOrEqualTo($end_time));
-        dump($enable,$now->copy(),$start_time,$end_time);
+        dump($now->copy()->lessThanOrEqualTo($end_time));
         try{
         }catch(\Exception $e){
 

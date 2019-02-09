@@ -7,6 +7,7 @@
 @if(is_array($appointments) && count($appointments))
     @foreach($appointments as $appointment)
         @php 
+        dump($appointment['start_time'],$appointment['end_time']);
         $enable = false;
         $start_time = Carbon\Carbon::createFromTimestamp($appointment['start_time']);
         $end_time = Carbon\Carbon::createFromTimestamp($appointment['end_time']);

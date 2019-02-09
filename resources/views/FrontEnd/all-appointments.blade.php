@@ -7,23 +7,18 @@
 @if(is_array($appointments) && count($appointments))
     @foreach($appointments as $appointment)
         @php 
-        dump($appointment['start_time'],$appointment['end_time']);
         $enable = false;
         $start_time = Carbon\Carbon::createFromTimestamp($appointment['start_time']);
         $end_time = Carbon\Carbon::createFromTimestamp($appointment['end_time']);
-        $now = Carbon\Carbon::now()->setTimezone('Asia/Kolkata');
+        $now = Carbon\Carbon::now()->addMinutes(330);
         $enable = (
                 $now->copy()->addMinutes(15)->greaterThan($start_time) && 
                 $now->copy()->lessThan($end_time)
                 );
-        dump($now->copy(),$start_time,$end_time);
-        dump($now->copy()->addMinutes(15)->greaterThan($start_time));
-        dump($now->copy()->lessThanOrEqualTo($end_time));
         try{
         }catch(\Exception $e){
 
         }
-        dump($enable);
         @endphp
         <div class="row">
             <div class="col-md-offset-1 col-md-7 col-sm-7 doctors" style="margin-right: 5px;">

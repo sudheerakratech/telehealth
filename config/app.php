@@ -1,5 +1,5 @@
 <?php
-$tz = 'UTC';
+$tz = 'IST';
 if(array_key_exists('nosh_tz', $_COOKIE)) {
     $tz = $_COOKIE['nosh_tz'];
 }

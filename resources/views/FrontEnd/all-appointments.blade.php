@@ -11,7 +11,7 @@
         try{
             $start_time = Carbon\Carbon::createFromTimestamp($appointment['start_time']);
             $end_time = Carbon\Carbon::createFromTimestamp($appointment['end_time']);
-            $now = Carbon\Carbon::now()->addMinutes(330);
+            $now = Carbon\Carbon::now();
             $enable = (
                     $now->copy()->addMinutes(15)->greaterThan($start_time) && 
                     $now->copy()->lessThan($end_time)

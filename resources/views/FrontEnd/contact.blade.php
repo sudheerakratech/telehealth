@@ -37,7 +37,7 @@
             <p class="sub_t_agileits">Get in touch...</p>
 
             <div class="contact-top-agileits">
-                <div class="col-md-4 contact-grid facebook-connect" style="max-height: 175px;overflow: hidden;">
+                <div class="col-md-6 contact-grid facebook-connect" style="max-height: 175px;overflow: hidden;">
                     <div class="contact-grid1 agileits-w3layouts">
                         <div class="fb-page" 
                         data-href="https://www.facebook.com/akrahealth" 
@@ -47,6 +47,7 @@
                         data-hide-cover="false" 
                         data-show-facepile="true"
                         data-height="100px"
+                        data-width="50vw"
                         >
                         <div class="fb-xfbml-parse-ignore">
                         <blockquote cite="https://www.facebook.com/facebook">
@@ -62,7 +63,7 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                <div class="col-md-4 contact-grid">
+                <div class="col-md-6 contact-grid">
                     <div class="contact-grid2 w3">
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <div class="con-w3l-info">
@@ -73,16 +74,6 @@
                             <h4>Email</h4>
                             <p><a href="mailto:support@akrahealth.com">support@akrahealth.com</a>
 
-                            </p></div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="col-md-4 contact-grid">
-                    <div class="contact-grid3 w3l">
-                        <i class="fa fa-skype" aria-hidden="true"></i>
-                        <div class="con-w3l-info">
-                            <h4>Skype</h4>
-                            <p><a href="skype:akra.tech?call" class="agile_twitter">akra.tech</a>
                             </p></div>
                         <div class="clearfix"></div>
                     </div>

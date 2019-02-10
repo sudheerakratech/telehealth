@@ -295,7 +295,7 @@ color: #138EC7;
         <div class="col-md-4 col-sm-12 left-block">
             <section class="row">
                 <div class="col-md-3 icon-block">
-                    <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
+                    <i class="fa fa fa-codepen" aria-hidden="true"></i>
                 </div>
                 <div class="col-md-9">
                     <h3>
@@ -308,7 +308,7 @@ color: #138EC7;
             </section> 
             <section class="row">
                 <div class="col-md-3 icon-block">
-                    <i class="fa fa-500px" aria-hidden="true"></i>
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                 </div>
                 <div class="col-md-9">
                     <h3>
@@ -321,7 +321,7 @@ color: #138EC7;
             </section>
             <section class="row">
                 <div class="col-md-3 icon-block">
-                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                    <i class="fa fa-flag-checkered" aria-hidden="true"></i>
                 </div>
                 <div class="col-md-9">
                     <h3>
@@ -358,7 +358,7 @@ color: #138EC7;
         <div class="col-md-4 col-sm-12 right-block">
              <section class="row">
                 <div class="col-md-3 icon-block">
-                    <i class="fa fa-flag-checkered" aria-hidden="true"></i>
+                    <i class="fa fa-bell-slash-o" aria-hidden="true"></i>
                 </div>
                 <div class="col-md-9">
                     <h3>
@@ -373,7 +373,7 @@ color: #138EC7;
             </section> 
             <section class="row" style="padding-bottom: 10px;">
                 <div class="col-md-3 icon-block"> 
-                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    <i class="fa  fa-assistive-listening-systems" aria-hidden="true"></i>
                 </div>
                 <div class="col-md-9">
                     <h3>
@@ -387,7 +387,7 @@ color: #138EC7;
             </section>
             <section class="row">
                 <div class="col-md-3 icon-block">
-                    <i class="fa fa-bell-slash-o" aria-hidden="true"></i>
+                    <i class="fa fa-500px" aria-hidden="true"></i>
                 </div>
                 <div class="col-md-9">
                     <h3>

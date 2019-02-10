@@ -1,6 +1,19 @@
 @extends('FrontEnd.layouts.master')
 @section('content')
     <title>Telemedicine | Contact</title>
+    <style>
+        .contact-grid{
+            min-height: 175px;
+        }
+    </style>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId={APP_ID}";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
     <!-- banner -->
     <!-- banner1 -->
@@ -24,13 +37,28 @@
             <p class="sub_t_agileits">Get in touch...</p>
 
             <div class="contact-top-agileits">
-                <div class="col-md-4 contact-grid ">
+                <div class="col-md-4 contact-grid" style="max-height: 175px;overflow: hidden;">
                     <div class="contact-grid1 agileits-w3layouts">
-                        <i class="fa fa-location-arrow"></i>
+                        <div class="fb-page" 
+                        data-href="https://www.facebook.com/akrahealth" 
+                        data-tabs="timeline" 
+                        data-small-header="false" 
+                        data-adapt-container-width="true" 
+                        data-hide-cover="false" 
+                        data-show-facepile="true"
+                        data-height="100px"
+                        >
+                        <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/facebook">
+                        <a href="https://www.facebook.com/facebook">Facebook</a>
+                        </blockquote>
+                        </div>
+                        </div>
+                        {{-- <i class="fa fa-location-arrow"></i>
                         <div class="con-w3l-info">
                             <h4>Facebook Share</h4>
                             <p><a href="">Link for sharing</a></p>
-                        </div>
+                        </div> --}}
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -51,11 +79,10 @@
                 </div>
                 <div class="col-md-4 contact-grid">
                     <div class="contact-grid3 w3l">
-                        <i class="fa fa-envelope"></i>
+                        <i class="fa fa-skype" aria-hidden="true"></i>
                         <div class="con-w3l-info">
                             <h4>Skype</h4>
-                            <p><a href="">Skype Id</a>
-
+                            <p><a href="skype:akra.tech?call" class="agile_twitter">akra.tech</a>
                             </p></div>
                         <div class="clearfix"></div>
                     </div>
@@ -84,11 +111,11 @@
         </div>
     </div>
 
-    <div class="map_agile">
+   {{--  <div class="map_agile">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387142.84010033106!2d-74.25819252532891!3d40.70583163828471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1475140387172" style="border:0"></iframe>
 
 
-    </div>
+    </div> --}}
     <script src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
     <script>$('#moble_nav_item_7').addClass('menu__item--current');</script>	<!-- Custom Css -->
     @endsection

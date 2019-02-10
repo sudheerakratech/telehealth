@@ -148,9 +148,14 @@ class FrontEndController extends Controller
         $user_type = false;
 
         if (Auth::user()->group_id == 2) {
+             $patient_name = $request->get('oname');
              $this->attendMeeting([
                 'room_id' => $room_id,
-                'url' => $request->fullUrl()
+                'url' =>  route('call_conference', [
+                        'room' => $room_id,
+                        'uname' => $patient_name,
+                        'oname' => \Auth::user()['username']
+                    ])
             ],'doctor');
         }
 

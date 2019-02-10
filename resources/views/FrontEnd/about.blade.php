@@ -176,6 +176,17 @@ ul.about-circles-grid{
 .ch-grid li {
     margin-left: 20px
 }
+.ch-info p, .ch-info h5{
+    color: #000 !important;
+} 
+.ch-info .ch-info-back {
+    background-color: #000 !important;
+}
+.ch-info .ch-info-back h5 i {
+    font-size: 65px;
+    color: #fff !important;
+    
+}
 
 </style>
 <!-- banner -->
@@ -208,10 +219,10 @@ ul.about-circles-grid{
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-3">
-                                        <i class="fa fa fa-book" aria-hidden="true"></i>
+                                    <div class="ch-info-back ch-img-3">
+                                        <h5><i class="fa fa fa-book" aria-hidden="true"></i></h5>
                                     </div>
-                                    <div class="ch-info-back">
+                                    <div class="ch-info-front">
                                         <h5>FHIR</h5>
                                         <p>Integration</p>
                                     </div>
@@ -221,10 +232,10 @@ ul.about-circles-grid{
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-3">
-                                        <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                    <div class="ch-info-back ch-img-3">
+                                        <h5><i class="fa fa-bar-chart" aria-hidden="true"></i></h5>
                                     </div>
-                                    <div class="ch-info-back">
+                                    <div class="ch-info-front">
                                         <h5>ICD-10</h5>
                                         <p>Integration</p>
                                     </div>
@@ -234,8 +245,10 @@ ul.about-circles-grid{
                         <li>
                             <div class="ch-item">
                                 <div class="ch-info">
-                                    <div class="ch-info-front ch-img-3"><i class="fa fa-file-text" aria-hidden="true"></i></div>
-                                    <div class="ch-info-back">
+                                    <div class="ch-info-back ch-img-3">
+                                        <h5><i class="fa fa-file-text" aria-hidden="true"></i></h5>
+                                    </div>
+                                    <div class="ch-info-front">
                                         <h5>Rx API</h5>
                                         <p>Integration</p>
                                     </div>

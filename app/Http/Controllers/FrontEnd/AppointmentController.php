@@ -968,7 +968,33 @@ class AppointmentController extends Controller {
 
     public function cancelAppointment (Request $request){
         $appt_id = $request->get('appt_id');
+        $new_date = $request->get('date');
         if ($appt_id) {
+            $old_appointment = \DB::table('schedule')
+                                    ->where('appt_id',$appt_id)
+                                    ->first();
+
+            if($old_appointment){
+                $old_appointment = json_decode(json_encode($old_appointment), true);
+                $start_timestamp = $old_appointment['start'];
+                $end_timestamp = $old_appointment['end'];
+
+                $start_time = date('H:i:s', $start_timestamp);
+                $end_time = date('H:i:s', $end_timestamp);
+
+
+
+                $new_start  = strtotime($new_date ." " .$start_time);
+                $new_end  = strtotime($new_date ." " .$end_time);
+
+                $old_appointment['start'] = $new_start;
+                $old_appointment['end'] = $new_end;
+
+                unset($old_appointment['appt_id']);
+                \DB::table('schedule')
+                    ->insert($old_appointment);
+            }
+
             \DB::table('schedule')
                 ->where('appt_id',$appt_id)
                 ->update(['status' => 'cancel']);
@@ -976,23 +1002,6 @@ class AppointmentController extends Controller {
         }
         $message = $request->get('message');
         \DB::table('messaging')->insert($message);
-        /*
-            //message_id   
-            //pid          
-            //message_to   
-            message_from 
-            date         
-            //cc           
-            //subject      
-            //body         
-            //patient_name 
-            status       
-            //t_messages_id
-            //mailbox      
-            practice_id  
-            read         
-            documents_id 
-        */
         return $request->all();
     }
     public function deleteAppointment (Request $request){

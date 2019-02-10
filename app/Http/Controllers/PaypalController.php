@@ -67,7 +67,7 @@ class PaypalController extends Controller
         return redirect()->route('call_conference', [
                         'room' => $user_data['room'],
                         'uname' => \Auth::user()['username'],
-                        'pname' => $doctor->username
+                        'oname' => $doctor->username
                     ]);
     }
 

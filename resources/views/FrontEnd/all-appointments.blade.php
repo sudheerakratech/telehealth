@@ -114,8 +114,24 @@
             <div class="col-md-12 text-center" style="margin-top: 10px;">
                 @if(Auth::check())
                     @if($video)
-
-                        <a href="{{route('call_conference',['room' => $appointment['room_id'],'uname' => Auth::user()['username'],'pname' => $appointment['d_username']])}}" class="btn btn-success" target="_blank"
+                        @php 
+                            if (Auth::user()->group_id == 100) {
+                                $conference_data = [
+                                    'room' => $appointment['room_id'] ,
+                                    'uname' => Auth::user()['username'] ,
+                                    'oname' => $appointment['d_username']
+                                ];
+                            }else{
+                                $conference_data = [
+                                    'room' => $appointment['room_id'] ,
+                                    'uname' => Auth::user()['username'] ,
+                                    'oname' => $appointment['p_username']
+                                ];
+                            }
+                        @endphp
+                        <a href="{{
+                                route('call_conference',$conference_data)
+                            }}" class="btn btn-success" target="_blank"
                             {{ $enable ? '' : 'disabled' }} >
                             Video Call
                         </a>

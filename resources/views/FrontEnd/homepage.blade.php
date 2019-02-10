@@ -293,32 +293,44 @@ color: #138EC7;
     <div class="container"></div>
     <div class="row mobile-banner">
         <div class="col-md-4 col-sm-12 left-block">
-            <section>
-                <h3>
-                <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
-                <span>ELECTRONIC HEALTH RECORDS</span>
-                </h3>
-                <p>
-                    Keep your medical history in one place, secure and managed under your control
-                </p>
+            <section class="row">
+                <div class="col-md-3 icon-block">
+                    <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9">
+                    <h3>
+                    <span>ELECTRONIC HEALTH RECORDS</span>
+                    </h3>
+                    <p>
+                        Keep your medical history in one place, secure and managed under your control
+                    </p>
+                </div>    
+            </section> 
+            <section class="row">
+                <div class="col-md-3 icon-block">
+                    <i class="fa fa-500px" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9">
+                    <h3>
+                    <span>APPOINTMENTS</span>
+                    </h3>
+                    <p>
+                        Stay organized and check in your doctor appointments through our Telemedicine App
+                    </p>
+                </div>    
             </section>
-            <section>
-                <h3>
-                <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
-                <span>APPOINTMENTS</span>
-                </h3>
-                <p>
-                    Stay organized and check in your doctor appointments through our Telemedicine App
-                </p>
-            </section>
-            <section>
-                <h3>
-                <i class="fa fa-assistive-listening-systems" aria-hidden="true"></i>
-                <span>CHARTS</span>
-                </h3>
-                <p>
-                    Maintain growth charts, Immunization Tracking, Vaccine Information and much more
-                </p>
+            <section class="row">
+                <div class="col-md-3 icon-block">
+                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9">
+                    <h3>
+                    <span>CHARTS</span>
+                    </h3>
+                    <p>
+                        Maintain growth charts, Immunization Tracking, Vaccine Information and much more
+                    </p>
+                </div>  
             </section>
         </div>
         <div class="col-md-4 col-sm-12 left-block">
@@ -344,33 +356,47 @@ color: #138EC7;
             </div>
         </div>
         <div class="col-md-4 col-sm-12 right-block">
-            <section>
-                <h3>
-                <span>DASHBOARD</span>
-                <i class="fa fa-bar-chart"  aria-hidden="true"></i>
-                </h3>
-                <p>
-                    Manage your Medications, Supplements , Doctor
-                    encounters, List of Issues & Allergies etc..
-                </p>
+             <section class="row">
+                <div class="col-md-3 icon-block">
+                    <i class="fa fa-flag-checkered" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9">
+                    <h3>
+                    <span>DASHBOARD</span>
+                    </h3>
+                    <p>
+                        Manage your Medications, Supplements , Doctor encounters, List  of Issues  & Allergies etc..
+                    </p> 
+                    <br>
+                </div>    
+                
+            </section> 
+            <section class="row" style="padding-bottom: 10px;">
+                <div class="col-md-3 icon-block"> 
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9">
+                    <h3>
+                    <span>BLOCKCHAIN</span>
+                    </h3>
+                    <p>
+                       Store all your medical records through secure block-chain and access data anywhere anytime.
+                    </p>
+                </div>    
+              
             </section>
-            <section>
-                <h3>
-                <span>BLOCKCHAIN</span>
-                <i class="fa fa-bar-chart"  aria-hidden="true"></i>
-                </h3>
-                <p>
-                    Store all your medical records through secure block-chain and access data anywhere anytime.
-                </p>
-            </section>
-            <section>
-                <h3>
-                <span>PATIENT PORTAL</span>
-                <i class="fa fa-bar-chart"  aria-hidden="true"></i>
-                </h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, aliquid?
-                </p>
+            <section class="row">
+                <div class="col-md-3 icon-block">
+                    <i class="fa fa-bell-slash-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-9">
+                    <h3>
+                    <span>PATIENT PORTAL</span>
+                    </h3>
+                    <p>
+                       A completely integrated electronic health record to manage your health information
+                    </p>
+                </div>  
             </section>
         </div>
        

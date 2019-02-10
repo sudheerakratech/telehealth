@@ -4286,7 +4286,10 @@ Timur-ul-Hasan
     padding: 0 100px;
 }
 .mobile-banner .left-block p{
-    margin-left: 2.4vw;
+    /*margin-left: 2.4vw;*/
+}
+.mobile-banner p{
+    font-size: .9em;    
 }
 .mobile-banner img.mobile-image {
     display: block;
@@ -4299,13 +4302,22 @@ Timur-ul-Hasan
     font-size: 20px;
     font-weight: 600;
 }
-.mobile-banner h3 > i {
+.mobile-banner .left-block .icon-block{
+    padding-top: 5px;
+    margin-right: -25px;
+}
+.mobile-banner .right-block .icon-block{
+    float: right;
+    padding-top: 5px;
+    margin-left: -10px;
+}
+.mobile-banner .icon-block > i {
     transform: rotate(0deg);
     color: #50d0e3;
     width: 1em;
     height: 1em;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
+    font: normal normal normal 50px/1 FontAwesome;
+    /*font-size: xx-large;*/
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
 }
@@ -4313,13 +4325,15 @@ Timur-ul-Hasan
     margin-bottom: 37px;
 }
 
-.mobile-banner .right-block i{
-    float: right;
-}
 
 .mobile-banner .right-block h3{
-    align-content:right;
+    text-align : right;
 }
+
+.mobile-banner .right-block p{
+    text-align : right;
+}
+
 
 .appointment-period-tabs li{
     width: 33% !important;
@@ -4328,6 +4342,29 @@ Timur-ul-Hasan
 @media(max-width:600px){
     .mobile-banner {
         padding: 0 20px;
+    }
+    .mobile-banner .left-block .icon-block{
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .mobile-banner .right-block .icon-block{
+        float: none;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .mobile-banner .right-block h3{
+        text-align : center;
+    }
+
+    .mobile-banner .right-block p{
+        text-align : center;
+    }
+    .mobile-banner .left-block h3{
+       text-align  : center;
+    }
+
+    .mobile-banner .left-block p{
+        text-align : center;
     }
 }
 

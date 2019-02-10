@@ -103,7 +103,6 @@ function sendmessage() {
 }
 
 webrtc.on('channelMessage', function (peer, label, data) {
-    console.log(peer, label, data);
 
     if (label == "onReceiveSendToAll") {
         addToConversation(peer.nick, data.payload.data);
@@ -146,7 +145,6 @@ function addToConversation(who, content) {
     // Escape html special characters, then add linefeeds.
     content = content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     content = content.replace(/\n/g, '<br />');
-    console.log(who);
     let _class = null;
     if (who == 'me') {
         _class = 'blue-color';

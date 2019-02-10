@@ -550,25 +550,25 @@
                             "message_from" : '{{ \Auth::user()->id }}',
                         }
                     },function(response){
-                        location.reload();
+                        // location.reload();
                     });
               } 
             });
             return;
-            $.ajax({
-                type: "POST",
-                url: noshdata.delete_event,
-                data: "appt_id=" + appt_id,
-                success: function(data){
-                    toastr.success(data);
-                    $('#eventModal').modal('hide');
-                    $('#event_form').clearForm();
-                    $('#patient_name').html('');
-                    $('#event_delete').show();
-                    $('#calendar').fullCalendar('removeEvents');
-                    $('#calendar').fullCalendar('refetchEvents');
-                }
-            });
+            // $.ajax({
+            //     type: "POST",
+            //     url: noshdata.delete_event,
+            //     data: "appt_id=" + appt_id,
+            //     success: function(data){
+            //         toastr.success(data);
+            //         $('#eventModal').modal('hide');
+            //         $('#event_form').clearForm();
+            //         $('#patient_name').html('');
+            //         $('#event_delete').show();
+            //         $('#calendar').fullCalendar('removeEvents');
+            //         $('#calendar').fullCalendar('refetchEvents');
+            //     }
+            // });
         });
         if (noshdata.message_action !== '') {
             if (noshdata.message_action.search('Error - ') == -1) {

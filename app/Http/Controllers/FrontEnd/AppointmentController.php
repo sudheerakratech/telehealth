@@ -969,11 +969,10 @@ class AppointmentController extends Controller {
     public function cancelAppointment (Request $request){
         $appt_id = $request->get('appt_id');
         $new_date = $request->get('date');
+        $old_appointment = \DB::table('schedule')
+                                ->where('appt_id',$appt_id)
+                                ->first();
         if ($appt_id) {
-            $old_appointment = \DB::table('schedule')
-                                    ->where('appt_id',$appt_id)
-                                    ->first();
-
             if($old_appointment){
                 $old_appointment = json_decode(json_encode($old_appointment), true);
                 $start_timestamp = $old_appointment['start'];
@@ -1000,20 +999,31 @@ class AppointmentController extends Controller {
                 ->update(['status' => 'cancel']);
             
         }
+        $appointment = \DB::table('schedule')->where('appt_id',$appt_id)->first();
+        $patient_id = $appointment->user_id;
+
+        $message = $request->get('message');
+        $message['mailbox'] = $patient_id;
         $message = $request->get('message');
         \DB::table('messaging')->insert($message);
         return $request->all();
     }
     public function deleteAppointment (Request $request){
         $appt_id = $request->get('appt_id');
+        $appointment = \DB::table('schedule')->where('appt_id',$appt_id)->first();
+        $patient_id = $appointment->user_id;
+
+        $message = $request->get('message');
+        $message['mailbox'] = $patient_id;
+
+        \DB::table('messaging')->insert($message);
         if ($appt_id) {
             \DB::table('schedule')
                 ->where('appt_id',$appt_id)
                 ->delete();
             
         }
-        $message = $request->get('message');
-        \DB::table('messaging')->insert($message);
+
        
         return $request->all();
     }

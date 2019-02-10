@@ -39,8 +39,8 @@ if (QueryString.room) {
 if (QueryString.uname) {
     myName = QueryString.uname;
 }
-if (QueryString.pname) {
-    partnerName = QueryString.pname;
+if (QueryString.oname) {
+    partnerName = QueryString.oname;
     document.getElementById('partnerName').innerText=partnerName;
 }
 

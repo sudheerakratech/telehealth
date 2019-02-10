@@ -5,6 +5,9 @@
         .contact-grid{
             min-height: 175px;
         }
+        @media(max-width:976px){
+            min-height: 0px
+        }
     </style>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -46,8 +49,8 @@
                         data-adapt-container-width="true" 
                         data-hide-cover="false" 
                         data-show-facepile="true"
+                        data-width="483px"
                         data-height="100px"
-                        data-width="50vw"
                         >
                         <div class="fb-xfbml-parse-ignore">
                         <blockquote cite="https://www.facebook.com/facebook">

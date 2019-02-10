@@ -185,7 +185,6 @@ ul.about-circles-grid{
 .ch-info .ch-info-back h5 i {
     font-size: 65px;
     color: #fff !important;
-    
 }
 
 </style>

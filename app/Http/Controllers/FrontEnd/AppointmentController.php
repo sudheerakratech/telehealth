@@ -981,8 +981,6 @@ class AppointmentController extends Controller {
                 $start_time = date('H:i:s', $start_timestamp);
                 $end_time = date('H:i:s', $end_timestamp);
 
-
-
                 $new_start  = strtotime($new_date ." " .$start_time);
                 $new_end  = strtotime($new_date ." " .$end_time);
 
@@ -1004,6 +1002,7 @@ class AppointmentController extends Controller {
 
         $message = $request->get('message');
         $message['mailbox'] = $patient_id;
+        $message['date'] = Carbon::now();
         $message = $request->get('message');
         \DB::table('messaging')->insert($message);
         return $request->all();
@@ -1015,13 +1014,13 @@ class AppointmentController extends Controller {
 
         $message = $request->get('message');
         $message['mailbox'] = $patient_id;
+        $message['date'] = Carbon::now();
 
         \DB::table('messaging')->insert($message);
         if ($appt_id) {
             \DB::table('schedule')
                 ->where('appt_id',$appt_id)
                 ->delete();
-            
         }
 
        

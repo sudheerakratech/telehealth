@@ -550,7 +550,7 @@
                             "message_from" : '{{ \Auth::user()->id }}',
                         }
                     },function(response){
-                        // location.reload();
+                        location.reload();
                     });
               } 
             });

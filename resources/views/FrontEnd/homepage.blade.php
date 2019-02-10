@@ -455,7 +455,9 @@ color: #138EC7;
                 <li>
                     <div class="ch-item">
                         <div class="ch-info">
-                            <div class="ch-info-front ch-img-3"><i class="fa fa-bar-chart" aria-hidden="true"></i></div>
+                            <div class="ch-info-front ch-img-3">
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                            </div>
                             <div class="ch-info-back">
                                 <h5>Patient Charts</h5>
                                 <p>Best In Services</p>

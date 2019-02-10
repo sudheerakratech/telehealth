@@ -173,6 +173,9 @@ ul.about-circles-grid{
     width: 10vw;
 
 }
+.ch-grid li {
+    margin-left: 20px
+}
 
 </style>
 <!-- banner -->
@@ -196,13 +199,52 @@ ul.about-circles-grid{
             AKRA HEALTH is an Telehealth system with an integrated mobile-friendly EMR based on Laravel PHP framework and jQuery. Our modular codes runs on Cloud providing a fase,secure,robust and easy-to-use platform to our users
         </p>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="" style="text-align: center;">
+                    <ul class="ch-grid">
+                        <li>
+                            <div class="ch-item">
+                                <div class="ch-info">
+                                    <div class="ch-info-front ch-img-3">
+                                        <i class="fa fa fa-book" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="ch-info-back">
+                                        <h5>FHIR</h5>
+                                        <p>Integration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ch-item">
+                                <div class="ch-info">
+                                    <div class="ch-info-front ch-img-3">
+                                        <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="ch-info-back">
+                                        <h5>ICD-10</h5>
+                                        <p>Integration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ch-item">
+                                <div class="ch-info">
+                                    <div class="ch-info-front ch-img-3"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                                    <div class="ch-info-back">
+                                        <h5>Rx API</h5>
+                                        <p>Integration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                    
-                     <span class='about-circle' >
+                    {{--  <span class='about-circle' >
                         <strong class='about-circle-text'>FHIR Integration</strong>
                     </span>
                     <span class='about-circle' >
@@ -210,10 +252,10 @@ ul.about-circles-grid{
                     </span>
                     <span class='about-circle' >
                         <strong class='about-circle-text'>Rx API Integration.</strong>
-                    </span>
+                    </span> --}}
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 
             </div>
         </div>
@@ -296,14 +338,16 @@ ul.about-circles-grid{
             </div>
             <div class="col-md-6 w3_agileits_services_bottom_r_grid">
                 <h4>Best Physicians</h4>
-                <p style="color: #fff">Our platform provides patients access to Best Physicians communications through various healthcare centers.</p>
+                <p style="color: #fff">
+                    Our telehealth Portal Services connects patients to specialized physicians, Nurses and Medical experts, providing patients access to the best physicians through Web and Mobile interfaces.
+                </p>
             </div>
             <div class="clearfix"> </div>
         </div>
         <div class="wthree_services_bottom_left_grid">
             <div class="col-md-6 w3_agileits_services_bottom_r_grid">
                 <h4>Video Consultation</h4>
-                <p style="color: #fff">Our platform is designed to video consultation portal that was connect patient and doctor.</p>
+                <p style="color: #fff">Our features help clinicians and care coordinators to monitor patients through our video consultancy services, encouraging them to embrace healthy lifestyle and manage their medications.</p>
             </div>
             <div class="col-md-6 w3_agileits_services_bottom_l_grid">
                 <div class="agile_services_bottom_l_grid1">

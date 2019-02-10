@@ -12,7 +12,7 @@
 
     <!-- banner -->
      <div class="banner-silder">
-        <div id="JiSlider" class="jislider">
+        <div id="JiSlider-features" class="jislider">
             <ul>
                 <li>
                     <div class="w3layouts-banner-top w3layouts-banner-top0">
@@ -27,18 +27,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="w3layouts-banner-top features-banner-2">
-                        <div class="container">
-                            <div class="agileits-banner-info">
-                                <span>Akra Health</span>
-                                <h3>Information Security </h3>
-                                <p>Store all of your medical records in our secure blockchain and access anywhere anytime.</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                
                 <li>
                     <div class="w3layouts-banner-top features-banner-3">
                         <div class="container">
@@ -81,11 +70,11 @@
                                 <p class="w3layouts_head_slide">Hospital <span> Departments</span></p>
                             </div>
                         </li>
-                        <li>
+                       {{--  <li>
                             <div class="w3_agile_services_bottom_right_grid2">
                                 <p class="w3layouts_head_slide">Health Care <span>Center</span></p>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </section>
@@ -102,7 +91,7 @@
                 </div>
                 <div class="col-md-6 w3_agileits_services_bottom_r_grid">
                     <h4>Secure Platform</h4>
-                    <p style="text-align: justify; font-size: 16px;color:#eee;">Our platform provides patients access to their health medical records and forms and enable communications through various healthcare providers, pharmacies, medical associations, clinics and other healthcare institutions, ensuring an efficient modern medical practice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <p style="text-align: justify; font-size: 16px;color:#fff;">Our platform provides patients access to their health medical records and forms and enable communications through various healthcare providers, pharmacies, medical associations, clinics and other healthcare institutions, ensuring an efficient modern medical practice.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,7 +108,7 @@
             <div class="wthree_services_bottom_left_grid">
                 <div class="col-md-6 w3_agileits_services_bottom_r_grid">
                     <h4>Enabling “Extenders”</h4>
-                    <p style="text-align: justify; font-size: 16px;color:#eee;">Our platform is designed to allow nurses, medical practitioners etc. to do more in the field of healthcare, as we see scope for these so-called “extenders” to expand. As clinicians could offset shortages of physicians our portal is designed to facilitate all caregivers thereby enabling “extenders” to help in healthcare services.</p>
+                    <p style="text-align: justify; font-size: 16px;color:#fff;">Our platform is designed to allow nurses, medical practitioners etc. to do more in the field of healthcare, as we see scope for these so-called “extenders” to expand. As clinicians could offset shortages of physicians our portal is designed to facilitate all caregivers thereby enabling “extenders” to help in healthcare services.</p>
 
                 </div>
                 <div class="col-md-6 w3_agileits_services_bottom_l_grid">

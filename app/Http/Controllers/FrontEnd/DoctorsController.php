@@ -53,9 +53,11 @@ class DoctorsController extends Controller
                 rsql("IFNULL(providers.language,'English') AS language"),
                 'providers.city',
                 'providers.Country','providers.photo','providers.certificate','providers.specialty','providers.sun_o','providers.sun_c','providers.mon_o','providers.mon_c','providers.tue_o','providers.tue_c','providers.wed_o','providers.wed_c','providers.thu_o','providers.thu_c','providers.fri_o','providers.fri_c','providers.sat_o','providers.sat_c',
-                rsql("'09:00 AM - 10:00 PM' AS working_hours")
+                rsql("'09:00 AM - 10:00 PM' AS working_hours"),
+                'practiceinfo.timezone'
             )
-            ->leftjoin('providers', 'providers.id', '=', 'users.id')            
+            ->leftjoin('providers', 'providers.id', '=', 'users.id')  
+            ->join('practiceinfo','providers.practice_id', '=', 'practiceinfo.practice_id')          
             ->where($where);
 
         $doctors_online = $request->get('is_online');

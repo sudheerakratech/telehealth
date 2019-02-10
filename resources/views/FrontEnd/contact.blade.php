@@ -37,7 +37,7 @@
             <p class="sub_t_agileits">Get in touch...</p>
 
             <div class="contact-top-agileits">
-                <div class="col-md-4 contact-grid" style="max-height: 175px;overflow: hidden;">
+                <div class="col-md-4 contact-grid facebook-connect" style="max-height: 175px;overflow: hidden;">
                     <div class="contact-grid1 agileits-w3layouts">
                         <div class="fb-page" 
                         data-href="https://www.facebook.com/akrahealth" 

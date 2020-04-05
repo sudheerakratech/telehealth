@@ -13,7 +13,8 @@
            AKRA HEALTH EMR
         @endif
     </title>
-    {!! Minify::stylesheet($assets_css)->withFullUrl() !!}
+    <!-- {!! Minify::stylesheet($assets_css)->withFullUrl() !!} -->
+    <link href="{{asset('assets/css/builds/13cdd4080bb87b79d7e931891fb799be12688571696.css')}}" rel="stylesheet" type="text/css">
     @yield('view.stylesheet')
     <style>
         #sidebar {

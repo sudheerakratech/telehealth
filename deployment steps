@@ -1,0 +1,101 @@
+                        Akrahealth
+1.
+--- Install apache2---
+
+ $  Apt install apache2
+
+--- install php---
+ $ sudo apt install php libapache2-mod-php php-mysql
+
+---Install mysql server---
+$ sudo apt install mysql-server
+$ mysql_secure_installation
+$ choose complex password “y” (password should be with one caps letters)
+
+--Insatll phpmyadmin—
+$ sudo apt-get install phpmyadmin
+$ Enter ‘space’ to select apache2
+$ sudo service apache2 restart
+
+---user and grant permissions of mysqi---
+$ Sudo mysql
+$ CREATE  USER 'ished'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Dxdev@296';
+$ FLUSH PRIVILEGES;
+$ GRANT ALL PRIVILEGES ON *.* TO 'ished'@'localhost' IDENTIFIED BY 'Dxdev@296';
+
+Enter username and password in php myadmin
+Create a new database and import the ZIP file of DB
+
+
+
+2.
+Clone the project repo “akrahealth” from “git-akratech” in var/www path and rename it to html
+
+3.
+$ rename "server.php"  to "index.php" 
+$ .env.example to .env
+$ update DB credentials in .env file
+$ copy "public/.htaccess" file and paste it in root folder
+$ copy “public/images” to root folder
+$ copy “public/assets” to root folder
+CHMOD  -R 777 storage
+**run following command in the project root directory**
+$ php composer.phar install
+$ php artisan key:generate 
+
+4.  Enabling mod_rewrite
+$ sudo a2enmod rewrite
+
+
+
+5. Configuring apache
+$ sudo nano /etc/apache2/apache2.config
+  add these lines in .config file
+
+<Directory />
+        Options FollowSymLinks
+        AllowOverride All
+        Require all denied
+</Directory>
+
+<Directory /usr/share>
+        AllowOverride All
+        Require all granted
+</Directory>
+
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+
+
+# Run application in different port edit apache2 file
+$ cd etc/apache2
+$ nano ports.conf
+add Listen 8090
+$ cd etc/apache2/sites-enabled
+$ nano ooo-default.conf
+add these lines at th end of the file
+<VirtualHost *:8090>
+        Servername localhost
+        DocumentRoot /var/www/Akrahealth
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+Akrahealth (Ubuntu 18.04)
+
+|Software                       :-   Akrahealth
+| Software Version         :-  Apache/2.4.29
+| Path                              :-  var/www/akrahealth
+| Configuration File       :-  var/www/akra/.env
+| DB                               :- localhost/phpmyadmin/akrahealth
+| URL                             :-  localhost:8090
+| username                   :-  admin & doctor1
+| password                  :-  Password@123
+| DB                              :- mysql
+| DB Name                   :-  Akrahealth
+| URL                                       :-  localhost/phpmyadmin
+| username                             :- ished
+| password                              :- Dxdev@296
